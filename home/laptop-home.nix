@@ -67,7 +67,7 @@
             # icon-theme=hicolor
             # max-icon-size=32
             # selection-helper=dmenu
-            # play-sound=aplay ${filename}
+            # play-sound=aplay '$'{filename'}
             # layer=top
 
             # Default values, may be overridden in 'urgency' specific sections

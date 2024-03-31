@@ -26,6 +26,13 @@
                     ./hosts/shared/common.nix
                     ./hosts/desktop/configuration.nix
                 ];
+                home-manager.users.root = home-manager.lib.homeManagerConfiguration {
+                    inherit pkgs;
+                    modules = [
+                        ./root-home/shared-home.nix
+                    ];
+                };
+                            
             };
             think-nix-t440p = {
                 specialArgs = {
