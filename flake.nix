@@ -12,14 +12,19 @@
         };
     };
     outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+
         nixosConfigurations = {
             nix-desktop = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = {inherit inputs;};
                 modules = [
                     ./hosts/shared/common.nix
                     ./hosts/desktop/configuration.nix
                 ];
             };
             think-nix-t440p = {
+                system = "x86_64-linux";
+                specialArgs = {inherit inputs;};
                 modules = [
                     ./hosts/shared/common.nix
                     ./hosts/think-nix-t440p/configuration.nix
