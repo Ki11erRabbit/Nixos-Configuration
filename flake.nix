@@ -20,8 +20,9 @@
         nixosConfigurations = {
             nix-desktop = nixpkgs.lib.nixosSystem {
                 specialArgs = {
-                    inherit pkgs system home-manager;
+                    inherit pkgs;
                 };
+                system = "x86_64-linux";
                 modules = [
                     ./hosts/shared/common.nix
                     ./hosts/desktop/configuration.nix
@@ -36,8 +37,9 @@
             };
             think-nix-t440p = {
                 specialArgs = {
-                    inherit pkgs system home-manager;
+                    inherit pkgs;
                 };
+                system = "x86_64-linux";
                 modules = [
                     ./hosts/shared/common.nix
                     ./hosts/think-nix-t440p/configuration.nix
