@@ -1,0 +1,199 @@
+{ config, pkgs, ... }:
+
+{
+
+    # Home Manager is pretty good at managing dotfiles. The primary way to manage
+    # plain files is through 'home.file'.
+    home.file = {
+        # # Building this configuration will create a copy of 'dotfiles/screenrc' in
+        # # the Nix store. Activating the configuration will then make '~/.screenrc' a
+        # # symlink to the Nix store copy.
+        # ".screenrc".source = dotfiles/screenrc;
+
+        # # You can also set the file content immediately.
+        # ".gradle/gradle.properties".text = ''
+        #   org.gradle.console=verbose
+        #   org.gradle.daemon.idletimeout=3600000
+        # '';
+        ".local/bin/configure-monitors.sh".text = ''
+            #!/bin/sh
+            wlr-randr --output HDMI-A-1 --pos 0,0 --transform 270 --output DP-1 --pos 1080,300 --adaptive-sync enabled --output DP-2 --pos 3640,371
+            wlr-randr --output DP-1 --mode 2560x1440@120.029999Hz --adaptive-sync enabled 
+        '';
+        ".local/bin/screen-toggle.sh".text = ''
+            #!/bin/sh
+            wlopm --toggle DP-1 --toggle DP-2 --toggle HDMI-A-1
+        '';
+        ".local/bin/setup-swayidle.sh".text = ''
+            #!/bin/sh
+            swayidle -w \
+                timeout 900 'wlopm --off DP-1 --off DP-2 --off HDMI-A-1' \
+                    resume 'wlopm --on DP-1 --on DP-2 --on HDMI-A-1' \
+                timeout 1000 '/home/ki11errabbit/.local/bin/lockscreen.sh' \
+                    resume 'wlopm --on DP-1 --on DP-2 --on HDMI-A-1' \
+                before-sleep '/home/ki11errabbit/.local/bin/lockscreen.sh' &
+        '';
+        ".local/bin/wallpaper-wayland.sh".text = ''
+            #!/bin/sh
+            case $1 in
+                start) while true; do
+                        /home/ki11errabbit/.local/bin/wallpaper-wayland.sh
+                        sleep 300
+                    done
+                    ;;
+                *);;
+            esac
+
+
+            widepapers="$HOME/Pictures/Wallpapers/Widepapers/"
+            tallpapers="$HOME/Pictures/Wallpapers/Tallpapers/"
+            widepapers_list="$HOME/.config/swaylock/wallpapers.txt"
+            tallpapers_list="$HOME/.config/swaylock/tallpapers.txt"
+
+            # $1 label
+            # $2 display
+            function select_widepaper () {
+                file=$(find "$widepapers" -name "*.png" -or -name "*.jpeg" -or -name "*.jpg" -or -name "*.webm" -or -name "*.mp4" | shuf | head -n 1)
+                echo "$1: $file" >> $HOME/wallpaper.log
+                echo "$file"
+
+            }
+
+            # $1 label
+            # $2 display
+            function select_tallpaper () {
+                file=$(find "$tallpapers" -name "*.png" -or -name "*.jpeg" -or -name "*.jpg" -or -name "*.webm" -or -name "*.mp4" | shuf | head -n 1)
+                echo "$1: $file" >> $HOME/wallpaper.log
+                echo "$file"
+
+            }
+
+            file1=$(select_widepaper "wide1")
+            file2=$(select_widepaper "wide2")
+            file3=$(select_tallpaper "tall")
+
+
+            # $1 display
+            # $2 file
+            function apply_wallpaper () {
+                #mpvpaper -f -o "no-audio loop" $1 "$2"
+                case $2 in
+                    *.png|*.jpeg|*.jpg)
+                        swaybg -o $1 -i "$2" -m fill  &
+                        ;;
+                    *.webm|*.mp4)
+                        mpvpaper -o "no-audio loop" $1 "$2" &
+                        ;;
+                esac
+            }
+
+            pkill -x swaybg
+            pkill -x mpvpaper
+            pkill -x .mpvpaper-wrapper
+            apply_wallpaper "DP-1" "$file1"
+            apply_wallpaper "DP-2" "$file2"
+            apply_wallpaper "HDMI-A-1" "$file3"
+            #swaylock  -ef -i "$file1" -i "$file2" -i "$file3"
+        '';
+        ".local/bin/lockscreen.sh".text = ''
+            #!/home/ki11errabbit/.cargo/bin/caat_shell
+
+            widepapers = $HOME ++ "/Pictures/Wallpapers/Widepapers"
+            tallpapers = $HOME ++ "/Pictures/Wallpapers/Tallpapers"
+
+            function select_widepaper(label, display) {
+                list = find $widepapers "-name" "*.png" "-or" "-name" "*.jpeg" "-or" "-name" "*.jpg" | shuf
+                file = head $list
+                echo $label ++ ": " ++ $file >> $HOME ++ "/lockscreen.log"
+                return $display ++ ":" ++ $file
+            }
+
+
+            function select_tallpaper(label, display) {
+                list = find $tallpapers "-name" "*.png" "-or" "-name" "*.jpeg" "-or" "-name" "*.jpg" | shuf
+                file = head $list
+                echo $label ++ ": " ++ $file >> $HOME ++ "/lockscreen.log"
+                return $display ++ ":" ++ $file
+            }
+
+
+
+            file1 = select_widepaper "wide1" "DP-1"
+            file2 = select_widepaper "wide2" "DP-2"
+            file3 = select_tallpaper "tall" "HDMI-A-1"
+            swaylock "-ef" "-i" $file1 "-i" $file2 "-i" $file3
+        '';
+        ".local/bin/setup-keyboard.sh".text = ''
+            #!/bin/sh
+        '';
+        ".local/bin/setup-wallpaper.sh".text = ''
+            #!/bin/sh
+            /home/ki11errabbit/.local/bin/wallpaper-wayland.sh start &
+        '';
+        ".config/fnott/fnott.ini".text = ''
+            # -*- conf -*-
+
+            # For documentation on these options, see `man fnott.ini`
+
+            # Global values
+             output=DP-2
+            # min-width=0
+            # max-width=400
+            # max-height=200
+            # stacking-order=bottom-up
+             anchor=top-left
+             edge-margin-vertical=30
+             edge-margin-horizontal=10
+            # notification-margin=10
+            # icon-theme=hicolor
+            # max-icon-size=32
+            # selection-helper=dmenu
+            # play-sound=aplay ${filename}
+            # layer=top
+
+            # Default values, may be overridden in 'urgency' specific sections
+             background=282c34ff
+
+             border-color=51afefff
+             border-size=2
+
+             padding-vertical=20
+             padding-horizontal=20
+
+             title-font=sans serif
+            # title-color=ffffffff
+            # title-format=<i>%a%A</i>
+
+             summary-font=sans serif:size=8
+            # summary-color=ffffffff
+            # summary-format=<b>%s</b>\n
+
+             body-font=sans serif:size=10
+            # body-color=ffffffff
+            # body-format=%b
+
+            # progress-bar-height=20
+            # progress-bar-color=ffffffff
+
+            # sound-file=
+
+            # Timeout values are in seconds. 0 to disable
+            # max-timeout=0
+             default-timeout=5
+
+            # [low]
+            # background=2b2b2bff
+            # title-color=888888ff
+            # summary-color=888888ff
+            # body-color=888888ff
+
+            # [normal]
+
+            # [critical]
+            # background=6c3333ff
+
+        '';
+    };
+
+
+}
