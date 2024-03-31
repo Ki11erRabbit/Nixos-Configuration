@@ -11,20 +11,26 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };
-    outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+    outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
+    let 
+        system = "x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.${system};
+    in {
 
         nixosConfigurations = {
             nix-desktop = nixpkgs.lib.nixosSystem {
-                system = "x86_64-linux";
-                specialArgs = {inherit inputs;};
+                specialArgs = {
+                    inherit pkgs system home-manager;
+                };
                 modules = [
                     ./hosts/shared/common.nix
                     ./hosts/desktop/configuration.nix
                 ];
             };
             think-nix-t440p = {
-                system = "x86_64-linux";
-                specialArgs = {inherit inputs;};
+                specialArgs = {
+                    inherit pkgs system home-manager;
+                };
                 modules = [
                     ./hosts/shared/common.nix
                     ./hosts/think-nix-t440p/configuration.nix
@@ -33,16 +39,18 @@
             };
         };
         homeConfigurations = {
-            "ki11errabbit@nix-desktop" = home-manager.lib.homeManagerConfiguration {
+            "nix-desktop" = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
                 modules = [
-                    ./home-manager/shared-home.nix
-                    ./home-manager/desktop-home.nix
+                    ./home/shared-home.nix
+                    ./home/desktop-home.nix
                 ];
             };
-            "ki11errabbit@think-nix-t440p" = home-manager.lib.homeManagerConfiguration {
+            "think-nix-t440p" = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
                 modules = [
-                    ./home-manager/shared-home.nix
-                    ./home-manager/laptop-home.nix
+                    ./home/shared-home.nix
+                    ./home/laptop-home.nix
                 ];
             };
         };
