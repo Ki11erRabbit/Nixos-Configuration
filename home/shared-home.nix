@@ -2044,7 +2044,7 @@
 
             echo "$icon$vol%"
         '';
-        ".config/waybar/scripts/pipewire.sh".text = ''
+        ".config/waybar/scripts/weather.sh".text = ''
             #!/bin/sh
 
             # Displays todays precipication chance (☔) and daily low (🥶) and high (🌞).
@@ -2053,7 +2053,7 @@
             # If we have internet, get a weather report from wttr.in and store it locally.
             # You could set up a shell alias to view the full file in a pager in the
             # terminal if desired. This function will only be run once a day when needed.
-            weatherreport="${XDG_DATA_HOME:-$HOME/.local/dashare}/weatherreport"
+            weatherreport="'$'{XDG_DATA_HOME:-$HOME/.local/dashare'}/weatherreport"
             getforecast() { curl -sf "wttr.in/$LOCATION" > "$weatherreport" || exit 1 ;}
             currweather=$(curl -sf "wttr.in/$LOCATION?format=%c%t+%h\n")
             # | sed 's/ //')
