@@ -1,9 +1,9 @@
 
-{ config, pkgs, channels, unstable,  ... }:
+{ config, pkgs, unstable,  ... }:
 
 {
 
     home.packages = with pkgs; [
-        koka
+        unstable.koka
     ];
 }
