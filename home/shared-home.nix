@@ -250,6 +250,96 @@
                                                                        _    _    _   
             )
         '';
+        ".config/kmonad/x230t.kbd".text = ''
+            (defcfg
+                input (device-file "")
+                output (uinput-sink "x230t Keyboard")
+                cmp-seq ralt
+                cmp-seq-delay 5
+                fallthrough true
+                allow-cmd false
+            )
+
+            (defalias 
+                srch KeySearch
+                vido KeySwitchVideoMode
+                cfg  KeyConfig
+                lnch KeyScale
+                cctl (layer-toggle colemakctl)
+                qctl (layer-toggle qwertyctl)
+                swchq (layer-switch qwerty)
+                swchc (layer-switch colemak)
+                fn (layer-toggle function)
+
+            )
+
+
+
+            (defsrc
+                   mute volu vold f20 wkup
+                esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12   home  end   ins   del
+                grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
+                tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+                caps a    s    d    f    g    h    j    k    l    ;    '    ret
+                lsft z    x    c    v    b    n    m    ,    .    /    rsft
+                lctl wkup lmet lalt      spc            ralt ssrq rctl pgup up   pgdn
+                                                                       left down rght
+            )
+
+            (deflayer colemak
+                   mute volu vold f20 wkup
+                esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12   home  end   ins   del
+                grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
+                tab  q    w    f    p    b    j    l    u    y    ;    [    ]    \
+                caps a    r    s    t    g    m    n    e    i    o    '    ret
+                lsft x    c    d    v    z    k    h    ,    .    /    rsft
+                @cctl @fn lalt lmet      spc            ralt ssrq @cctl pgup up   pgdn
+                                                                       left down rght
+            )
+            (deflayer colemakctl
+                   C-mute C-volu C-vold C-f20 C-wkup
+                C-esc  C-f1   C-f2   C-f3   C-f4   C-f5   C-f6   C-f7   C-f8   C-f9   C-f10  C-f11  C-f12   C-home  C-end   C-ins   C-del
+                C-grv  C-1    C-2    C-3    C-4    C-5    C-6    C-7    C-8    C-9    C-0    C--    C-=     C-caps
+                C-tab  C-q    C-w    C-f    C-p    C-b    C-j    C-l    C-u    C-y    C-;    C-[    C-]    C-\
+                C-bspc C-a    C-r    C-s    C-t    C-g    C-m    C-n    C-e    C-i    C-o    C-'    C-ret
+                C-lsft C-x    C-c    C-d    C-v    C-z    C-k    C-h    C-,    C-.    C-/    C-rsft
+                _  _   C-lalt C-lmet      @swchq            C-ralt C-ssrq   _ C-pgup C-up   C-pgdn
+                                                                       C-left C-down C-rght
+            )
+
+            (deflayer qwerty
+                   mute volu vold f20 wkup
+                esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12   home  end   ins   del
+                grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
+                tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+                caps a    s    d    f    g    h    j    k    l    ;    '    ret
+                lsft z    x    c    v    b    n    m    ,    .    /    rsft
+                @cctl @fn lalt lmet      spc            ralt ssrq @cctl pgup up   pgdn
+                                                                       left down rght
+            )
+
+            (deflayer qwertyctl
+                   mute volu vold f20 wkup
+                C-esc   C-f1    C-f2    C-f3    C-f4    C-f5   C-f6   C-f7    C-f8    C-f9    C-f10   C-f11   C-f12    C-home  C-end   C-ins   C-del
+                C-grv   C-1     C-2     C-3     C-4     C-5    C-6    C-7     C-8     C-9     C-0     C--     C-=      C-caps
+                C-tab   C-q     C-w     C-e     C-r     C-t    C-y    C-u     C-i     C-o     C-p     C-[     C-]      C-\
+                C-bspc  C-a     C-s     C-d     C-f     C-g    C-h    C-j     C-k     C-l     C-;     C-'     C-ret
+                C-lsft  C-z     C-x     C-c     C-v     C-b    C-n    C-m     C-,     C-.     C-/     C-rsft
+                _       _       C-lalt  C-lmet          @swchc                C-ralt  C-ssrq  C-rctl  C-pgup  C-up    C-pgdn
+                                                                                                      C-left  C-down  C-rght
+            )
+
+            (deflayer function
+                   _    _    _    _   _   
+                _    _    _    lck  zzz  wlan _    @vido brdn brup prev pp  next  _    _    _    _  
+                _    _    _    _    _    _    _    _    _    _    _    _    _     _   
+                _    _    _    _    _    _    _    _    _    _    _    _    _    _
+                _    _    _    _    _    _    _    _    _    _    _    _    _  
+                _    _    _    _    _    _    _    _    _    _    _    _   
+                _    _    _    _         _              _    _    _    _    _    _   
+                                                                       _    _    _   
+            )
+        '';
         ".config/river/init" = {
             executable = true;
             text = ''
