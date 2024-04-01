@@ -5,6 +5,12 @@
         dmidecode
     ];
 
+    # Configure keymap in X11
+    services.xserver = {
+        layout = "us";
+        xkbVariant = "colemak_dh";
+    };
+
     programs.light.enable = true;
     
     services.thermald.enable = true;

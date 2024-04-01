@@ -25,6 +25,14 @@
         LC_TIME = "en_US.UTF-8";
     };
 
+    environment.pathsToLink = [ "/share/zsh" ];
+
+    # Enable the X11 windowing system.
+    services.xserver.enable = true;
+
+    # Enable the KDE Plasma Desktop Environment.
+    services.xserver.displayManager.sddm.enable = true;
+
     # Enable networking
     networking.networkmanager.enable = true;
 
@@ -48,6 +56,9 @@
         #media-session.enable = true;
     };
 
+    hardware.bluetooth.enable = true;
+    hardware.bluetooth.powerOnBoot = true;
+    services.blueman.enable = true;
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.ki11errabbit = {
@@ -79,6 +90,7 @@
         xdg-desktop-portal-wlr
         btop
         universal-ctags
+        mullvad-vpn
         gcc
         transmission
         transmission-remote-gtk
@@ -94,6 +106,8 @@
     };
     
     programs.kdeconnect.enable = true;
+
+    programs.river.enable = true;
 
     programs.nix-ld.enable = true;
     programs.nix-ld.libraries = with pkgs; [
@@ -146,7 +160,11 @@
     services.openssh.enable = true;
     services.dbus.enable = true;
     services.flatpak.enable = true;
+    services.mullvad-vpn.enable = true;
+    xdg.portal.enable = true;
+    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk];
 
+    security.polkit.enable = true;
     systemd = {
         user.services.polkit-gnome-authentication-agent-1 = {
             description = "polkit-gnome-authentication-agent-1";
