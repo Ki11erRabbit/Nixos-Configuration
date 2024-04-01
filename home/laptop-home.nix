@@ -14,14 +14,22 @@
         #   org.gradle.console=verbose
         #   org.gradle.daemon.idletimeout=3600000
         # '';
-        ".local/bin/configure-monitors.sh".text = ''
+        ".local/bin/configure-monitors.sh" = {
+            executable = true;
+            text = ''
             #!/bin/sh
-        '';
-        ".local/bin/screen-toggle.sh".text = ''
+            '';
+        };
+        ".local/bin/screen-toggle.sh" = {
+            executable = true;
+            text = ''
             #!/bin/sh
             wlopm --toggle eDP-1
-        '';
-        .local/bin/setup-swayidle.sh".text = ''
+            '';
+        };
+        ".local/bin/setup-swayidle.sh" = {
+            executable = true;
+            text = ''
             #!/bin/sh
             swayidle -w \
                 timeout 900 'wlopm --off eDP-1' \
@@ -29,14 +37,20 @@
                 timeout 1000 '/home/ki11errabbit/.local/bin/lockscreen.sh' \
                     resume 'wlopm --on eDP-1' \
                 before-sleep '/home/ki11errabbit/.local/bin/lockscreen.sh' &
-        '';
-        ".local/bin/lockscreen.sh".text = ''
+            '';
+        };
+        ".local/bin/lockscreen.sh" = {
+            executable = true;
+            text = ''
             #!/bin/sh
 
 
             swaylock -ef -i "eDP-1:/home/ki11errabbit/Pictures/Wallpapers/2588341_tistan01_thinkpad-wallpaper-2.png"
-        '';
-        .local/bin/setup-keyboard.sh".text = ''
+            '';
+        };
+        ".local/bin/setup-keyboard.sh" = {
+            executable = true;
+            text = ''
             #!/bin/sh
             model=$(sudo /run/current-system/sw/bin/dmidecode | grep Version | head -n 2 | tail -n 1 | awk '{print $3}')
 
@@ -44,12 +58,16 @@
             case $model in
                 T440p) kmonad /home/ki11errabbit/.config/kmonad/t44p.kbd ;;
             esac
-        '';
-        ".local/bin/setup-wallpaper.sh".text = ''
+            '';
+        };
+        ".local/bin/setup-wallpaper.sh" = {
+            executable = true;
+            text = ''
             #!/bin/sh
             swaybg -i /home/ki11errabbit/Pictures/Wallpapers/2588341_tistan01_thinkpad-wallpaper-2.png &
-        '';
-        .config/fnott/fnott.ini = ''
+            '';
+        };
+        ".config/fnott/fnott.ini".text = ''
             # -*- conf -*-
 
             # For documentation on these options, see `man fnott.ini`

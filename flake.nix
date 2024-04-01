@@ -18,7 +18,7 @@
     in {
 
         nixosConfigurations = {
-            nix-desktop = nixpkgs.lib.nixosSystem {
+            primary-desktop = nixpkgs.lib.nixosSystem {
                 specialArgs = {
                     inherit pkgs;
                 };
@@ -26,6 +26,7 @@
                 modules = [
                     ./hosts/shared/common.nix
                     ./hosts/desktop/configuration.nix
+                    ./hardware/primary-desktop.nix
                 ];
             };
             think-nix-t440p = {
@@ -41,14 +42,14 @@
             };
         };
         homeConfigurations = {
-            "nix-desktop" = home-manager.lib.homeManagerConfiguration {
+            "desktop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 modules = [
                     ./home/shared-home.nix
                     ./home/desktop-home.nix
                 ];
             };
-            "think-nix-t440p" = home-manager.lib.homeManagerConfiguration {
+            "t440p" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 modules = [
                     ./home/shared-home.nix

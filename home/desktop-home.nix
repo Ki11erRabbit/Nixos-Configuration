@@ -15,16 +15,24 @@
         #   org.gradle.console=verbose
         #   org.gradle.daemon.idletimeout=3600000
         # '';
-        ".local/bin/configure-monitors.sh".text = ''
+        ".local/bin/configure-monitors.sh" = {
+            executable = true;
+            text = ''
             #!/bin/sh
             wlr-randr --output HDMI-A-1 --pos 0,0 --transform 270 --output DP-1 --pos 1080,300 --adaptive-sync enabled --output DP-2 --pos 3640,371
             wlr-randr --output DP-1 --mode 2560x1440@120.029999Hz --adaptive-sync enabled 
-        '';
-        ".local/bin/screen-toggle.sh".text = ''
+            '';
+        };
+        ".local/bin/screen-toggle.sh" = {
+            executable = true;
+            text = ''
             #!/bin/sh
             wlopm --toggle DP-1 --toggle DP-2 --toggle HDMI-A-1
-        '';
-        ".local/bin/setup-swayidle.sh".text = ''
+            '';
+        };
+        ".local/bin/setup-swayidle.sh" = {
+            executable = true;
+            text = ''
             #!/bin/sh
             swayidle -w \
                 timeout 900 'wlopm --off DP-1 --off DP-2 --off HDMI-A-1' \
@@ -32,8 +40,11 @@
                 timeout 1000 '/home/ki11errabbit/.local/bin/lockscreen.sh' \
                     resume 'wlopm --on DP-1 --on DP-2 --on HDMI-A-1' \
                 before-sleep '/home/ki11errabbit/.local/bin/lockscreen.sh' &
-        '';
-        ".local/bin/wallpaper-wayland.sh".text = ''
+            '';
+        };
+        ".local/bin/wallpaper-wayland.sh" = {
+            executable = true;
+            text = ''
             #!/bin/sh
             case $1 in
                 start) while true; do
@@ -94,8 +105,11 @@
             apply_wallpaper "DP-2" "$file2"
             apply_wallpaper "HDMI-A-1" "$file3"
             #swaylock  -ef -i "$file1" -i "$file2" -i "$file3"
-        '';
-        ".local/bin/lockscreen.sh".text = ''
+            '';
+        };
+        ".local/bin/lockscreen.sh" = {
+            executable = true;
+            text = ''
             #!/home/ki11errabbit/.cargo/bin/caat_shell
 
             widepapers = $HOME ++ "/Pictures/Wallpapers/Widepapers"
@@ -122,14 +136,21 @@
             file2 = select_widepaper "wide2" "DP-2"
             file3 = select_tallpaper "tall" "HDMI-A-1"
             swaylock "-ef" "-i" $file1 "-i" $file2 "-i" $file3
-        '';
-        ".local/bin/setup-keyboard.sh".text = ''
+            '';
+        };
+        ".local/bin/setup-keyboard.sh" = {
+            executable = true;
+            text = ''
             #!/bin/sh
-        '';
-        ".local/bin/setup-wallpaper.sh".text = ''
+            '';
+        };
+        ".local/bin/setup-wallpaper.sh" = {
+            executable = true;
+            text = ''
             #!/bin/sh
             /home/ki11errabbit/.local/bin/wallpaper-wayland.sh start &
-        '';
+            '';
+        };
         ".config/fnott/fnott.ini".text = ''
             # -*- conf -*-
 
