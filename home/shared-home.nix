@@ -22,6 +22,7 @@
         firefox
         thunderbird
         discord
+        dolphin
         signal-desktop
         alacritty
         wlr-randr
