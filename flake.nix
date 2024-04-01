@@ -2,6 +2,7 @@
     description = "My NixOS shared Config";
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+        unstable.url = "nixpkgs/nixos-unstable";
         home-manager = {
             url = "github:nix-community/home-manager/release-23.11";
             # The `follows` keyword in inputs is used for inheritance.
@@ -11,10 +12,16 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };
-    outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
+    outputs = inputs@{ self, nixpkgs, home-manager, unstable, ... }: 
     let 
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
+        overlay = final: prev: let
+            unstablePkgs = import unstable { inherit (prev) system; config.allowUnfree = true; };
+        in {
+            unstable = unstablePkgs;
+        };
+        overlayModule = ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay ]; });
     in {
 
         nixosConfigurations = {
@@ -45,16 +52,22 @@
         homeConfigurations = {
             "desktop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
+                extraSpecialArgs = {inherit nixpkgs unstable; };
                 modules = [
+                    overlayModule
                     ./home/shared-home.nix
                     ./home/desktop-home.nix
+                    ./home/unstable-home.nix
                 ];
             };
             "t440p" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
+                extraSpecialArgs = {inherit nixpkgs unstable;};
                 modules = [
+                    overlayModule
                     ./home/shared-home.nix
                     ./home/laptop-home.nix
+                    ./home/unstable-home.nix
                 ];
             };
         };

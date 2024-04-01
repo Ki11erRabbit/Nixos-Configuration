@@ -5,6 +5,7 @@
     imports = [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+    networking.hostName = "think-nix-t440p"; # Define your hostname.
     nixpkgs.config.nvidia.acceptLicense = true;
 
     specialisation = { 

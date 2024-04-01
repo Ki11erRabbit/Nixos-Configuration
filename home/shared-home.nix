@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
+{ config, pkgs, channels,  ... }:
 
-let 
-  unstable = import <nixos-unstable> { config = {allowUnfree = true;}; };
-in
 {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
@@ -17,6 +14,7 @@ in
     # want to update the value, then make sure to first check the Home Manager
     # release notes.
     home.stateVersion = "23.11"; # Please read the comment before changing.
+    nixpkgs.config.allowUnfree = true;
 
     # The home.packages option allows you to install Nix packages into your
     # environment.
@@ -58,7 +56,6 @@ in
         libclang
         jdt-language-server
         yaml-language-server
-        unstable.koka
         twitter-color-emoji
         zig
         zls
@@ -70,7 +67,6 @@ in
         go
         python3
         racket
-        lua
         luajit
         wl-color-picker
         google-chrome
