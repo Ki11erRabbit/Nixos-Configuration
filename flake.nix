@@ -47,6 +47,28 @@
                     ./hosts/think-nix-t440p/configuration.nix
                     ./hosts/laptop/configuration.nix
                     ./hardware/t440p.nix
+                    home-manager.nixosModules.home-manager {
+                        home-manager.useGlobalPkgs = true;
+                        home-manager.useUserPackages = true;
+                        home-manager.users.root = import ./root/home.nix;
+                    }
+                ];
+            };
+            think-nix-x230t = {
+                specialArgs = {
+                    inherit pkgs;
+                };
+                system = "x86_64-linux";
+                modules = [
+                    ./hosts/shared/common.nix
+                    ./hosts/think-nix-x230t/configuration.nix
+                    ./hosts/laptop/configuration.nix
+                    ./hardware/x230t.nix
+                    home-manager.nixosModules.home-manager {
+                        home-manager.useGlobalPkgs = true;
+                        home-manager.useUserPackages = true;
+                        home-manager.users.root = import ./root/home.nix;
+                    }
                 ];
             };
         };
