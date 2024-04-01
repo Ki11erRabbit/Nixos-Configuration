@@ -21,6 +21,9 @@
     home.packages = with pkgs; [
         firefox
         thunderbird
+        libsForQt5.breeze-qt5
+        libsForQt5.breeze-gtk
+        libsForQt5.breeze-icons
         discord
         dolphin
         signal-desktop
