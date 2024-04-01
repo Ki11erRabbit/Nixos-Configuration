@@ -19,6 +19,7 @@
         unstable = unstable-pkgs.legacyPackages.${system};
     in {
 
+        #home-mangager.users.root = import ./root/home.nix;
         nixosConfigurations = {
             primary-desktop = nixpkgs.lib.nixosSystem {
                 specialArgs = {
@@ -29,6 +30,11 @@
                     ./hosts/shared/common.nix
                     ./hosts/desktop/configuration.nix
                     ./hardware/primary-desktop.nix
+                    home-manager.nixosModules.home-manager {
+                        home-manager.useGlobalPkgs = true;
+                        home-manager.useUserPackages = true;
+                        home-manager.users.root = import ./root/home.nix;
+                    }
                 ];
             };
             think-nix-t440p = {
