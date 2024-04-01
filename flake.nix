@@ -38,6 +38,7 @@
                     ./hosts/shared/common.nix
                     ./hosts/think-nix-t440p/configuration.nix
                     ./hosts/laptop/configuration.nix
+                    ./hardware/t440p.nix
                 ];
             };
         };
