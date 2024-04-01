@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
+let 
+  unstable = import <nixos-unstable> { config = {allowUnfree = true;}; };
+in
 {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
@@ -18,6 +21,87 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     home.packages = with pkgs; [
+        firefox
+        thunderbird
+        discord
+        signal-desktop
+        alacritty
+        wlr-randr
+        river
+        waybar
+        bemenu
+        swaybg
+        mpvpaper
+        neovide
+        sway-contrib.grimshot
+        wl-clipboard
+        pamixer
+        swayidle
+        keepassxc
+        pcloud
+        eza
+        slack
+        slurp
+        libsForQt5.bismuth
+        obs-studio
+        libreoffice-qt
+        yazi
+        libsForQt5.kdeconnect-kde
+        neofetch
+        lua-language-server
+        universal-ctags
+        vscode
+        haskellPackages.lsp
+        rust-analyzer
+        python310Packages.python-lsp-server
+        gopls
+        libclang
+        jdt-language-server
+        yaml-language-server
+        unstable.koka
+        twitter-color-emoji
+        zig
+        zls
+        idris2
+        emacs
+        stack
+        cabal-install
+        ghc
+        go
+        python3
+        racket
+        lua
+        luajit
+        wl-color-picker
+        google-chrome
+        yarn
+        nodejs
+        fzf
+        ripgrep
+        bat
+        dash
+        imv
+        libsForQt5.okular
+        squeak
+        mpv
+        transmission
+        transmission-remote-gtk
+        pharo
+        hunspell
+        hunspellDicts.en_US
+        libsForQt5.ghostwriter
+        transmission-qt
+        usbutils
+        gparted
+        gamescope
+        barrier
+        fnott
+        libnotify
+        stow
+        haskellPackages.kmonad
+        networkmanagerapplet
+        appimage-run
+
         stow
         fnott
         wdisplays
