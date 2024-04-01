@@ -80,7 +80,6 @@
         libsForQt5.okular
         squeak
         mpv
-        transmission
         transmission-remote-gtk
         pharo
         hunspell
@@ -92,7 +91,6 @@
         gamescope
         barrier
         fnott
-        libnotify
         stow
         haskellPackages.kmonad
         networkmanagerapplet

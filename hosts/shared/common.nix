@@ -93,7 +93,6 @@
         mullvad-vpn
         gcc
         transmission
-        transmission-remote-gtk
         usbutils
         gparted
         libnotify
