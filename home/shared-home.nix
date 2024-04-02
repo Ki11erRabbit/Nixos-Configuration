@@ -24,6 +24,8 @@
         libsForQt5.breeze-qt5
         libsForQt5.breeze-gtk
         libsForQt5.breeze-icons
+        libsForQt5.ark
+        font-manager
         discord
         dolphin
         signal-desktop
