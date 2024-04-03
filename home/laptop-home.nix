@@ -24,7 +24,7 @@
             case $model in
                 T440p) kmonad /home/ki11errabbit/.config/kmonad/t44p.kbd ;;
 		        X230) kmonad /home/ki11errabbit/.config/kmonad/x230t.kbd ;;
-		        T430s) kmonad /home/ki11errabbit/.config/kmonad/t430s-mod.kbd ;;
+		        T430s) kmonad /home/ki11errabbit/.config/kmonad/t430s-mod.kbd || sudo /run/current-system/sw/bin/kmonad /home/ki11errabbit/.config/kmonad/t430s-mod.kbd ;;
             esac
             '';
         };

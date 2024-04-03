@@ -119,6 +119,16 @@
                     ./home/x230t-home.nix
                 ];
             };
+            "t430s" = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = {inherit nixpkgs unstable;};
+                modules = [
+                    ./home/shared-home.nix
+                    ./home/laptop-home.nix
+                    ./home/unstable-home.nix
+                    ./home/t430s-home.nix
+                ];
+            };
         };
     };
     
