@@ -37,7 +37,7 @@
                     }
                 ];
             };
-            think-nix-t440p = {
+            think-nix-t440p =  nixpkgs.lib.nixosSystem {
                 specialArgs = {
                     inherit pkgs;
                 };
@@ -54,7 +54,7 @@
                     }
                 ];
             };
-            think-nix-x230t = {
+            think-nix-x230t = nixpkgs.lib.nixosSystem  {
                 specialArgs = {
                     inherit pkgs;
                 };
@@ -89,6 +89,17 @@
                     ./home/shared-home.nix
                     ./home/laptop-home.nix
                     ./home/unstable-home.nix
+                    ./home/t440p-home.nix
+                ];
+            };
+            "x230t" = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = {inherit nixpkgs unstable;};
+                modules = [
+                    ./home/shared-home.nix
+                    ./home/laptop-home.nix
+                    ./home/unstable-home.nix
+                    ./home/x230t-home.nix
                 ];
             };
         };

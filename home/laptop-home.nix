@@ -20,34 +20,6 @@
             #!/bin/sh
             '';
         };
-        ".local/bin/screen-toggle.sh" = {
-            executable = true;
-            text = ''
-            #!/bin/sh
-            wlopm --toggle eDP-1
-            '';
-        };
-        ".local/bin/setup-swayidle.sh" = {
-            executable = true;
-            text = ''
-            #!/bin/sh
-            swayidle -w \
-                timeout 900 'wlopm --off eDP-1' \
-                    resume 'wlopm --on eDP-1' \
-                timeout 1000 '/home/ki11errabbit/.local/bin/lockscreen.sh' \
-                    resume 'wlopm --on eDP-1' \
-                before-sleep '/home/ki11errabbit/.local/bin/lockscreen.sh' &
-            '';
-        };
-        ".local/bin/lockscreen.sh" = {
-            executable = true;
-            text = ''
-            #!/bin/sh
-
-
-            swaylock -ef -i "eDP-1:/home/ki11errabbit/Pictures/Wallpapers/2588341_tistan01_thinkpad-wallpaper-2.png"
-            '';
-        };
         ".local/bin/setup-keyboard.sh" = {
             executable = true;
             text = ''
@@ -57,6 +29,7 @@
 
             case $model in
                 T440p) kmonad /home/ki11errabbit/.config/kmonad/t44p.kbd ;;
+		        *230*) kmonad /home/ki11errabbit/.config/kmonad/x230t.kbd ;;
             esac
             '';
         };
@@ -67,69 +40,142 @@
             swaybg -i /home/ki11errabbit/Pictures/Wallpapers/2588341_tistan01_thinkpad-wallpaper-2.png &
             '';
         };
-        ".config/fnott/fnott.ini".text = ''
-            # -*- conf -*-
+        ".config/waybar/style.css".text = ''
+            * {
+                all: unset;
+                font-family: "LiterationMono Nerd Font", "monospace";
+            }
 
-            # For documentation on these options, see `man fnott.ini`
+            window#waybar {
+              background-color: #282c34;
+              color: #bbc2cf;
+              padding-left:10px;
+              padding-right:10px;
+              /*border-radius: 10px;*/
+              /*border: 2px solid #51afef;*/
+            }
 
-            # Global values
-             output=eDP-1
-            # min-width=0
-            # max-width=400
-            # max-height=200
-            # stacking-order=bottom-up
-             anchor=top-right
-             edge-margin-vertical=30
-             edge-margin-horizontal=10
-            # notification-margin=10
-            # icon-theme=hicolor
-            # max-icon-size=32
-            # selection-helper=dmenu
-            # play-sound=aplay '$'{filename'}
-            # layer=top
+            #tray menu {
+              background-color: #282c34;
+              color: #bbc2cf;
+              padding-left:10px;
+              padding-right:10px;
+              /*border-radius: 10px;*/
+              /*border: 2px solid #51afef;*/
+            }
 
-            # Default values, may be overridden in 'urgency' specific sections
-             background=282c34ff
+            #tray menu button:hover {
+                color: #444b59;
+                background-color: #51afef;
+            }
 
-             border-color=51afefff
-             border-size=2
+            #clock {
+              margin-left: 3px;
+              padding-left: 4px;
+            }
 
-             padding-vertical=20
-             padding-horizontal=20
+            #custom-sysmenu {
+              margin-left: 3px;
+              margin-right: 3px;
+                padding-left: 4px;
+                padding-right: 4px;
+            }
+            #custom-kernel {
+                padding-left: 4px;
+                padding-right: 4px;
+              margin-left: 3px;
+              margin-right: 3px;
+            }
 
-             title-font=sans serif
-            # title-color=ffffffff
-            # title-format=<i>%a%A</i>
+            #custom-dwl_layout {
+              color: #bbc2cf;
+             }
 
-             summary-font=sans serif:size=8
-            # summary-color=ffffffff
-            # summary-format=<b>%s</b>\n
+             #custom-dwl_title {
+                 color: #444b59;
+                 background-color: #51afef;
+                 padding-left: 2px;
+                 padding-right: 2px;
+             }
 
-             body-font=sans serif:size=10
-            # body-color=ffffffff
-            # body-format=%b
+             #custom-dwl_tag {
+                 color: #bbc2cf;
+             }
 
-            # progress-bar-height=20
-            # progress-bar-color=ffffffff
+             #custom-dwl_tag:hover {
+                 color: #444b59;
+                 background-color: #bbc2cf;
+             }
+             #custom-dwl_tag.selected {
+                 color: #444b59;
+                 background-color: #51afef;
+             }
+             #custom-dwl_tag.selected.active:hover {
+                 border-top: 1px solid #51afef;
+                 background-color: #c678dd;
+                 color: #444b59;
+             }
 
-            # sound-file=
+             #custom-dwl_tag.urgent {
+                 background-color: #ff6c6b;
+             }
 
-            # Timeout values are in seconds. 0 to disable
-            # max-timeout=0
-             default-timeout=5
+             #custom-dwl_tag.active {
+                 border-top: 1px solid #c678dd;
+             }
+             #custom-dwl_tag.active:hover {
+                 border-top: 1px solid #c678dd;
+             }
+             
+            #tags button {
+               color: #bbc2cf;
+                padding-left: 4px;
+                padding-right: 4px;
+            }
 
-            # [low]
-            # background=2b2b2bff
-            # title-color=888888ff
-            # summary-color=888888ff
-            # body-color=888888ff
+            #tags button:hover {
+                color: #444b59;
+                background-color: #51afef;
+            }
 
-            # [normal]
+            #tags button.occupied {
+                  color: #444b59;
+                  background-color: #bbc2cf;
+            }
 
-            # [critical]
-            # background=6c3333ff
+
+            #tags button.focused {
+                  color: #444b59;
+                  background-color: #51afef;
+            }
 
 
+            #tags button:hover {
+                color: #444b59;
+                background-color: #51afef;
+            }
+
+            #mode {
+              margin-left: 3px;
+              padding-left: 4px;
+            margin-right: 3px;
+            padding-right: 4px;
+
+            }
+
+            #window {
+              background-color: #282c34;
+              color: #bbc2cf;
+              padding-left:10px;
+              padding-right:10px;
+            }
+
+            #window.focused {
+              color: #282c34;
+              background-color: #51afef;
+              padding-left:10px;
+              padding-right:10px;
+            }
         '';
     };
 }

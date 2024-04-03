@@ -254,7 +254,7 @@
         '';
         ".config/kmonad/x230t.kbd".text = ''
             (defcfg
-                input (device-file "")
+                input (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
                 output (uinput-sink "x230t Keyboard")
                 cmp-seq ralt
                 cmp-seq-delay 5
@@ -333,7 +333,7 @@
 
             (deflayer function
                    _    _    _    _   _   
-                _    _    _    lck  zzz  wlan _    @vido brdn brup prev pp  next  _    _    _    _  
+                _    _    _    _    zzz  wlan _    @vido brdn brup prev pp  next  _    _    _    _  
                 _    _    _    _    _    _    _    _    _    _    _    _    _     _   
                 _    _    _    _    _    _    _    _    _    _    _    _    _    _
                 _    _    _    _    _    _    _    _    _    _    _    _    _  
