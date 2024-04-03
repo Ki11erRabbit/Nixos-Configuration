@@ -374,7 +374,7 @@
 
 
             (defsrc
-                esc  mute volu vold f20 KeyBookmarks         ssrq sclk KeyPause ins   del  home pgup 
+                esc  mute volu vold f20 KeyBookmarks         ssrq slck KeyPause ins   del  home pgup 
                      f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12            end  pgdn
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
                 tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
@@ -385,7 +385,7 @@
             )
 
             (deflayer colemak
-                esc  mute volu vold f20 @tnkv                ssrq sclk KeyPause ins   del  home pgup 
+                esc  mute volu vold f20 @tnkv                ssrq slck KeyPause ins   del  home pgup 
                      f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12            end  pgdn
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     caps
                 tab  q    w    f    p    b    j    l    u    y    ;    [    ]    \
@@ -395,7 +395,7 @@
                                                                        left down rght
             )
             (deflayer colemakctl
-                C-esc  C-mute C-volu C-vold C-f20 C-@tnkv                C-ssrq C-sclk C-KeyPause C-ins   C-del  C-home C-pgup 
+                C-esc  C-mute C-volu C-vold C-f20 C-@tnkv                C-ssrq C-slck C-KeyPause C-ins   C-del  C-home C-pgup 
                        C-f1   C-f2   C-f3   C-f4   C-f5   C-f6   C-f7   C-f8   C-f9   C-f10  C-f11  C-f12            C-end  C-pgdn
                 C-grv  C-1    C-2    C-3    C-4    C-5    C-6    C-7    C-8    C-9    C-0    C--    C-=     C-caps
                 C-tab  C-q    C-w    C-f    C-p    C-b    C-j    C-l    C-u    C-y    C-;    C-[    C-]    C-\
@@ -406,7 +406,7 @@
             )
 
             (deflayer qwerty
-                esc  mute volu vold f20 @tnkv                ssrq sclk KeyPause ins   del  home pgup 
+                esc  mute volu vold f20 @tnkv                ssrq slck KeyPause ins   del  home pgup 
                      f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12            end  pgdn
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
                 tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
@@ -417,7 +417,7 @@
             )
 
             (deflayer qwertyctl
-                C-esc  C-mute C-volu C-vold C-f20 C-@tnkv                C-ssrq C-sclk C-KeyPause C-ins   C-del  C-home C-pgup 
+                C-esc  C-mute C-volu C-vold C-f20 C-@tnkv                C-ssrq C-slck C-KeyPause C-ins   C-del  C-home C-pgup 
                         C-f1    C-f2    C-f3    C-f4    C-f5   C-f6   C-f7    C-f8    C-f9    C-f10   C-f11   C-f12            C-end  C-pgdn
                 C-grv   C-1     C-2     C-3     C-4     C-5    C-6    C-7     C-8     C-9     C-0     C--     C-=      C-caps
                 C-tab   C-q     C-w     C-e     C-r     C-t    C-y    C-u     C-i     C-o     C-p     C-[     C-]      C-\
