@@ -2,6 +2,24 @@
 
 {
     home.file = {
+        ".local/bin/configure-monitors.sh" = {
+            executable = true;
+            text = ''
+            #!/bin/sh
+            echo "landscape" > /tmp/screen-orientation
+            '';
+        };
+        ".local/bin/rotate-screen.sh" = {
+            executable = true;
+            text = ''
+            #!/bin/sh
+            orientation=$(cat /tmp/screen-orientation)
+            case $orientation in
+                landscape) wlr-randr --output LVDS-1 --transform 90; echo "portrait" > /tmp/screen-orientation;;
+                portrait) wlr-randr --output LVDS-1 --transform normal; echo "landscape" > /tmp/screen-orientation ;;
+            esac
+            '';
+        };
         ".local/bin/screen-toggle.sh" = {
             executable = true;
             text = ''

@@ -14,22 +14,16 @@
         #   org.gradle.console=verbose
         #   org.gradle.daemon.idletimeout=3600000
         # '';
-        ".local/bin/configure-monitors.sh" = {
-            executable = true;
-            text = ''
-            #!/bin/sh
-            '';
-        };
         ".local/bin/setup-keyboard.sh" = {
             executable = true;
             text = ''
             #!/bin/sh
-            model=$(sudo /run/current-system/sw/bin/dmidecode | grep Version | head -n 2 | tail -n 1 | awk '{print $3}')
+            model=$(sudo /run/current-system/sw/bin/dmidecode | grep 'Version: ThinkPad' | awk '{print $3}')
 
 
             case $model in
                 T440p) kmonad /home/ki11errabbit/.config/kmonad/t44p.kbd ;;
-		        *230*) kmonad /home/ki11errabbit/.config/kmonad/x230t.kbd ;;
+		        X230) kmonad /home/ki11errabbit/.config/kmonad/x230t.kbd ;;
             esac
             '';
         };

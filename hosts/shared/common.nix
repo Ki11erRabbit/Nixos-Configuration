@@ -65,7 +65,7 @@
         isNormalUser = true;
         description = "Alec Davis";
         shell = pkgs.zsh;
-        extraGroups = [ "networkmanager" "wheel" "libvirtd" "uinput" "input" "cdrom" ];
+        extraGroups = [ "networkmanager" "wheel" "libvirtd" "uinput" "input" "cdrom" "video"];
         packages = with pkgs; [];
     };
 

@@ -272,13 +272,16 @@
                 swchq (layer-switch qwerty)
                 swchc (layer-switch colemak)
                 fn (layer-toggle function)
+                lock KeyCloseCd
+                webcam KeySport
+                tnkv KeyBookmarks
 
             )
 
 
 
             (defsrc
-                   mute volu vold f20 wkup
+                   mute volu vold f20 KeyBookmarks
                 esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12   home  end   ins   del
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
                 tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
@@ -289,7 +292,7 @@
             )
 
             (deflayer colemak
-                   mute volu vold f20 wkup
+                   mute volu vold f20 @tnkv
                 esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12   home  end   ins   del
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     caps
                 tab  q    w    f    p    b    j    l    u    y    ;    [    ]    \
@@ -299,7 +302,7 @@
                                                                        left down rght
             )
             (deflayer colemakctl
-                   C-mute C-volu C-vold C-f20 C-wkup
+                   C-mute C-volu C-vold C-f20 C-@tnkv
                 C-esc  C-f1   C-f2   C-f3   C-f4   C-f5   C-f6   C-f7   C-f8   C-f9   C-f10  C-f11  C-f12   C-home  C-end   C-ins   C-del
                 C-grv  C-1    C-2    C-3    C-4    C-5    C-6    C-7    C-8    C-9    C-0    C--    C-=     C-caps
                 C-tab  C-q    C-w    C-f    C-p    C-b    C-j    C-l    C-u    C-y    C-;    C-[    C-]    C-\
@@ -310,7 +313,7 @@
             )
 
             (deflayer qwerty
-                   mute volu vold f20 wkup
+                   mute volu vold f20 @tnkv
                 esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12   home  end   ins   del
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
                 tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
@@ -321,7 +324,7 @@
             )
 
             (deflayer qwertyctl
-                   mute volu vold f20 wkup
+                   C-mute C-volu C-vold C-f20 C-@tnkv
                 C-esc   C-f1    C-f2    C-f3    C-f4    C-f5   C-f6   C-f7    C-f8    C-f9    C-f10   C-f11   C-f12    C-home  C-end   C-ins   C-del
                 C-grv   C-1     C-2     C-3     C-4     C-5    C-6    C-7     C-8     C-9     C-0     C--     C-=      C-caps
                 C-tab   C-q     C-w     C-e     C-r     C-t    C-y    C-u     C-i     C-o     C-p     C-[     C-]      C-\
@@ -333,7 +336,7 @@
 
             (deflayer function
                    _    _    _    _   _   
-                _    _    _    _    zzz  wlan _    @vido brdn brup prev pp  next  _    _    _    _  
+                _    _    _  @lock zzz   wlan @webcam @vido brdn brup prev pp  next  _    _    _    _  
                 _    _    _    _    _    _    _    _    _    _    _    _    _     _   
                 _    _    _    _    _    _    _    _    _    _    _    _    _    _
                 _    _    _    _    _    _    _    _    _    _    _    _    _  
@@ -362,13 +365,16 @@
                 swchq (layer-switch qwerty)
                 swchc (layer-switch colemak)
                 fn (layer-toggle function)
+                lock KeyCloseCd
+                webcam KeySport
+                tnkv KeyBookmarks
 
             )
 
 
 
             (defsrc
-                esc  mute volu vold f20 wkup                 ssrq sclk KeyPause ins   del  home pgup 
+                esc  mute volu vold f20 KeyBookmarks         ssrq sclk KeyPause ins   del  home pgup 
                      f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12            end  pgdn
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
                 tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
@@ -379,7 +385,7 @@
             )
 
             (deflayer colemak
-                esc  mute volu vold f20 wkup                 ssrq sclk KeyPause ins   del  home pgup 
+                esc  mute volu vold f20 @tnkv                ssrq sclk KeyPause ins   del  home pgup 
                      f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12            end  pgdn
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     caps
                 tab  q    w    f    p    b    j    l    u    y    ;    [    ]    \
@@ -389,7 +395,7 @@
                                                                        left down rght
             )
             (deflayer colemakctl
-                C-esc  C-mute C-volu C-vold C-f20 C-wkup                 C-ssrq C-sclk C-KeyPause C-ins   C-del  C-home C-pgup 
+                C-esc  C-mute C-volu C-vold C-f20 C-@tnkv                C-ssrq C-sclk C-KeyPause C-ins   C-del  C-home C-pgup 
                        C-f1   C-f2   C-f3   C-f4   C-f5   C-f6   C-f7   C-f8   C-f9   C-f10  C-f11  C-f12            C-end  C-pgdn
                 C-grv  C-1    C-2    C-3    C-4    C-5    C-6    C-7    C-8    C-9    C-0    C--    C-=     C-caps
                 C-tab  C-q    C-w    C-f    C-p    C-b    C-j    C-l    C-u    C-y    C-;    C-[    C-]    C-\
@@ -400,7 +406,7 @@
             )
 
             (deflayer qwerty
-                esc  mute volu vold f20 wkup                 ssrq sclk KeyPause ins   del  home pgup 
+                esc  mute volu vold f20 @tnkv                ssrq sclk KeyPause ins   del  home pgup 
                      f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12            end  pgdn
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
                 tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
@@ -411,7 +417,7 @@
             )
 
             (deflayer qwertyctl
-                C-esc  C-mute C-volu C-vold C-f20 C-wkup                 C-ssrq C-sclk C-KeyPause C-ins   C-del  C-home C-pgup 
+                C-esc  C-mute C-volu C-vold C-f20 C-@tnkv                C-ssrq C-sclk C-KeyPause C-ins   C-del  C-home C-pgup 
                         C-f1    C-f2    C-f3    C-f4    C-f5   C-f6   C-f7    C-f8    C-f9    C-f10   C-f11   C-f12            C-end  C-pgdn
                 C-grv   C-1     C-2     C-3     C-4     C-5    C-6    C-7     C-8     C-9     C-0     C--     C-=      C-caps
                 C-tab   C-q     C-w     C-e     C-r     C-t    C-y    C-u     C-i     C-o     C-p     C-[     C-]      C-\
@@ -423,7 +429,7 @@
 
             (deflayer function
                 _    _    _    _    _   _                    ssrq _    _  _     _    brup pgup 
-                     _    lck  _    zzz  wlan _    @vido _   _    prev _  _          brdn _  
+                     _    @lock  _  zzz  wlan _    @vido _   _    prev _  _          brdn _  
                 _    _    _    _    _    _    _    _    _    _    _    _    _     _   
                 _    _    _    _    _    _    _    _    _    _    _    _    _    _
                 _    _    _    _    _    _    _    _    _    _    _    _    _  
@@ -466,12 +472,12 @@
 
             riverctl map normal Super R spawn dolphin
             riverctl map normal None XF86Explorer spawn 'dolphin'
+            
+            riverctl map normal None XF86RotateWindows spawn '/home/ki11errabbit/.local/bin/rotate-screen.sh'
 
             riverctl map normal Super+Shift W spawn '/home/ki11errabbit/.local/bin/screen-toggle.sh'
 
-            riverctl map normal None XF86MonBrightnessUp spawn 'light -A 30'
-            riverctl map normal None XF86MonBrightnessDown spawn 'light -U 30'
-
+            riverctl map normal None XF86RotateWindows spawn '/home/ki11errabbit/.local/bin/rotate-screen.sh'
             riverctl map normal None XF86AudioMicMute spawn 'amixer set Capture toggle'
 
             riverctl map normal None XF86Tools spawn '/home/ki11errabbit/.local/bin/nix-config.sh'

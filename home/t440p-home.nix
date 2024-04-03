@@ -13,6 +13,12 @@
         #   org.gradle.console=verbose
         #   org.gradle.daemon.idletimeout=3600000
         # '';
+        ".local/bin/configure-monitors.sh" = {
+            executable = true;
+            text = ''
+            #!/bin/sh
+            '';
+        };
         ".local/bin/screen-toggle.sh" = {
             executable = true;
             text = ''
