@@ -71,6 +71,23 @@
                     }
                 ];
             };
+            think-nix-t430s = nixpkgs.lib.nixosSystem  {
+                specialArgs = {
+                    inherit pkgs;
+                };
+                system = "x86_64-linux";
+                modules = [
+                    ./hosts/shared/common.nix
+                    ./hosts/think-nix-t430s/configuration.nix
+                    ./hosts/laptop/configuration.nix
+                    ./hardware/t430s.nix
+                    home-manager.nixosModules.home-manager {
+                        home-manager.useGlobalPkgs = true;
+                        home-manager.useUserPackages = true;
+                        home-manager.users.root = import ./root/home.nix;
+                    }
+                ];
+            };
         };
         homeConfigurations = {
             "desktop" = home-manager.lib.homeManagerConfiguration {
