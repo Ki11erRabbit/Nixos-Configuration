@@ -100,7 +100,7 @@
 
             pkill -x swaybg
             pkill -x mpvpaper
-            pkill -x .mpvpaper-wrapper
+            pkill -x .mpvpaper-wrapp
             apply_wallpaper "DP-1" "$file1"
             apply_wallpaper "DP-2" "$file2"
             apply_wallpaper "HDMI-A-1" "$file3"
