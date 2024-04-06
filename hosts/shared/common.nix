@@ -98,6 +98,7 @@
         gparted
         libnotify
         haskellPackages.kmonad
+        gnumake
     ];
 
     programs.zsh.enable = true;
@@ -113,9 +114,9 @@
 
     programs.nix-ld.enable = true;
     programs.nix-ld.libraries = with pkgs; [
-
+        libressl
     ];
-    
+
     services.udev.extraRules = ''
         ACTION=="add", ATTRS{idVendor}=="2dc8", ATTRS{idProduct}=="3106", RUN+="/sbin/modprobe xpad", RUN+="${pkgs.stdenv.shell} -c 'echo 2dc8 3106 > /sys/bus/usb/drivers/xpad/new_id'"
 
