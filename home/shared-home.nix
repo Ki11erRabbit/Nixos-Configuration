@@ -42,7 +42,6 @@
         pamixer
         swayidle
         keepassxc
-        pcloud
         eza
         slack
         slurp

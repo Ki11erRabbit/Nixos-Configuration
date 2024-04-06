@@ -3,6 +3,7 @@
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
         unstable-pkgs.url = "nixpkgs/nixos-unstable";
+        old-pkgs.url = "github:nixos/nixpkgs/nixos-22.11";
         home-manager = {
             url = "github:nix-community/home-manager/release-23.11";
             # The `follows` keyword in inputs is used for inheritance.
@@ -12,11 +13,12 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };
-    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, ... }: 
+    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, ... }: 
     let 
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
-        unstable = unstable-pkgs.legacyPackages.${system};
+        unstable = import unstable-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
+        oldpkgs = import old-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
     in {
 
         #home-mangager.users.root = import ./root/home.nix;
@@ -92,41 +94,45 @@
         homeConfigurations = {
             "desktop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable; };
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs; };
                 modules = [
                     ./home/shared-home.nix
                     ./home/desktop-home.nix
                     ./home/unstable-home.nix
+                    ./home/old-home.nix
                 ];
             };
             "t440p" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable;};
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs;};
                 modules = [
                     ./home/shared-home.nix
                     ./home/laptop-home.nix
                     ./home/unstable-home.nix
                     ./home/t440p-home.nix
+                    ./home/old-home.nix
                 ];
             };
             "x230t" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable;};
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs;};
                 modules = [
                     ./home/shared-home.nix
                     ./home/laptop-home.nix
                     ./home/unstable-home.nix
                     ./home/x230t-home.nix
+                    ./home/old-home.nix
                 ];
             };
             "t430s" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable;};
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs;};
                 modules = [
                     ./home/shared-home.nix
                     ./home/laptop-home.nix
                     ./home/unstable-home.nix
                     ./home/t430s-home.nix
+                    ./home/old-home.nix
                 ];
             };
         };
