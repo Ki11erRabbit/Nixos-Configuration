@@ -16,7 +16,7 @@
     outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, ... }: 
     let 
         system = "x86_64-linux";
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs { system = "${system}"; config = { allowUnfree = true; nvidia.acceptLicense = true; }; };
         unstable = import unstable-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
         oldpkgs = import old-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
     in {
