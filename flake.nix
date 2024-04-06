@@ -32,7 +32,6 @@
                     ./hosts/shared/common.nix
                     ./hosts/desktop/configuration.nix
                     ./hardware/primary-desktop.nix
-                    ./build/build.nix
                     home-manager.nixosModules.home-manager {
                         home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;
@@ -50,7 +49,6 @@
                     ./hosts/think-nix-t440p/configuration.nix
                     ./hosts/laptop/configuration.nix
                     ./hardware/t440p.nix
-                    ./build/build.nix
                     home-manager.nixosModules.home-manager {
                         home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;
@@ -68,7 +66,6 @@
                     ./hosts/think-nix-x230t/configuration.nix
                     ./hosts/laptop/configuration.nix
                     ./hardware/x230t.nix
-                    ./build/build.nix
                     home-manager.nixosModules.home-manager {
                         home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;
@@ -86,7 +83,6 @@
                     ./hosts/think-nix-t430s/configuration.nix
                     ./hosts/laptop/configuration.nix
                     ./hardware/t430s.nix
-                    ./build/build.nix
                     home-manager.nixosModules.home-manager {
                         home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;
