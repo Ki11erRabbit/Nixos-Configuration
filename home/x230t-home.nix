@@ -6,7 +6,7 @@
             executable = true;
             text = ''
             #!/bin/sh
-            echo "landscape" > /tmp/screen-orientation
+            echo "normal" > /tmp/screen-orientation
             '';
         };
         ".local/bin/rotate-screen.sh" = {
@@ -14,9 +14,27 @@
             text = ''
             #!/bin/sh
             orientation=$(cat /tmp/screen-orientation)
-            case $orientation in
-                landscape) wlr-randr --output LVDS-1 --transform 90; echo "portrait" > /tmp/screen-orientation;;
-                portrait) wlr-randr --output LVDS-1 --transform normal; echo "landscape" > /tmp/screen-orientation ;;
+            rotateRiver() {
+                case $orientation in
+                    normal) wlr-randr --output LVDS-1 --transform 270; echo "270" > /tmp/screen-orientation ;;
+                    270) wlr-randr --output LVDS-1 --transform 180; echo "180" > /tmp/screen-orientation ;;
+                    180) wlr-randr --output LVDS-1 --transform 90; echo "90" > /tmp/screen-orientation ;;
+                    90) wlr-randr --output LVDS-1 --transform normal; echo "normal" > /tmp/screen-orientation ;;
+                esac
+            }
+            rotatePlasma() {
+                case $orientation in
+                    normal) kscreen-doctor output.1.rotation.right; echo "270" > /tmp/screen-orientation ;;
+                    270) kscreen-doctor output.1.rotation.inverted; echo "180" > /tmp/screen-orientation ;;
+                    180) kscreen-doctor output.1.rotation.left; echo "90" > /tmp/screen-orientation ;;
+                    90) kscreen-doctor output.1.rotation.normal; echo "normal" > /tmp/screen-orientation ;;
+                    *) kscreen-doctor output.1.rotation.right; echo "270" > /tmp/screen-orientation ;;
+                esac
+            }
+            case $XDG_CURRENT_DESKTOP in 
+                River) rotateRiver ;;
+                KDE) rotatePlasma ;;
+                *) rotateRiver ;;
             esac
             '';
         };
