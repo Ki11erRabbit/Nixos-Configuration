@@ -411,7 +411,7 @@
                 tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
                 caps a    s    d    f    g    h    j    k    l    ;    '    ret
                 lsft z    x    c    v    b    n    m    ,    .    /    rsft
-                @cctl @fn lalt lmet      spc            ralt ssrq @cctl KeyBack up   KeyForward
+                @qctl @fn lalt lmet      spc            ralt ssrq @qctl KeyBack up   KeyForward
                                                                        left down rght
             )
 
