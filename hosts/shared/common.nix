@@ -99,6 +99,11 @@
         libnotify
         haskellPackages.kmonad
         gnumake
+        glibc
+        glibcInfo
+        libcxx
+        linux-manual
+        man-pages
     ];
 
     programs.zsh.enable = true;
