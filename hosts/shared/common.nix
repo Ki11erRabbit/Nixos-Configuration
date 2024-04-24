@@ -104,6 +104,7 @@
         libcxx
         linux-manual
         man-pages
+        openblas
     ];
 
     programs.zsh.enable = true;
@@ -120,6 +121,8 @@
     programs.nix-ld.enable = true;
     programs.nix-ld.libraries = with pkgs; [
         libressl
+        openblas
+        gfortran
     ];
 
     services.udev.extraRules = ''
