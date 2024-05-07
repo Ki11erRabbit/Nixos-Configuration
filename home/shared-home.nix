@@ -284,68 +284,68 @@
 
 
             (defsrc
-                   mute volu vold f20 KeyBookmarks
-                esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12   home  end   ins   del
+                esc  mute volu vold f20 KeyBookmarks         ssrq slck KeyPause ins   del  home pgup 
+                     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12            end  pgdn
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
                 tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
                 caps a    s    d    f    g    h    j    k    l    ;    '    ret
                 lsft z    x    c    v    b    n    m    ,    .    /    rsft
-                lctl wkup lmet lalt      spc            ralt ssrq rctl pgup up   pgdn
+                lctl wkup lmet lalt      spc            ralt KeyMenu rctl KeyBack up   KeyForward
                                                                        left down rght
             )
 
             (deflayer colemak
-                   mute volu vold f20 @tnkv
-                esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12   home  end   ins   del
+                esc  mute volu vold f20 @tnkv                ssrq slck KeyPause ins   del  home pgup 
+                     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12            end  pgdn
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     caps
                 tab  q    w    f    p    b    j    l    u    y    ;    [    ]    \
                 bspc a    r    s    t    g    m    n    e    i    o    '    ret
                 lsft x    c    d    v    z    k    h    ,    .    /    rsft
-                @cctl @fn lalt lmet      spc            ralt ssrq @cctl pgup up   pgdn
+                @cctl @fn lalt lmet      spc            ralt ssrq @cctl KeyBack up   KeyForward
                                                                        left down rght
             )
             (deflayer colemakctl
-                   C-mute C-volu C-vold C-f20 C-@tnkv
-                C-esc  C-f1   C-f2   C-f3   C-f4   C-f5   C-f6   C-f7   C-f8   C-f9   C-f10  C-f11  C-f12   C-home  C-end   C-ins   C-del
+                C-esc  C-mute C-volu C-vold C-f20 C-@tnkv                C-ssrq C-slck C-KeyPause C-ins   C-del  C-home C-pgup 
+                       C-f1   C-f2   C-f3   C-f4   C-f5   C-f6   C-f7   C-f8   C-f9   C-f10  C-f11  C-f12            C-end  C-pgdn
                 C-grv  C-1    C-2    C-3    C-4    C-5    C-6    C-7    C-8    C-9    C-0    C--    C-=     C-caps
                 C-tab  C-q    C-w    C-f    C-p    C-b    C-j    C-l    C-u    C-y    C-;    C-[    C-]    C-\
                 C-bspc C-a    C-r    C-s    C-t    C-g    C-m    C-n    C-e    C-i    C-o    C-'    C-ret
                 C-lsft C-x    C-c    C-d    C-v    C-z    C-k    C-h    C-,    C-.    C-/    C-rsft
-                _  _   C-lalt C-lmet      @swchq            C-ralt C-ssrq   _ C-pgup C-up   C-pgdn
+                _  _   C-lalt C-lmet      @swchq            C-ralt C-ssrq   _ C-KeyBack C-up   C-KeyForward
                                                                        C-left C-down C-rght
             )
 
             (deflayer qwerty
-                   mute volu vold f20 @tnkv
-                esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12   home  end   ins   del
+                esc  mute volu vold f20 @tnkv                ssrq slck KeyPause ins   del  home pgup 
+                     f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12            end  pgdn
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
                 tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
                 caps a    s    d    f    g    h    j    k    l    ;    '    ret
                 lsft z    x    c    v    b    n    m    ,    .    /    rsft
-                @cctl @fn lalt lmet      spc            ralt ssrq @cctl pgup up   pgdn
+                @qctl @fn lalt lmet      spc            ralt ssrq @qctl KeyBack up   KeyForward
                                                                        left down rght
             )
 
             (deflayer qwertyctl
-                   C-mute C-volu C-vold C-f20 C-@tnkv
-                C-esc   C-f1    C-f2    C-f3    C-f4    C-f5   C-f6   C-f7    C-f8    C-f9    C-f10   C-f11   C-f12    C-home  C-end   C-ins   C-del
+                C-esc  C-mute C-volu C-vold C-f20 C-@tnkv                C-ssrq C-slck C-KeyPause C-ins   C-del  C-home C-pgup 
+                        C-f1    C-f2    C-f3    C-f4    C-f5   C-f6   C-f7    C-f8    C-f9    C-f10   C-f11   C-f12            C-end  C-pgdn
                 C-grv   C-1     C-2     C-3     C-4     C-5    C-6    C-7     C-8     C-9     C-0     C--     C-=      C-caps
                 C-tab   C-q     C-w     C-e     C-r     C-t    C-y    C-u     C-i     C-o     C-p     C-[     C-]      C-\
                 C-bspc  C-a     C-s     C-d     C-f     C-g    C-h    C-j     C-k     C-l     C-;     C-'     C-ret
                 C-lsft  C-z     C-x     C-c     C-v     C-b    C-n    C-m     C-,     C-.     C-/     C-rsft
-                _       _       C-lalt  C-lmet          @swchc                C-ralt  C-ssrq  C-rctl  C-pgup  C-up    C-pgdn
+                _       _       C-lalt  C-lmet          @swchc                C-ralt  C-ssrq  C-rctl  C-KeyBack  C-up    C-KeyForward
                                                                                                       C-left  C-down  C-rght
             )
 
             (deflayer function
-                   _    _    _    _   _   
-                _    _    _  @lock zzz   wlan @webcam @vido brdn brup prev pp  next  _    _    _    _  
+                _    _    _    _    _   _                    ssrq _    _  _     _    brup pgup 
+                     _    @lock  _  zzz  wlan @webcam @vido _   _    prev _  _          brdn _  
                 _    _    _    _    _    _    _    _    _    _    _    _    _     _   
                 _    _    _    _    _    _    _    _    _    _    _    _    _    _
                 _    _    _    _    _    _    _    _    _    _    _    _    _  
                 _    _    _    _    _    _    _    _    _    _    _    _   
-                _    _    _    _         _              _    _    _    _    _    _   
-                                                                       _    _    _   
+                _    _    _    _         @srch          _    _    _    _    KeyStop    _   
+                                                                       prev pp   next
             )
         '';
         ".config/kmonad/t430s-mod.kbd".text = ''
