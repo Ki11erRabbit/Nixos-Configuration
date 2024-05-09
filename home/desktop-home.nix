@@ -516,6 +516,8 @@
 
     home.packages = with pkgs; [
         zoom-us
-        ];
+        pcsx2
+        rpcs3
+    ];
     
 }
