@@ -518,6 +518,7 @@
         zoom-us
         pcsx2
         rpcs3
+        system76-keyboard-configurator
     ];
     
 }
