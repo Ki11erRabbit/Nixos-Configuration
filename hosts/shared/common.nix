@@ -105,6 +105,7 @@
         linux-manual
         man-pages
         openblas
+        system76-keyboard-configurator
     ];
 
     programs.zsh.enable = true;

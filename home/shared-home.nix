@@ -555,7 +555,7 @@
             # Super+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
             riverctl map normal Super Return spawn alacritty
 
-            riverctl map normal Super+Shift Return spawn neovide
+            riverctl map normal Super+Shift Return spawn 'emacsclient -c'
 
             # Super+D to start an instance of bemenu
             riverctl map normal Super D spawn bemenu-run
