@@ -106,7 +106,29 @@
         man-pages
         openblas
         system76-keyboard-configurator
+        cmake
+        libtool
+        xdotool
+        nodejs
+        wmctrl
+        aria
+        fd
+        jq
+        python311Packages.pandas
+        python311Packages.requests
+        python311Packages.sexpdata
+        python311Packages.tld
+        python311Packages.pyqt6 python311Packages.pyqt6-sip
+        python311Packages.pyqt6-webengine python311Packages.epc python311Packages.lxml # for eaf
+        python311Packages.qrcode # eaf-file-browser
+        python311Packages.pysocks # eaf-browser
+        python311Packages.pymupdf # eaf-pdf-viewer
+        python311Packages.pypinyin # eaf-file-manager
+        python311Packages.psutil # eaf-system-monitor
+        python311Packages.retry # eaf-markdown-previewer
+        python311Packages.markdown
     ];
+    
 
     programs.zsh.enable = true;
 
