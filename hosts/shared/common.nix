@@ -127,6 +127,8 @@
         python311Packages.psutil # eaf-system-monitor
         python311Packages.retry # eaf-markdown-previewer
         python311Packages.markdown
+        gnum4
+        pkg-config
     ];
     
 
