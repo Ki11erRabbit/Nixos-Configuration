@@ -7,8 +7,8 @@
 
     # Configure keymap in X11
     services.xserver = {
-        layout = "us";
-        xkbVariant = "colemak_dh";
+        xkb.layout = "us";
+        xkb.variant = "colemak_dh";
     };
 
     programs.light.enable = true;
