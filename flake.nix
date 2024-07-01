@@ -12,6 +12,12 @@
             # to avoid problems caused by different versions of nixpkgs.
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        pterodactyl = {
+            url = "github:pterodactyl/panel";
+        };
+        wings = {
+            url = "github:pterodactyl/wings";
+        };
     };
     outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, ... }: 
     let 
@@ -32,6 +38,22 @@
                     ./hosts/shared/common.nix
                     ./hosts/desktop/configuration.nix
                     ./hardware/primary-desktop.nix
+                    home-manager.nixosModules.home-manager {
+                        home-manager.useGlobalPkgs = true;
+                        home-manager.useUserPackages = true;
+                        home-manager.users.root = import ./root/home.nix;
+                    }
+                ];
+            };
+            server-nas = nixpkgs.lib.nixosSystem {
+                specialArgs = {
+                    inherit pkgs pterodactyl;
+                };
+                system = "x86_64-linux";
+                modules = [
+                    ./hosts/shared/common.nix
+                    ./hosts/server-nas/configuration.nix
+                    ./hardware/server-nas.nix
                     home-manager.nixosModules.home-manager {
                         home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;

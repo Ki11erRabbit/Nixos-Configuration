@@ -518,6 +518,7 @@
         zoom-us
         pcsx2
         rpcs3
+        lutris
     ];
     
 }
