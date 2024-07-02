@@ -15,6 +15,7 @@
         #   org.gradle.console=verbose
         #   org.gradle.daemon.idletimeout=3600000
         # '';
+    };
 
     home.packages = with pkgs; [
     ];

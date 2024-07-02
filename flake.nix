@@ -12,12 +12,6 @@
             # to avoid problems caused by different versions of nixpkgs.
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        pterodactyl = {
-            url = "github:pterodactyl/panel";
-        };
-        wings = {
-            url = "github:pterodactyl/wings";
-        };
     };
     outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, ... }: 
     let 
@@ -47,7 +41,7 @@
             };
             server-nas = nixpkgs.lib.nixosSystem {
                 specialArgs = {
-                    inherit pkgs pterodactyl;
+                    inherit pkgs;
                 };
                 system = "x86_64-linux";
                 modules = [
@@ -122,6 +116,14 @@
                     ./home/desktop-home.nix
                     ./home/unstable-home.nix
                     ./home/old-home.nix
+                ];
+            };
+            "servernas" = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs; };
+                modules = [
+                    ./home/shared-home.nix
+                    ./home/server-nas-home.nix
                 ];
             };
             "t440p" = home-manager.lib.homeManagerConfiguration {
