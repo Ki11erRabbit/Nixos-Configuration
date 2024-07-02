@@ -1,17 +1,37 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+    imports =
+        [ (modulesPath + "/installer/scan/not-detected.nix")
+        ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "mpt3sas" "usbhid" "usb_storage" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
-  boot.swraid = {
-      enable = true;
-      mdadmConf = ''
+    boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "mpt3sas" "usbhid" "usb_storage" "sd_mod" ];
+    boot.initrd.kernelModules = [ ];
+    boot.kernelModules = [ "kvm-amd" ];
+    boot.extraModulePackages = [ ];
+  
+
+    nixpkgs.config.nvidia.acceptLicense = true;
+
+    specialisation = { 
+        nvidia.configuration = { 
+            # Nvidia Configuration 
+            services.xserver.videoDrivers = [ "nvidia" ]; 
+            hardware.opengl.enable = true; 
+
+            # Optionally, you may need to select the appropriate driver version for your specific GPU. 
+            hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470; 
+
+            # nvidia-drm.modeset=1 is required for some wayland compositors, e.g. sway 
+            hardware.nvidia.modesetting.enable = true; 
+
+        };
+    };
+
+
+    boot.swraid = {
+        enable = true;
+        mdadmConf = ''
 # mdadm configuration file
 #
 # mdadm will function properly without the use of a configuration file,

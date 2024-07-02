@@ -182,6 +182,8 @@
         settings.X11Forwarding = true;
     };
     services.dbus.enable = true;
+    xdg.portal.enable = true;
+    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk];
     services.flatpak.enable = true;
 
     security.polkit.enable = true;
