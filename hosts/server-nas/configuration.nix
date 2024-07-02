@@ -38,9 +38,6 @@ in
         allowedTCPPorts = [ 22 80 443];
     };
     
-    services.openssh = {
-        settings.X11Forwarding = true;
-    };
     
     services.nginx = {
         enable = true;

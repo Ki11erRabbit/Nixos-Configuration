@@ -29,7 +29,7 @@
                 };
                 system = "x86_64-linux";
                 modules = [
-                    ./hosts/shared/common.nix
+                    ./hosts/shared/common-pc.nix
                     ./hosts/desktop/configuration.nix
                     ./hardware/primary-desktop.nix
                     home-manager.nixosModules.home-manager {
@@ -45,7 +45,7 @@
                 };
                 system = "x86_64-linux";
                 modules = [
-                    ./hosts/shared/common.nix
+                    ./hosts/shared/common-server.nix
                     ./hosts/server-nas/configuration.nix
                     ./hardware/server-nas.nix
                     home-manager.nixosModules.home-manager {
@@ -61,7 +61,7 @@
                 };
                 system = "x86_64-linux";
                 modules = [
-                    ./hosts/shared/common.nix
+                    ./hosts/shared/common-pc.nix
                     ./hosts/think-nix-t440p/configuration.nix
                     ./hosts/laptop/configuration.nix
                     ./hardware/t440p.nix
@@ -78,7 +78,7 @@
                 };
                 system = "x86_64-linux";
                 modules = [
-                    ./hosts/shared/common.nix
+                    ./hosts/shared/common-pc.nix
                     ./hosts/think-nix-x230t/configuration.nix
                     ./hosts/laptop/configuration.nix
                     ./hardware/x230t.nix
@@ -95,7 +95,7 @@
                 };
                 system = "x86_64-linux";
                 modules = [
-                    ./hosts/shared/common.nix
+                    ./hosts/shared/common-pc.nix
                     ./hosts/think-nix-t430s/configuration.nix
                     ./hosts/laptop/configuration.nix
                     ./hardware/t430s.nix
