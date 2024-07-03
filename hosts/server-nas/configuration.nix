@@ -33,10 +33,6 @@ in
     virtualisation.docker.enable = true;
     users.extraGroups.docker.members = [ "ki11errabbit" ];
     
-    networking.firewall = {
-        enable = true;
-        allowedTCPPorts = [ 22 80 443];
-    };
     
     
     services.nginx = {
@@ -49,19 +45,10 @@ in
             sslCertificate = "/etc/letsencrypt/live/pterodactyl.killerrabbit.xyz/fullchain.pem";
             sslCertificateKey = "/etc/letsencrypt/live/pterodactyl.killerrabbit.xyz/privkey.pem";
             extraConfig = ''
-                access_log /var/log/nginx/pterodactyl.app-access.log;
-                error_log  /var/log/nginx/pterodactyl.app-error.log error;
-                
-                client_max_body_size 100m;
-                client_body_timeout 120s;
-
-                sendfile off;
             '';
             locations."/" = {
-                proxyPass = "https://172.0.0.1:443";
+                proxyPass = "https://172.20.0.1:444";
                 extraConfig = ''
-                    client_max_body_size 50m;
-
                     proxy_set_header X-Real-IP $remote_addr;
                     proxy_set_header Host $host;
                     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -78,8 +65,8 @@ in
             sslCertificateKey = "/etc/letsencrypt/live/jellyfin.killerrabbit.xyz/privkey.pem";
             extraConfig = ''
                 client_max_body_size 20m;
-                set $jellyfin jellyfin;
-                resolver 192.168.254.12 valid=30s;
+                set $jellyfin 127.0.0.1;
+                #resolver 192.168.254.12 valid=30s;
 
                 #include /etc/letsencrypt/options-ssl-nginx.conf;
                 #ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
@@ -111,29 +98,33 @@ in
             '';
             locations."/" = {
                 proxyPass = "https://127.0.0.1:8096";
+                proxyWebsockets = true;
                 extraConfig = ''
-                    #client_body_timeout 120s;
+                    client_body_timeout 120s;
+                    proxy_ssl_server_name on;
+                    proxy_ssl_name jellyfin.killerrabbit.xyz;
 
-                    #proxy_set_header X-Real-IP $remote_addr;
-                    #proxy_set_header Host $host;
-                    #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                    #proxy_set_header X-Forwarded-Proto $scheme;
-                    #proxy_redirect off;
-                    #proxy_buffering off;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                    proxy_set_header X-Forwarded-Proto $scheme;
+
+                    proxy_buffering off;
                 '';
             };
             locations."/socket" = {
                 proxyPass = "http://127.0.0.1:8096";
+                proxyWebsockets = true;
                 extraConfig = ''
-                    proxy_http_version 1.1;
-                    proxy_set_header Upgrade $http_upgrade;
-                    proxy_set_header Connection "upgrade";
-                    proxy_set_header Host $host;
-                    proxy_set_header X-Real-IP $remote_addr;
-                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                    proxy_set_header X-Forwarded-Proto $scheme;
-                    proxy_set_header X-Forwarded-Protocol $scheme;
-                    proxy_set_header X-Forwarded-Host $http_host;
+                    #proxy_http_version 1.1;
+                    #proxy_set_header Upgrade $http_upgrade;
+                    #proxy_set_header Connection "upgrade";
+                    #proxy_set_header Host $host;
+                    #proxy_set_header X-Real-IP $remote_addr;
+                    #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                    #proxy_set_header X-Forwarded-Proto $scheme;
+                    #proxy_set_header X-Forwarded-Protocol $scheme;
+                    #proxy_set_header X-Forwarded-Host $http_host;
                 '';
             };
 
