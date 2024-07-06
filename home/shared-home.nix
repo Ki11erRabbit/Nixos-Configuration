@@ -81,7 +81,7 @@
         ripgrep
         bat
         dash
-        imv
+        swayimg
         libsForQt5.okular
         squeak
         mpv
