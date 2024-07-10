@@ -132,6 +132,7 @@
         python311Packages.markdown
         gnum4
         pkg-config
+        binutils
     ];
     
 
