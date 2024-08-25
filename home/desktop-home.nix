@@ -519,6 +519,7 @@
         pcsx2
         rpcs3
         lutris
+        gnome.gnome-boxes
     ];
     
 }
