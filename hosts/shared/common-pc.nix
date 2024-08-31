@@ -220,6 +220,18 @@
             };
         };
     };
+    
+    networking.firewall = {
+        enable = true;
+        allowedTCPPorts = [ 22 80 443 ];
+        allowedTCPPortRanges = [ 
+            { from = 1714; to = 1764; } # KDE Connect
+        ];
+        allowedUDPPortRanges = [ 
+            { from = 1714; to = 1764; } # KDE Connect
+        ];
+
+    };
 
     system.stateVersion = "24.05"; # Did you read the comment?
 

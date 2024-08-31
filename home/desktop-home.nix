@@ -521,6 +521,8 @@
         lutris
         gnome.gnome-boxes
         freecad
+        librecad
+        kicad
     ];
     
 }
