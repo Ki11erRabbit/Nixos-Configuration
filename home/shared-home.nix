@@ -758,7 +758,7 @@
             /home/ki11errabbit/.local/bin/setup-keyboard.sh &
 
             dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river &
-            #dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus" &
+            dbus-daemon --session --address="unix:path=$XDG_RUNTIME_DIR/bus" &
 
             nm-applet &
             blueman-applet &
