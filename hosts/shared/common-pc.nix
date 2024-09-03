@@ -1,6 +1,13 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+let dwl-source = pkgs.fetchFromGitHub {
+    owner = "Ki11erRabbit";
+    repo = "dwl";
+    rev = "main";
+    hash = "sha256-6TQqE1Ki4XujCkU+uQj7dk1OH51OG2WE0vICzAedrFU=";
+    };
+    dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
 
-{
+in {
     nix.settings.experimental-features = "nix-command flakes";
 
     # Bootloader.
@@ -35,12 +42,23 @@
 
     # Enable the KDE Plasma Desktop Environment.
     services.displayManager.sddm.enable = true;
+    services.displayManager.sessionPackages = [
+        ((pkgs.writeTextDir "share/wayland-sessions/dwl.desktop" ''
+        [Desktop Entry]
+        Name=dwl
+        Comment=dwm for Wayland
+        Exec=dbus-run-session dwl
+        Type=Application
+        '')
+        .overrideAttrs (_: {passthru.providedSessions = ["dwl"];}))
+    ];
     services.xserver.desktopManager.plasma5.enable = true;
 
     # Enable networking
     networking.networkmanager.enable = true;
 
     services.printing.enable = true;
+    services.seatd.enable = true;
 
     # Enable sound with pipewire.
     sound.enable = true;
@@ -133,6 +151,7 @@
         gnum4
         pkg-config
         binutils
+        dwl-custom
     ];
     
 
