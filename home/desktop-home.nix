@@ -216,12 +216,18 @@
         '';
         ".config/waybar/config".text = ''
              [ {
-                   "modules-left": ["river/tags", "river/mode", "river/window"],
+                   "modules-left": ["dwl/tags", "dwl/window", "river/tags", "river/mode", "river/window"],
                    "output": "DP-1",
                    // The empty 'DP-1' argument used in the following "exec": fields works for single-monitor setups
                    // For multi-monitor setups, see https://github.com/Alexays/Waybar/wiki/Configuration
                    //     and enter the monitor id (like "eDP-1") as the first argument to waybar-dwl.sh
                    "modules-right": ["tray", "battery", "custom/kernel", "custom/pipewire","clock"],
+                "dwl/tags": {
+                    "num-tags": 9,
+                },
+                "dwl/window": {
+                    "format": "{layout} {title}",
+                },
                 "river/tags": {
                     "num-tags": 9,
                 },
@@ -270,12 +276,18 @@
                  },
 
               {
-                   "modules-left": ["river/tags", "river/mode", "river/window"],
+                   "modules-left": ["dwl/tags", "dwl/window", "river/tags", "river/mode", "river/window"],
                    "output": "DP-2",
                    // The empty 'DP-2' argument used in the following "exec": fields works for single-monitor setups
                    // For multi-monitor setups, see https://github.com/Alexays/Waybar/wiki/Configuration
                    //     and enter the monitor id (like "eDP-1") as the first argument to waybar-dwl.sh
                    "modules-right": ["tray", "custom/kernel", "custom/pipewire","clock"],
+                "dwl/tags": {
+                    "num-tags": 9,
+                },
+                "dwl/window": {
+                    "format": "{layout} {title}",
+                },
                 "river/tags": {
                     "num-tags": 9,
                 },
@@ -313,12 +325,18 @@
                 },
                  },
               {
-                   "modules-left": ["river/tags", "river/mode", "river/window"],
+                   "modules-left": ["dwl/tags", "dwl/window", "river/tags", "river/mode", "river/window"],
                    "output": "HDMI-A-1",
                    // The empty 'HDMI-A-1' argument used in the following "exec": fields works for single-monitor setups
                    // For multi-monitor setups, see https://github.com/Alexays/Waybar/wiki/Configuration
                    //     and enter the monitor id (like "eHDMI-A-1") as the first argument to waybar-dwl.sh
                    "modules-right": ["custom/kernel", "custom/pipewire","clock"],
+                "dwl/tags": {
+                    "num-tags": 9,
+                },
+                "dwl/window": {
+                    "format": "{layout} {title}",
+                },
                 "river/tags": {
                     "num-tags": 9,
                 },
@@ -523,6 +541,7 @@
         freecad
         librecad
         kicad
+        coq_8_18
     ];
     
 }
