@@ -541,7 +541,8 @@
         freecad
         librecad
         kicad
-        coq_8_18
+        coq
+        coqPackages.coqide
     ];
     
 }
