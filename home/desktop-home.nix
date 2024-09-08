@@ -543,6 +543,7 @@
         kicad
         coq
         coqPackages.coqide
+        r2modman
     ];
     
 }

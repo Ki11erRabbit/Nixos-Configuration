@@ -3,7 +3,7 @@ let dwl-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-DVk3QbdZd2PE/eYhajKHv5d62KvgeMdSKCaducO/dN0=";
+    hash = "sha256-lOUoITMJN807TQHPDhRtwC+kTef64MdHKROucX35uMo=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
 
@@ -36,12 +36,14 @@ in {
     };
 
     environment.pathsToLink = [ "/share/zsh" ];
+    environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
 
     # Enable the X11 windowing system.
     services.xserver.enable = true;
 
     # Enable the KDE Plasma Desktop Environment.
     services.displayManager.sddm.enable = true;
+    security.pam.services.sddm.enableGnomeKeyring = true;
     services.displayManager.sessionPackages = [
         ((pkgs.writeTextDir "share/wayland-sessions/dwl.desktop" ''
         [Desktop Entry]
@@ -152,6 +154,7 @@ in {
         pkg-config
         binutils
         dwl-custom
+        libsecret
     ];
     
 
@@ -220,6 +223,7 @@ in {
     services.dbus.enable = true;
     services.flatpak.enable = true;
     services.mullvad-vpn.enable = true;
+    services.gnome.gnome-keyring.enable = true;
     xdg.portal.enable = true;
     xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk];
 
