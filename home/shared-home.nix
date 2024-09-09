@@ -130,6 +130,8 @@
         teams-for-linux
         awscli2
         gnome.seahorse
+        coq
+        coqPackages.coqide
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
