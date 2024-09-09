@@ -108,12 +108,18 @@
         '';
         ".config/waybar/config".text = ''
              [ {
-                   "modules-left": ["river/tags", "river/mode", "river/window"],
+                   "modules-left": ["dwl/tags", "dwl/window", "river/tags", "river/mode", "river/window"],
                    "output": "eDP-1",
                    // The empty 'DP-1' argument used in the following "exec": fields works for single-monitor setups
                    // For multi-monitor setups, see https://github.com/Alexays/Waybar/wiki/Configuration
                    //     and enter the monitor id (like "eDP-1") as the first argument to waybar-dwl.sh
                    "modules-right": ["tray", "battery", "custom/kernel", "custom/pipewire","clock"],
+                "dwl/tags": {
+                    "num-tags": 9,
+                },
+                "dwl/window": {
+                    "format": "{layout} {title}",
+                },
                 "river/tags": {
                     "num-tags": 9,
                 },

@@ -3,7 +3,7 @@ let dwl-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-lOUoITMJN807TQHPDhRtwC+kTef64MdHKROucX35uMo=";
+    hash = "sha256-GcG5OljC1Kpd59/z7h36Ylw5O/9lm+s+DKvyqwPOQFk=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
 
@@ -43,6 +43,7 @@ in {
 
     # Enable the KDE Plasma Desktop Environment.
     services.displayManager.sddm.enable = true;
+    services.displayManager.sddm.wayland.enable = true;
     security.pam.services.sddm.enableGnomeKeyring = true;
     services.displayManager.sessionPackages = [
         ((pkgs.writeTextDir "share/wayland-sessions/dwl.desktop" ''
