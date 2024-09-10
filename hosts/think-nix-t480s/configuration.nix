@@ -15,7 +15,12 @@
                 {
                 command = "/run/current-system/sw/bin/kmonad";
                 options = [ "NOPASSWD" ];
-                }];
+                }
+                {
+                command = "${pkgs.procps}/bin/pkill";
+                options = [ "NOPASSWD" ];
+                }
+                ];
             groups = [ "wheel" ];
         }];
     };
