@@ -3,7 +3,7 @@ let dwl-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-m51T/0+8+BcIkNoeYphokNsNKb4tGvbHURgko9swZWE=";
+    hash = "sha256-eg+41mTjlaaIXW1K+dmHT6swa/OOo2Y2ylEdlf4MNiQ=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
 

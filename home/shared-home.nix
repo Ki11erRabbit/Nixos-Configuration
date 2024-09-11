@@ -293,7 +293,7 @@
 
 
             (defsrc
-                esc  mute vold volu f20  brdn brup KeySwitchVideoMode wlan  KeyConfig  KeySearch KeyScale file   home  end   ins   del
+                esc  mute vold volu f20  brdn brup KeySwitchVideoMode wlan  KeyConfig  KeyBluetooth KeyScale file   home  end   ins   del
                 grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
                 tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
                 caps a    s    d    f    g    h    j    k    l    ;    '    ret
@@ -303,7 +303,7 @@
             )
 
             (deflayer colemak
-                esc   mute  vold  volu  f20   brdn brup @vido wlan  @cfg  @srch @lnch file   home  end   ins   del
+                esc   mute  vold  volu  f20   brdn brup @vido wlan  @cfg  KeyBluetooth @lnch file   home  end   ins   del
                 grv   1     2     3     4     5    6    7     8     9     0     -     =      caps
                 tab   q     w     f     p     b    j    l     u     y     ;     [     ]     \
                 bspc  a     r     s     t     g    m    n     e     i     o     '     ret
@@ -312,7 +312,7 @@
                                                                                 left  down  rght
             )
             (deflayer colemakctl
-                C-esc   C-mute  C-vold  C-volu  C-f20   C-brdn C-brup C-@vido C-wlan  C-@cfg  C-@srch C-@lnch C-file   C-home  C-end   C-ins   C-del
+                C-esc   C-mute  C-vold  C-volu  C-f20   C-brdn C-brup C-@vido C-wlan  C-@cfg  C-KeyBluetooth C-@lnch C-file   C-home  C-end   C-ins   C-del
                 C-grv   C-1     C-2     C-3     C-4     C-5    C-6    C-7     C-8     C-9     C-0     C--     C-=      C-caps
                 C-tab   C-q     C-w     C-f     C-p     C-b    C-j    C-l     C-u     C-y     C-;     C-[     C-]      C-\
                 C-bspc  C-a     C-r     C-s     C-t     C-g    C-m    C-n     C-e     C-i     C-o     C-'     C-ret
@@ -322,7 +322,7 @@
             )
 
             (deflayer qwerty
-                esc   mute  vold  volu  f20   brdn brup @vido wlan  @cfg  @srch @lnch file   home  end   ins   del
+                esc   mute  vold  volu  f20   brdn brup @vido wlan  @cfg  KeyBluetooth @lnch file   home  end   ins   del
                 grv   1     2     3     4     5    6    7     8     9     0     -     =      bspc
                 tab   q     w     e     r     t    y    u     i     o     p     [     ]      \
                 caps  a     s     d     f     g    h    j     k     l     ;     '     ret
@@ -332,7 +332,7 @@
             )
 
             (deflayer qwertyctl
-                C-esc   C-mute  C-vold  C-volu  C-f20   C-brdn C-brup C-@vido C-wlan  C-@cfg  C-@srch C-@lnch C-file   C-home  C-end   C-ins   C-del
+                C-esc   C-mute  C-vold  C-volu  C-f20   C-brdn C-brup C-@vido C-wlan  C-@cfg  C-KeyBluetooth C-@lnch C-file   C-home  C-end   C-ins   C-del
                 C-grv   C-1     C-2     C-3     C-4     C-5    C-6    C-7     C-8     C-9     C-0     C--     C-=      C-caps
                 C-tab   C-q     C-w     C-e     C-r     C-t    C-y    C-u     C-i     C-o     C-p     C-[     C-]      C-\
                 C-bspc  C-a     C-s     C-d     C-f     C-g    C-h    C-j     C-k     C-l     C-;     C-'     C-ret

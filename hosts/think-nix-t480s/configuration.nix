@@ -21,6 +21,10 @@
                 options = [ "NOPASSWD" ];
                 }
                 {
+                command = "/run/current-system/sw/bin/pkill /run/current-system/sw/bin/kmonad";
+                options = [ "NOPASSWD" ];
+                }
+                {
                 command = "${pkgs.procps}/bin/pkill ${pkgs.haskellPackages.kmonad}/bin/kmonad";
                 options = [ "NOPASSWD" ];
                 }
