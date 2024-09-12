@@ -1062,12 +1062,7 @@
                 };
 
             };
-            key_bindings = [{
-                action = "SpawnNewInstance";
-                key = "Return";
-                mods = "Control|Shift";
-            }];
-            keybindings = [{
+            keyboard.bindings = [{
                 action = "SpawnNewInstance";
                 key = "Return";
                 mods = "Control|Shift";
