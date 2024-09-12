@@ -12,8 +12,12 @@
             # to avoid problems caused by different versions of nixpkgs.
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        nixos-cosmic = {
+            url = "github:lilyinstarlight/nixos-cosmic";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
-    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, ... }: 
+    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, ... }: 
     let 
         system = "x86_64-linux";
         pkgs = import nixpkgs { system = "${system}"; config = { allowUnfree = true; nvidia.acceptLicense = true; }; };
@@ -107,9 +111,6 @@
                 ];
             };
             think-nix-t480s = nixpkgs.lib.nixosSystem  {
-                specialArgs = {
-                    inherit pkgs;
-                };
                 system = "x86_64-linux";
                 modules = [
                     ./hosts/shared/common-pc.nix
@@ -121,6 +122,13 @@
                         home-manager.useUserPackages = true;
                         home-manager.users.root = import ./root/home.nix;
                     }
+                    {
+                        nix.settings = {
+                            substituters = [ "https://cosmic.cachix.org/" ];
+                            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+                        };
+                    }
+                    nixos-cosmic.nixosModules.default
                 ];
             };
         };

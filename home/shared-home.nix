@@ -132,6 +132,7 @@
         gnome.seahorse
         coq
         coqPackages.coqide
+        ocaml
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
