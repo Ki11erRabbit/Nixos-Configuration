@@ -266,6 +266,10 @@ in {
         ];
 
     };
+    services.mysql = {
+        enable = true;
+        package = pkgs.mariadb;
+    };
 
     system.stateVersion = "24.05"; # Did you read the comment?
 
