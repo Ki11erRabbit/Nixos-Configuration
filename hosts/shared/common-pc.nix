@@ -3,7 +3,7 @@ let dwl-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-eg+41mTjlaaIXW1K+dmHT6swa/OOo2Y2ylEdlf4MNiQ=";
+    hash = "sha256-5n+PutbxYP1xQ80nPQof5bq/zq8LgJEAaXTkyw7nHzU=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
 
@@ -50,7 +50,7 @@ in {
         [Desktop Entry]
         Name=dwl
         Comment=dwm for Wayland
-        Exec=dbus-run-session dwl
+        Exec=startdwl.sh
         Type=Application
         '')
         .overrideAttrs (_: {passthru.providedSessions = ["dwl"];}))
@@ -156,6 +156,7 @@ in {
         binutils
         dwl-custom
         libsecret
+        slurp
     ];
     
 
@@ -227,6 +228,15 @@ in {
     services.gnome.gnome-keyring.enable = true;
     xdg.portal.enable = true;
     xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk];
+
+    xdg.portal.wlr.settings = {
+        screencast = {
+            output_name = "HDMI-A-0";
+            max_fps = 60;
+            chooser_type = "simple";
+            chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -ro";
+        };
+    };
 
     security.polkit.enable = true;
     systemd = {
