@@ -90,7 +90,7 @@ in {
         isNormalUser = true;
         description = "Alec Davis";
         shell = pkgs.zsh;
-        extraGroups = [ "networkmanager" "wheel" "libvirtd" "uinput" "input" "cdrom" "video" ];
+        extraGroups = [ "networkmanager" "wheel" "libvirtd" "uinput" "input" "cdrom" "video" "docker" ];
         packages = with pkgs; [];
     };
 
@@ -157,6 +157,8 @@ in {
         dwl-custom
         libsecret
         slurp
+        docker
+        distrobox
     ];
     
 
@@ -270,6 +272,7 @@ in {
         enable = true;
         package = pkgs.mariadb;
     };
+    virtualisation.docker.enable = true;
 
     system.stateVersion = "24.05"; # Did you read the comment?
 
