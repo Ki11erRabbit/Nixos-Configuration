@@ -6,6 +6,17 @@ let dwl-source = pkgs.fetchFromGitHub {
     hash = "sha256-5n+PutbxYP1xQ80nPQof5bq/zq8LgJEAaXTkyw7nHzU=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
+    patchelfFixes = pkgs.patchelfUnstable.overrideAttrs (_finalAttrs: _previousAttrs: {
+        src = pkgs.fetchFromGitHub {
+            owner = "Patryk27";
+            repo = "patchelf";
+            rev = "527926dd9d7f1468aa12f56afe6dcc976941fedb";
+            sha256 = "sha256-3I089F2kgGMidR4hntxz5CKzZh5xoiUwUsUwLFUEXqE=";
+        };
+      });
+      pcloudFixes = pkgs.pcloud.overrideAttrs (_finalAttrs:previousAttrs: {
+          nativeBuildInputs = previousAttrs.nativeBuildInputs ++ [ patchelfFixes ];
+      });
 
 in {
     nix.settings.experimental-features = "nix-command flakes";
@@ -159,6 +170,7 @@ in {
         slurp
         docker
         distrobox
+        pcloudFixes
     ];
     
 
