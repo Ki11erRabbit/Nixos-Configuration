@@ -542,6 +542,7 @@
         librecad
         kicad
         r2modman
+        prismlauncher
     ];
     
 }
