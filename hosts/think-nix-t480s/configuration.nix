@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-    services.desktopManager.cosmic.enable = true;
+    #services.desktopManager.cosmic.enable = true;
     
     services.udev.extraRules = ''
         # for kmonad to work
