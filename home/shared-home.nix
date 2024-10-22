@@ -140,6 +140,7 @@
         librsvg
         xorg.xcursorgen
         python312Packages.libsass
+        sshfs
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello

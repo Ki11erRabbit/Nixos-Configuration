@@ -67,6 +67,7 @@ in {
         .overrideAttrs (_: {passthru.providedSessions = ["dwl"];}))
     ];
     services.xserver.desktopManager.plasma5.enable = true;
+    services.xserver.desktopManager.cinnamon.enable = true;
 
     # Enable networking
     networking.networkmanager.enable = true;
@@ -241,7 +242,7 @@ in {
     services.mullvad-vpn.enable = true;
     services.gnome.gnome-keyring.enable = true;
     xdg.portal.enable = true;
-    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk];
+    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr];
 
     xdg.portal.wlr.settings = {
         screencast = {
