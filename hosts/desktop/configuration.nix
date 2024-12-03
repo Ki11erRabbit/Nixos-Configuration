@@ -25,4 +25,6 @@
         grub2
         xorriso
     ];
+
+    services.blueman.enable = true;
 }
