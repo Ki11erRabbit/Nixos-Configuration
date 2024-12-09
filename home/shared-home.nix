@@ -90,7 +90,7 @@
         hunspell
         hunspellDicts.en_US
         libsForQt5.ghostwriter
-        transmission-qt
+        transmission_4-qt
         usbutils
         gparted
         gamescope
@@ -129,7 +129,7 @@
         guile
         teams-for-linux
         awscli2
-        gnome.seahorse
+        seahorse
         coq
         coqPackages.coqide
         coqPackages.coq-lsp

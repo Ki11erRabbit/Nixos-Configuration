@@ -3,7 +3,7 @@ let dwl-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-5n+PutbxYP1xQ80nPQof5bq/zq8LgJEAaXTkyw7nHzU=";
+    hash = "sha256-lH+j+kTrWQeHreoJ65G8AKPNCW5PqtkonzGMHrBqayY=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
     patchelfFixes = pkgs.patchelfUnstable.overrideAttrs (_finalAttrs: _previousAttrs: {
@@ -28,8 +28,8 @@ in {
     
     time.timeZone = "America/Denver";
     #time.timeZone = "America/Los_Angeles";
-    services.automatic-timezoned.enable = true;
-    networking.timeServers = [ "time.cloudflare.com" "time.google.com" ];
+    #services.automatic-timezoned.enable = true;
+    #networking.timeServers = [ "time.cloudflare.com" "time.google.com" ];
 
     # Select internationalisation properties.
     i18n.defaultLocale = "en_US.UTF-8";
@@ -76,7 +76,7 @@ in {
     services.seatd.enable = true;
 
     # Enable sound with pipewire.
-    sound.enable = true;
+    #sound.enable = true;
     hardware.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
@@ -129,7 +129,7 @@ in {
         universal-ctags
         mullvad-vpn
         gcc
-        transmission
+        transmission_3
         usbutils
         gparted
         libnotify
@@ -230,7 +230,7 @@ in {
 
     fonts.packages = with pkgs; [
         noto-fonts
-        noto-fonts-cjk
+        noto-fonts-cjk-sans
         jetbrains-mono
         (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];

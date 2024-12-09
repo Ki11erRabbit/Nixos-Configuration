@@ -537,12 +537,13 @@
         pcsx2
         rpcs3
         lutris
-        gnome.gnome-boxes
+        gnome-boxes
         freecad
         librecad
         kicad
         r2modman
         prismlauncher
+        burpsuite
     ];
     
 }
