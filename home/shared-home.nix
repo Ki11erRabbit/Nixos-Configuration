@@ -141,6 +141,7 @@
         xorg.xcursorgen
         python312Packages.libsass
         sshfs
+        filezilla
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello

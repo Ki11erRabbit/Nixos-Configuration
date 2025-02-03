@@ -29,4 +29,9 @@
     services.blueman.enable = true;
 
     hardware.steam-hardware.enable = true;
+
+    services.ollama = {
+        enable = true;
+        acceleration = "rocm";
+    };
 }

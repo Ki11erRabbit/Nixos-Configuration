@@ -3,7 +3,7 @@ let dwl-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-lH+j+kTrWQeHreoJ65G8AKPNCW5PqtkonzGMHrBqayY=";
+    hash = "sha256-AmZezUBTxSHiU+FynwPY7DTuhqKKXfNeN2za+ay3/CQ=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
     patchelfFixes = pkgs.patchelfUnstable.overrideAttrs (_finalAttrs: _previousAttrs: {
@@ -191,6 +191,22 @@ in {
         libressl
         openblas
         gfortran
+        xorg.libX11
+        libGLU
+        alsa-lib
+        xorg.libX11
+        xorg.libXcursor
+        xorg.libXext
+        xorg.libXfixes
+        xorg.libXi
+        xorg.libXinerama
+        xorg.libXrandr
+        xorg.libXrender
+        libglvnd
+        libpulseaudio
+        zlib
+        wayland
+
     ];
 
     services.udev.extraRules = ''

@@ -544,6 +544,7 @@
         r2modman
         prismlauncher
         burpsuite
+        blender
     ];
     
 }
