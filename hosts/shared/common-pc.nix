@@ -65,6 +65,14 @@ in {
         Type=Application
         '')
         .overrideAttrs (_: {passthru.providedSessions = ["dwl"];}))
+        ((pkgs.writeTextDir "share/wayland-sessions/wio.desktop" ''
+        [Desktop Entry]
+        Name=wio
+        Comment=rio for Wayland
+        Exec=wio
+        Type=Application
+        '')
+        .overrideAttrs (_: {passthru.providedSessions = ["wio"];}))
     ];
     services.xserver.desktopManager.plasma5.enable = true;
     services.xserver.desktopManager.cinnamon.enable = true;
@@ -155,13 +163,6 @@ in {
         python311Packages.sexpdata
         python311Packages.tld
         python311Packages.pyqt6 python311Packages.pyqt6-sip
-        python311Packages.pyqt6-webengine python311Packages.epc python311Packages.lxml # for eaf
-        python311Packages.qrcode # eaf-file-browser
-        python311Packages.pysocks # eaf-browser
-        python311Packages.pymupdf # eaf-pdf-viewer
-        python311Packages.pypinyin # eaf-file-manager
-        python311Packages.psutil # eaf-system-monitor
-        python311Packages.retry # eaf-markdown-previewer
         python311Packages.markdown
         gnum4
         pkg-config
@@ -172,6 +173,7 @@ in {
         docker
         distrobox
         pcloudFixes
+        wio
     ];
     
 

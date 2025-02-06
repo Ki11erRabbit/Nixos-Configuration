@@ -101,12 +101,10 @@
         networkmanagerapplet
         appimage-run
 
-        stow
         fnott
         wdisplays
         xournalpp
         gimp
-        powershell
         godot_4
         trash-cli
         zoxide
@@ -135,7 +133,6 @@
         coqPackages.coq-lsp
         ocaml
         hugo
-        squeak
         inkscape
         librsvg
         xorg.xcursorgen
