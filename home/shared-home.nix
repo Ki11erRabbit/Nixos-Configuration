@@ -1126,7 +1126,6 @@
             "application/x-extension-cljc" = [ "emacsclient.desktop" ];
             "application/x-extension-cljscm" = [ "emacsclient.desktop" ];
             "application/x-extension-cljs" = [ "emacsclient.desktop" ];
-            "application/x-extension-cljc" = [ "emacsclient.desktop" ];
             "application/x-extension-cpp" = [ "emacsclient.desktop" ];
             "text/rust" = [ "emacsclient.desktop" ];
             "text/x-csrc" = [ "emacsclient.desktop" ];
@@ -1176,7 +1175,7 @@
             "application/zip" = [ "org.kde.ark.desktop" ];
 
         };
-        defaulApplications = {
+        defaultApplications = {
             "application/pdf" = [ "okularApplication_pdf.desktop" ];
             "application/x-extension-html" = [ "firefox.desktop" ];
             "application/x-extension-htm" = [ "firefox.desktop" ];
@@ -1197,7 +1196,6 @@
             "application/x-extension-cljc" = [ "emacsclient.desktop" ];
             "application/x-extension-cljscm" = [ "emacsclient.desktop" ];
             "application/x-extension-cljs" = [ "emacsclient.desktop" ];
-            "application/x-extension-cljc" = [ "emacsclient.desktop" ];
             "application/x-extension-cpp" = [ "emacsclient.desktop" ];
             "text/rust" = [ "emacsclient.desktop" ];
             "text/x-csrc" = [ "emacsclient.desktop" ];
@@ -1246,7 +1244,7 @@
             "x-scheme-handler/slack" = [ "slack.desktop" ];
             "application/zip" = [ "org.kde.ark.desktop" ];
 
-        }
+        };
     };
 
     programs.home-manager.enable = true;
