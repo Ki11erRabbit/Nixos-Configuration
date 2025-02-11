@@ -1106,6 +1106,37 @@
         # EDITOR = "emacs";
     };
 
+    xdg.desktopEntries = {
+        run-java-jar = {
+            name = "Run Java Jar";
+            genericName = "Java Jar";
+            exec = "java -jar %F";
+            icon = "java";
+            mimeType = [ "application/x-java-archive" ];
+            categories = [ "Development" "Java" ];
+            comment = "Run a Java JAR file";
+            terminal = false;
+        };
+        emacsclient = {
+            name = "Emacs Client";
+            genericName = "Emacs Client";
+            exec = "emacsclient -c -a \"emacs\" %F";
+            icon = "emacs";
+            categories = [ "Development" "TextEditor" "Utility" ];
+            comment = "Edit text files with Emacs";
+            terminal = false;
+        };
+        emacsdaemon = {
+            name = "Emacs Daemon";
+            genericName = "Emacs Daemon";
+            exec = "emacs --daemon";
+            icon = "emacs";
+            categories = [ "Development" "TextEditor" "Utility" ];
+            comment = "Start an Emacs daemon";
+            terminal = false;
+        };
+    };
+
     xdg.mimeApps = {
         enable = true;
         associations.added = {
@@ -1130,7 +1161,10 @@
             "application/x-extension-cljscm" = [ "emacsclient.desktop" ];
             "application/x-extension-cljs" = [ "emacsclient.desktop" ];
             "application/x-extension-cpp" = [ "emacsclient.desktop" ];
+            "text/english" = [ "emacsclient.desktop" ];
             "text/rust" = [ "emacsclient.desktop" ];
+            "text/xml" = [ "emacsclient.desktop" ];
+            "text/x-c" = [ "emacsclient.desktop" ];
             "text/x-csrc" = [ "emacsclient.desktop" ];
             "text/x-c++src" = [ "emacsclient.desktop" ];
             "text/x-emacs-lisp" = [ "emacsclient.desktop" ];
@@ -1139,6 +1173,13 @@
             "text/x-log" = [ "emacsclient.desktop" ];
             "text/x-lua" = [ "emacsclient.desktop" ];
             "text/x-python" = [ "emacsclient.desktop" ];
+            "text/x-makefile" = [ "emacsclient.desktop" ];
+            "text/x-pascal" = [ "emacsclient.desktop" ];
+            "text/x-chdr" = [ "emacsclient.desktop" ];
+            "text/csv" = [ "libreoffice-calc.desktop" ];
+            "text/x-tex" = [ "emacsclient.desktop" ];
+            "text/x-c++" = [ "emacsclient.desktop" ];
+            "text/x-c++hdr" = [ "emacsclient.desktop" ];
             "application/x-extension-tex" = [ "emacsclient.desktop" ];
             "application/x-extension-texinfo" = [ "emacsclient.desktop" ];
             "application/x-extension-texi" = [ "emacsclient.desktop" ];
@@ -1158,11 +1199,13 @@
             "video/webm" = [ "mpv.desktop" ];
             "video/avi" = [ "mpv.desktop" ];
             "video/x-flv" = [ "mpv.desktop" ];
+            "video/quicktime" = [ "mpv.desktop" ];
             "image/gif" = [ "gwenview.desktop" ];
             "image/png" = [ "gwenview.desktop" ];
             "image/jpeg" = [ "gwenview.desktop" ];
             "image/jpg" = [ "gwenview.desktop" ];
             "image/webp" = [ "gwenview.desktop" ];
+            "image/vnd.microsoft.icon" = [ "gwenview.desktop" ];
             "inode/directory" = [ "nemo.desktop" ];
             "x-scheme-handler/about" = [ "firefox.desktop" ];
             "x-scheme-handler/attachment" = [ "firefox.desktop" ];
@@ -1176,7 +1219,26 @@
             "x-scheme-handler/signalcaptcha" = [ "signal-desktop.desktop" ];
             "x-scheme-handler/slack" = [ "slack.desktop" ];
             "application/zip" = [ "org.kde.ark.desktop" ];
-
+            "application/x-java-archive" = [ "run-java-jar.desktop" "org.kde.ark.desktop" ];
+            "application/x-bittorrent" = [ "transmission-qt.desktop" ];
+            "application/x-ms-dos-executable" = [ "wine.desktop" ];
+            "application/x-msi" = [ "wine.desktop" ];
+            "application/x-ms-shortcut" = [ "wine.desktop" ];
+            "application/x-ms-wim" = [ "wine.desktop" ];
+            "application/x-cd-image" = [ "org.kde.ark.desktop" ];
+            "x-scheme-handler/steam" = [ "steam.desktop" ];
+            "x-scheme-handler/itchio" = [ "itch.desktop" ];
+            "x-scheme-handler/tel" = [ "org.kde.kdeconnect.handler.desktop" ];
+            "application/x-tar" = [ "org.kde.ark.desktop" ];
+            "application/x-xz" = [ "org.kde.ark.desktop" ];
+            "application/x-bzip" = [ "org.kde.ark.desktop" ];
+            "application/x-bzip-compressed-tar" = [ "org.kde.ark.desktop" ];
+            "application/x-gzip" = [ "org.kde.ark.desktop" ];
+            "application/x-lzma" = [ "org.kde.ark.desktop" ];
+            "application/x-lzip" = [ "org.kde.ark.desktop" ];
+            "application/x-lz4" = [ "org.kde.ark.desktop" ];
+            "application/x-lz4-compressed-tar" = [ "org.kde.ark.desktop" ];
+            "application/x-krita" = [ "krita_kra.desktop" ];
         };
         defaultApplications = {
             "application/pdf" = [ "okularApplication_pdf.desktop" ];
@@ -1200,7 +1262,10 @@
             "application/x-extension-cljscm" = [ "emacsclient.desktop" ];
             "application/x-extension-cljs" = [ "emacsclient.desktop" ];
             "application/x-extension-cpp" = [ "emacsclient.desktop" ];
+            "text/english" = [ "emacsclient.desktop" ];
             "text/rust" = [ "emacsclient.desktop" ];
+            "text/xml" = [ "emacsclient.desktop" ];
+            "text/x-c" = [ "emacsclient.desktop" ];
             "text/x-csrc" = [ "emacsclient.desktop" ];
             "text/x-c++src" = [ "emacsclient.desktop" ];
             "text/x-emacs-lisp" = [ "emacsclient.desktop" ];
@@ -1209,6 +1274,13 @@
             "text/x-log" = [ "emacsclient.desktop" ];
             "text/x-lua" = [ "emacsclient.desktop" ];
             "text/x-python" = [ "emacsclient.desktop" ];
+            "text/x-makefile" = [ "emacsclient.desktop" ];
+            "text/x-pascal" = [ "emacsclient.desktop" ];
+            "text/x-chdr" = [ "emacsclient.desktop" ];
+            "text/csv" = [ "libreoffice-calc.desktop" ];
+            "text/x-tex" = [ "emacsclient.desktop" ];
+            "text/x-c++" = [ "emacsclient.desktop" ];
+            "text/x-c++hdr" = [ "emacsclient.desktop" ];
             "application/x-extension-tex" = [ "emacsclient.desktop" ];
             "application/x-extension-texinfo" = [ "emacsclient.desktop" ];
             "application/x-extension-texi" = [ "emacsclient.desktop" ];
@@ -1228,11 +1300,13 @@
             "video/webm" = [ "mpv.desktop" ];
             "video/avi" = [ "mpv.desktop" ];
             "video/x-flv" = [ "mpv.desktop" ];
+            "video/quicktime" = [ "mpv.desktop" ];
             "image/gif" = [ "gwenview.desktop" ];
             "image/png" = [ "gwenview.desktop" ];
             "image/jpeg" = [ "gwenview.desktop" ];
             "image/jpg" = [ "gwenview.desktop" ];
             "image/webp" = [ "gwenview.desktop" ];
+            "image/vnd.microsoft.icon" = [ "gwenview.desktop" ];
             "inode/directory" = [ "nemo.desktop" ];
             "x-scheme-handler/about" = [ "firefox.desktop" ];
             "x-scheme-handler/attachment" = [ "firefox.desktop" ];
@@ -1246,6 +1320,26 @@
             "x-scheme-handler/signalcaptcha" = [ "signal-desktop.desktop" ];
             "x-scheme-handler/slack" = [ "slack.desktop" ];
             "application/zip" = [ "org.kde.ark.desktop" ];
+            "application/x-java-archive" = [ "run-java-jar.desktop" "org.kde.ark.desktop" ];
+            "application/x-bittorrent" = [ "transmission-qt.desktop" ];
+            "application/x-ms-dos-executable" = [ "wine.desktop" ];
+            "application/x-msi" = [ "wine.desktop" ];
+            "application/x-ms-shortcut" = [ "wine.desktop" ];
+            "application/x-ms-wim" = [ "wine.desktop" ];
+            "application/x-cd-image" = [ "org.kde.ark.desktop" ];
+            "x-scheme-handler/steam" = [ "steam.desktop" ];
+            "x-scheme-handler/itchio" = [ "itch.desktop" ];
+            "x-scheme-handler/tel" = [ "org.kde.kdeconnect.handler.desktop" ];
+            "application/x-tar" = [ "org.kde.ark.desktop" ];
+            "application/x-xz" = [ "org.kde.ark.desktop" ];
+            "application/x-bzip" = [ "org.kde.ark.desktop" ];
+            "application/x-bzip-compressed-tar" = [ "org.kde.ark.desktop" ];
+            "application/x-gzip" = [ "org.kde.ark.desktop" ];
+            "application/x-lzma" = [ "org.kde.ark.desktop" ];
+            "application/x-lzip" = [ "org.kde.ark.desktop" ];
+            "application/x-lz4" = [ "org.kde.ark.desktop" ];
+            "application/x-lz4-compressed-tar" = [ "org.kde.ark.desktop" ];
+            "application/x-krita" = [ "krita_kra.desktop" ];
 
         };
     };
