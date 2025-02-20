@@ -3,7 +3,7 @@ let dwl-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-zo33mbBf6LZaRW38nwS9nSXjYyTlEonJGWVw591pRps=";
+    hash = "sha256-C3SuvVk1Bai7IKy3wie7D4ljZQy1ihut4F46nxyK4lE=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
     patchelfFixes = pkgs.patchelfUnstable.overrideAttrs (_finalAttrs: _previousAttrs: {
@@ -174,6 +174,7 @@ in {
         distrobox
         pcloudFixes
         wio
+        libunwind
     ];
     
 
@@ -208,6 +209,7 @@ in {
         libpulseaudio
         zlib
         wayland
+        libunwind
 
     ];
 
