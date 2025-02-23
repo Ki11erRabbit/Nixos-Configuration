@@ -540,7 +540,7 @@
         gnome-boxes
         freecad
         librecad
-        kicad
+        #kicad
         r2modman
         prismlauncher
         burpsuite
