@@ -49,6 +49,7 @@
             case $1 in
                 start) while true; do
                         /home/ki11errabbit/.local/bin/wallpaper-wayland.sh
+
                         sleep 300
                     done
                     ;;
@@ -98,9 +99,9 @@
                 esac
             }
 
-            pkill -x swaybg
-            pkill -x mpvpaper
-            pkill -x .mpvpaper-wrapp
+            pkill swaybg
+            pkill mpvpaper
+            pkill .mpvpaper-wrapp
             apply_wallpaper "DP-1" "$file1"
             apply_wallpaper "DP-2" "$file2"
             apply_wallpaper "HDMI-A-1" "$file3"
