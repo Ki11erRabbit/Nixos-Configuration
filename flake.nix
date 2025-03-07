@@ -25,7 +25,7 @@
         oldpkgs = import old-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
     in {
 
-        #home-mangager.users.root = import ./root/home.nix;
+        home-mangager.users.root = import ./root/home.nix;
         nixosConfigurations = {
             primary-desktop = nixpkgs.lib.nixosSystem {
                 specialArgs = {

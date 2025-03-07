@@ -141,6 +141,7 @@ in {
         usbutils
         gparted
         libnotify
+        kmonad
         haskellPackages.kmonad
         gnumake
         glibc
@@ -227,7 +228,7 @@ in {
         ];
         serviceConfig = {
             Type = "simple";
-            ExecStart = "${pkgs.haskellPackages.kmonad}/bin/kmonad /root/.config/kmonad/unicomp-model-m.kbd";
+            ExecStart = "${pkgs.kmonad}/bin/kmonad /root/.config/kmonad/unicomp-model-m.kbd";
             Restart = "on-failure";
             RestartSec = 1;
             TimeoutStopSec = 10;
@@ -240,7 +241,7 @@ in {
         ];
         serviceConfig = {
             Type = "simple";
-            ExecStart = "${pkgs.haskellPackages.kmonad}/bin/kmonad /root/.config/kmonad/ibm-thinkpad-travel.kbd";
+            ExecStart = "${pkgs.kmonad}/bin/kmonad /root/.config/kmonad/ibm-thinkpad-travel.kbd";
             Restart = "on-failure";
             RestartSec = 1;
             TimeoutStopSec = 10;
