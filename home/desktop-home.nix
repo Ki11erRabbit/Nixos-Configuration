@@ -546,6 +546,7 @@
         prismlauncher
         burpsuite
         blender
+        arduino-ide
     ];
     
 }

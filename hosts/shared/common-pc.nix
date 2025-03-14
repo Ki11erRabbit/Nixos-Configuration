@@ -110,7 +110,7 @@ in {
         isNormalUser = true;
         description = "Alec Davis";
         shell = pkgs.zsh;
-        extraGroups = [ "networkmanager" "wheel" "libvirtd" "uinput" "input" "cdrom" "video" "docker" ];
+        extraGroups = [ "networkmanager" "wheel" "libvirtd" "uinput" "input" "cdrom" "video" "docker" "dialout"];
         packages = with pkgs; [];
     };
 
