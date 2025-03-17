@@ -144,6 +144,7 @@
         gdb
         tmux
         tutanota-desktop
+        typescript
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
