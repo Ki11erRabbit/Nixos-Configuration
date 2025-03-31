@@ -137,6 +137,27 @@
                     nixos-cosmic.nixosModules.default
                 ];
             };
+            think-nix-t480 = nixpkgs.lib.nixosSystem  {
+                system = "x86_64-linux";
+                modules = [
+                    ./hosts/shared/common-pc.nix
+                    ./hosts/think-nix-t480/configuration.nix
+                    ./hosts/laptop/configuration.nix
+                    ./hardware/t480.nix
+                    home-manager.nixosModules.home-manager {
+                        home-manager.useGlobalPkgs = true;
+                        home-manager.useUserPackages = true;
+                        home-manager.users.root = import ./root/home.nix;
+                    }
+                    {
+                        nix.settings = {
+                            substituters = [ "https://cosmic.cachix.org/" ];
+                            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+                        };
+                    }
+                    nixos-cosmic.nixosModules.default
+                ];
+            };
         };
         homeConfigurations = {
             "desktop" = home-manager.lib.homeManagerConfiguration {
@@ -198,6 +219,17 @@
                     ./home/laptop-home.nix
                     ./home/unstable-home.nix
                     ./home/t480s-home.nix
+                    ./home/old-home.nix
+                ];
+            };
+            "t480" = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs;};
+                modules = [
+                    ./home/shared-home.nix
+                    ./home/laptop-home.nix
+                    ./home/unstable-home.nix
+                    ./home/t480-home.nix
                     ./home/old-home.nix
                 ];
             };
