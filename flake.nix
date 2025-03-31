@@ -16,8 +16,14 @@
             url = "github:lilyinstarlight/nixos-cosmic";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        zen-browser = {
+            url = "github:0xc000022070/zen-browser-flake";
+            # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
+            # to have it up to date or simply don't specify the nixpkgs input  
+            #inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
-    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, ... }: 
+    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, zen-browser,... }: 
     let 
         system = "x86_64-linux";
         pkgs = import nixpkgs { system = "${system}"; config = { allowUnfree = true; nvidia.acceptLicense = true; }; };
@@ -135,7 +141,7 @@
         homeConfigurations = {
             "desktop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs; };
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
                 modules = [
                     ./home/shared-home.nix
                     ./home/desktop-home.nix
@@ -145,7 +151,7 @@
             };
             "servernas" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs; };
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
                 modules = [
                     ./home/shared-home.nix
                     ./home/server-nas-home.nix
@@ -153,7 +159,7 @@
             };
             "t440p" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs;};
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs;};
                 modules = [
                     ./home/shared-home.nix
                     ./home/laptop-home.nix
@@ -164,7 +170,7 @@
             };
             "x230t" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs;};
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs;};
                 modules = [
                     ./home/shared-home.nix
                     ./home/laptop-home.nix
@@ -175,7 +181,7 @@
             };
             "t430s" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs;};
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs;};
                 modules = [
                     ./home/shared-home.nix
                     ./home/laptop-home.nix
@@ -186,7 +192,7 @@
             };
             "t480s" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs;};
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs;};
                 modules = [
                     ./home/shared-home.nix
                     ./home/laptop-home.nix

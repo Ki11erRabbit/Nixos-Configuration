@@ -25,6 +25,7 @@ in {
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
+    hardware.graphics.enable = true;
     
     time.timeZone = "America/Denver";
     #time.timeZone = "America/Los_Angeles";
@@ -74,7 +75,7 @@ in {
         '')
         .overrideAttrs (_: {passthru.providedSessions = ["wio"];}))
     ];
-    services.xserver.desktopManager.plasma6.enable = true;
+    services.desktopManager.plasma6.enable = true;
     services.xserver.desktopManager.cinnamon.enable = true;
 
     # Enable networking

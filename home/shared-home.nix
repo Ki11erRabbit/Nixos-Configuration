@@ -1,4 +1,4 @@
-{ config, pkgs, channels,  ... }:
+{ inputs, config, pkgs, channels,  ... }:
 
 {
     # Home Manager needs a bit of information about you and the paths it should
@@ -19,6 +19,7 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     home.packages = with pkgs; [
+        inputs.zen-browser.packages."${system}".default
         firefox
         thunderbird
         libsForQt5.breeze-qt5
