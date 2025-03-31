@@ -3,7 +3,7 @@ let dwl-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-JEBm4CCCDq61VYVF0kMbNDi/Onjuoqto+TbLCcAgQbk=";
+    hash = "sha256-hv9MbvzvgTeGP5jmmRwdEgXNcgOTzfQ/euGb5lpTDLM=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
     patchelfFixes = pkgs.patchelfUnstable.overrideAttrs (_finalAttrs: _previousAttrs: {
@@ -74,7 +74,7 @@ in {
         '')
         .overrideAttrs (_: {passthru.providedSessions = ["wio"];}))
     ];
-    services.xserver.desktopManager.plasma5.enable = true;
+    services.xserver.desktopManager.plasma6.enable = true;
     services.xserver.desktopManager.cinnamon.enable = true;
 
     # Enable networking
@@ -263,8 +263,9 @@ in {
     services.mullvad-vpn.enable = true;
     services.gnome.gnome-keyring.enable = true;
     xdg.portal.enable = true;
-    xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr];
+    #xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-wlr pkgs.xdg-desktop-portal-gtk];
 
+    xdg.portal.wlr.enable = true;
     xdg.portal.wlr.settings = {
         screencast = {
             output_name = "HDMI-A-0";
@@ -308,6 +309,6 @@ in {
     };
     virtualisation.docker.enable = true;
 
-    system.stateVersion = "24.05"; # Did you read the comment?
+    system.stateVersion = "24.11"; # Did you read the comment?
 
 }
