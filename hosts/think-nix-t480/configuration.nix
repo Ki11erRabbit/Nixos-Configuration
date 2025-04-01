@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
     #services.desktopManager.cosmic.enable = true;
-    
+
     services.udev.extraRules = ''
         # for kmonad to work
         KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"

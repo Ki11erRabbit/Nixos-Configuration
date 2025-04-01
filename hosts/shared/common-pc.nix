@@ -21,6 +21,7 @@ let dwl-source = pkgs.fetchFromGitHub {
 in {
     nix.settings.experimental-features = "nix-command flakes";
 
+    services.fwupd.enable = true;
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
