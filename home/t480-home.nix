@@ -134,7 +134,13 @@
                         "spacing": 5
                     },
                 "battery": {
-                        "format": "{icon}  {capacity}",
+                    "bat": "BAT1",
+                        "format": "external: {icon}  {capacity}",
+                        "format-icons": ["", "", "", "", ""]
+                    },
+                "battery": {
+                    "bat": "BAT0",
+                        "format": "internal: {icon}  {capacity}",
                         "format-icons": ["", "", "", "", ""]
                     },
                 "clock": {
