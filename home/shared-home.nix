@@ -66,7 +66,7 @@
         zig
         zls
         idris2
-        emacs
+        emacs-pgtk
         stack
         cabal-install
         ghc
@@ -1176,7 +1176,7 @@
 
     services.emacs = {
         enable = true;
-        package = pkgs.emacs;
+        package = pkgs.emacs-pgtk;
     };
 
     # Home Manager can also manage your environment variables through
