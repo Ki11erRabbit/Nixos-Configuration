@@ -147,6 +147,7 @@
         tutanota-desktop
         typescript
         bitwarden
+        jetbrains.rust-rover
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
