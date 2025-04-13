@@ -3,7 +3,7 @@ let dwl-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-hv9MbvzvgTeGP5jmmRwdEgXNcgOTzfQ/euGb5lpTDLM=";
+    hash = "sha256-6TbKbRh46dVRV3JSJmpaDUekZ3cYleug95pm0FcUg7g=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
     patchelfFixes = pkgs.patchelfUnstable.overrideAttrs (_finalAttrs: _previousAttrs: {
@@ -178,6 +178,7 @@ in {
         pcloudFixes
         wio
         libunwind
+        polkit_gnome
     ];
     
 
@@ -281,8 +282,8 @@ in {
     systemd = {
         user.services.polkit-gnome-authentication-agent-1 = {
             description = "polkit-gnome-authentication-agent-1";
-            # wantedBy = [ "graphical-session.target" ];
-            # wants = [ "graphical-session.target" ];
+            wantedBy = [ "graphical-session.target" ];
+            wants = [ "graphical-session.target" ];
             after = [ "graphical-session.target" ];
             serviceConfig = {
                 Type = "simple";

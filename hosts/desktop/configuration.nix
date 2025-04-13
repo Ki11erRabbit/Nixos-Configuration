@@ -24,7 +24,12 @@
         nasm
         grub2
         xorriso
+        corectrl
     ];
+
+    programs.corectrl = {
+        enable = true;
+    };
 
     services.blueman.enable = true;
 
