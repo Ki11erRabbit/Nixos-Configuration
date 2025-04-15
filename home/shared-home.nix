@@ -22,10 +22,6 @@
         inputs.zen-browser.packages."${system}".default
         firefox
         thunderbird
-        libsForQt5.breeze-qt5
-        libsForQt5.breeze-gtk
-        libsForQt5.breeze-icons
-        libsForQt5.ark
         font-manager
         discord
         dolphin
@@ -46,18 +42,17 @@
         eza
         slack
         slurp
-        libsForQt5.bismuth
         obs-studio
-        libreoffice-qt
+        libreoffice
         yazi
-        libsForQt5.kdeconnect-kde
+        kdePackages.kdeconnect-kde
         neofetch
         lua-language-server
         universal-ctags
         vscode
         haskellPackages.lsp
         rust-analyzer
-        python310Packages.python-lsp-server
+        python312Packages.python-lsp-server
         gopls
         libclang
         jdt-language-server
@@ -90,8 +85,7 @@
         pharo
         hunspell
         hunspellDicts.en_US
-        libsForQt5.ghostwriter
-        transmission_4-qt
+        transmission_4-gtk
         usbutils
         gparted
         gamescope
@@ -148,6 +142,7 @@
         typescript
         bitwarden
         jetbrains.rust-rover
+        imv
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
@@ -1224,6 +1219,16 @@
             comment = "Start an Emacs daemon";
             terminal = false;
         };
+        imv = {
+            name = "imv";
+            genericName = "Image Viewer";
+            exec = "imv %F";
+            icon = "imv";
+            mimeType = [ "image/*" ];
+            categories = [ "Graphics" "Viewer" ];
+            comment = "View images with imv";
+            terminal = false;
+        };
     };
 
     xdg.mimeApps = {
@@ -1289,12 +1294,12 @@
             "video/avi" = [ "mpv.desktop" ];
             "video/x-flv" = [ "mpv.desktop" ];
             "video/quicktime" = [ "mpv.desktop" ];
-            "image/gif" = [ "gwenview.desktop" ];
-            "image/png" = [ "gwenview.desktop" ];
-            "image/jpeg" = [ "gwenview.desktop" ];
-            "image/jpg" = [ "gwenview.desktop" ];
-            "image/webp" = [ "gwenview.desktop" ];
-            "image/vnd.microsoft.icon" = [ "gwenview.desktop" ];
+            "image/gif" = [ "imv.desktop" ];
+            "image/png" = [ "imv.desktop" ];
+            "image/jpeg" = [ "imv.desktop" ];
+            "image/jpg" = [ "imv.desktop" ];
+            "image/webp" = [ "imv.desktop" ];
+            "image/vnd.microsoft.icon" = [ "imv.desktop" ];
             "inode/directory" = [ "nemo.desktop" ];
             "x-scheme-handler/about" = [ "firefox.desktop" ];
             "x-scheme-handler/attachment" = [ "firefox.desktop" ];
@@ -1307,26 +1312,26 @@
             "x-scheme-handler/sgnl" = [ "signal-desktop.desktop" ];
             "x-scheme-handler/signalcaptcha" = [ "signal-desktop.desktop" ];
             "x-scheme-handler/slack" = [ "slack.desktop" ];
-            "application/zip" = [ "org.kde.ark.desktop" ];
-            "application/x-java-archive" = [ "run-java-jar.desktop" "org.kde.ark.desktop" ];
+            "application/zip" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-java-archive" = [ "run-java-jar.desktop" "org.gnome.FileRoller.desktop" ];
             "application/x-bittorrent" = [ "transmission-qt.desktop" ];
             "application/x-ms-dos-executable" = [ "wine.desktop" ];
             "application/x-msi" = [ "wine.desktop" ];
             "application/x-ms-shortcut" = [ "wine.desktop" ];
             "application/x-ms-wim" = [ "wine.desktop" ];
-            "application/x-cd-image" = [ "org.kde.ark.desktop" ];
+            "application/x-cd-image" = [ "org.gnome.FileRoller.desktop" ];
             "x-scheme-handler/steam" = [ "steam.desktop" ];
             "x-scheme-handler/itchio" = [ "itch.desktop" ];
             "x-scheme-handler/tel" = [ "org.kde.kdeconnect.handler.desktop" ];
-            "application/x-tar" = [ "org.kde.ark.desktop" ];
-            "application/x-xz" = [ "org.kde.ark.desktop" ];
-            "application/x-bzip" = [ "org.kde.ark.desktop" ];
-            "application/x-bzip-compressed-tar" = [ "org.kde.ark.desktop" ];
-            "application/x-gzip" = [ "org.kde.ark.desktop" ];
-            "application/x-lzma" = [ "org.kde.ark.desktop" ];
-            "application/x-lzip" = [ "org.kde.ark.desktop" ];
-            "application/x-lz4" = [ "org.kde.ark.desktop" ];
-            "application/x-lz4-compressed-tar" = [ "org.kde.ark.desktop" ];
+            "application/x-tar" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-xz" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-bzip" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-bzip-compressed-tar" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-gzip" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-lzma" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-lzip" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-lz4" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-lz4-compressed-tar" = [ "org.gnome.FileRoller.desktop" ];
             "application/x-krita" = [ "krita_kra.desktop" ];
         };
         defaultApplications = {
@@ -1390,12 +1395,12 @@
             "video/avi" = [ "mpv.desktop" ];
             "video/x-flv" = [ "mpv.desktop" ];
             "video/quicktime" = [ "mpv.desktop" ];
-            "image/gif" = [ "gwenview.desktop" ];
-            "image/png" = [ "gwenview.desktop" ];
-            "image/jpeg" = [ "gwenview.desktop" ];
-            "image/jpg" = [ "gwenview.desktop" ];
-            "image/webp" = [ "gwenview.desktop" ];
-            "image/vnd.microsoft.icon" = [ "gwenview.desktop" ];
+            "image/gif" = [ "imv.desktop" ];
+            "image/png" = [ "imv.desktop" ];
+            "image/jpeg" = [ "imv.desktop" ];
+            "image/jpg" = [ "imv.desktop" ];
+            "image/webp" = [ "imv.desktop" ];
+            "image/vnd.microsoft.icon" = [ "imv.desktop" ];
             "inode/directory" = [ "nemo.desktop" ];
             "x-scheme-handler/about" = [ "firefox.desktop" ];
             "x-scheme-handler/attachment" = [ "firefox.desktop" ];
@@ -1408,26 +1413,26 @@
             "x-scheme-handler/sgnl" = [ "signal-desktop.desktop" ];
             "x-scheme-handler/signalcaptcha" = [ "signal-desktop.desktop" ];
             "x-scheme-handler/slack" = [ "slack.desktop" ];
-            "application/zip" = [ "org.kde.ark.desktop" ];
-            "application/x-java-archive" = [ "run-java-jar.desktop" "org.kde.ark.desktop" ];
+            "application/zip" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-java-archive" = [ "run-java-jar.desktop" "org.gnome.FileRoller.desktop" ];
             "application/x-bittorrent" = [ "transmission-qt.desktop" ];
             "application/x-ms-dos-executable" = [ "wine.desktop" ];
             "application/x-msi" = [ "wine.desktop" ];
             "application/x-ms-shortcut" = [ "wine.desktop" ];
             "application/x-ms-wim" = [ "wine.desktop" ];
-            "application/x-cd-image" = [ "org.kde.ark.desktop" ];
+            "application/x-cd-image" = [ "org.gnome.FileRoller.desktop" ];
             "x-scheme-handler/steam" = [ "steam.desktop" ];
             "x-scheme-handler/itchio" = [ "itch.desktop" ];
             "x-scheme-handler/tel" = [ "org.kde.kdeconnect.handler.desktop" ];
-            "application/x-tar" = [ "org.kde.ark.desktop" ];
-            "application/x-xz" = [ "org.kde.ark.desktop" ];
-            "application/x-bzip" = [ "org.kde.ark.desktop" ];
-            "application/x-bzip-compressed-tar" = [ "org.kde.ark.desktop" ];
-            "application/x-gzip" = [ "org.kde.ark.desktop" ];
-            "application/x-lzma" = [ "org.kde.ark.desktop" ];
-            "application/x-lzip" = [ "org.kde.ark.desktop" ];
-            "application/x-lz4" = [ "org.kde.ark.desktop" ];
-            "application/x-lz4-compressed-tar" = [ "org.kde.ark.desktop" ];
+            "application/x-tar" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-xz" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-bzip" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-bzip-compressed-tar" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-gzip" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-lzma" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-lzip" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-lz4" = [ "org.gnome.FileRoller.desktop" ];
+            "application/x-lz4-compressed-tar" = [ "org.gnome.FileRoller.desktop" ];
             "application/x-krita" = [ "krita_kra.desktop" ];
 
         };
