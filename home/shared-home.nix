@@ -143,6 +143,7 @@
         bitwarden
         jetbrains.rust-rover
         imv
+        cargo-generate
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
