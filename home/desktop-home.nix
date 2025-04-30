@@ -58,37 +58,35 @@
 
 
             widepapers="$HOME/Pictures/Wallpapers/Widepapers/"
+            widepapers_list="$HOME/widepapers_list.txt"
             tallpapers="$HOME/Pictures/Wallpapers/Tallpapers/"
-            widepapers_list="$HOME/.config/swaylock/wallpapers.txt"
-            tallpapers_list="$HOME/.config/swaylock/tallpapers.txt"
+            tallpapers_list="$HOME/tallpapers_list.txt"
 
             # $1 label
-            # $2 display
-            function select_widepaper () {
-                file=$(find "$widepapers" -name "*.png" -or -name "*.jpeg" -or -name "*.jpg" -or -name "*.webm" -or -name "*.mp4" | shuf | head -n 1)
+            # $2 wallpaper list
+            # $3 wallpaper dir
+            function select_wallpaper () {
+                if [[ $(stat --printf="%s" $2) == "0" ]]; then
+                    find "$3" -name "*.png" -or -name "*.jpeg" -or -name "*.jpg" -or -name "*.webm" -or -name "*.mp4" | shuf > $2
+                    file=$(cat $2 | head -n 1)
+                else 
+                    file=$(cat $2 | head -n 1)
+                fi
+                tail -n +2 $2 > $2
                 echo "$1: $file" >> $HOME/wallpaper.log
                 echo "$file"
 
             }
 
-            # $1 label
-            # $2 display
-            function select_tallpaper () {
-                file=$(find "$tallpapers" -name "*.png" -or -name "*.jpeg" -or -name "*.jpg" -or -name "*.webm" -or -name "*.mp4" | shuf | head -n 1)
-                echo "$1: $file" >> $HOME/wallpaper.log
-                echo "$file"
 
-            }
-
-            file1=$(select_widepaper "wide1")
-            file2=$(select_widepaper "wide2")
-            file3=$(select_tallpaper "tall")
+            file1=$(select_wallpaper "wide1" $widepapers_list $widepapers)
+            file2=$(select_wallpaper "wide2" $widepapers_list $widepapers)
+            file3=$(select_wallpaper "tall" $tallpapers_list $tallpapers)
 
 
             # $1 display
             # $2 file
             function apply_wallpaper () {
-                #mpvpaper -f -o "no-audio loop" $1 "$2"
                 case $2 in
                     *.png|*.jpeg|*.jpg)
                         swaybg -o $1 -i "$2" -m fill  &
@@ -105,38 +103,41 @@
             apply_wallpaper "DP-1" "$file1"
             apply_wallpaper "DP-2" "$file2"
             apply_wallpaper "HDMI-A-1" "$file3"
-            #swaylock  -ef -i "$file1" -i "$file2" -i "$file3"
             '';
         };
         ".local/bin/lockscreen.sh" = {
             executable = true;
             text = ''
-            #!/home/ki11errabbit/.cargo/bin/caat_shell
+            #!/bin/sh
 
-            widepapers = $HOME ++ "/Pictures/Wallpapers/Widepapers"
-            tallpapers = $HOME ++ "/Pictures/Wallpapers/Tallpapers"
+            widepapers="$HOME/Pictures/Wallpapers/Widepapers/"
+            widepapers_list="$HOME/widepapers_list_lockscreen.txt"
+            tallpapers="$HOME/Pictures/Wallpapers/Tallpapers/"
+            tallpapers_list="$HOME/tallpapers_list_lockscreen.txt"
 
-            function select_widepaper(label, display) {
-                list = find $widepapers "-name" "*.png" "-or" "-name" "*.jpeg" "-or" "-name" "*.jpg" | shuf
-                file = head $list
-                echo $label ++ ": " ++ $file >> $HOME ++ "/lockscreen.log"
-                return $display ++ ":" ++ $file
+            # $1 label
+            # $2 wallpaper list
+            # $3 wallpaper dir
+            # $4 display
+            function select_wallpaper () {
+                if [[ $(stat --printf="%s" $2) == "0" ]]; then
+                    find "$3" -name "*.png" -or -name "*.jpeg" -or -name "*.jpg" -or -name "*.webm" -or -name "*.mp4" | shuf > $2
+                    file=$(cat $2 | head -n 1)
+                else 
+                    file=$(cat $2 | head -n 1)
+                fi
+                tail -n +2 $2 > $2
+                echo "$1: $file" >> $HOME/lockscreen.log
+                echo "$4:$file"
+
             }
 
 
-            function select_tallpaper(label, display) {
-                list = find $tallpapers "-name" "*.png" "-or" "-name" "*.jpeg" "-or" "-name" "*.jpg" | shuf
-                file = head $list
-                echo $label ++ ": " ++ $file >> $HOME ++ "/lockscreen.log"
-                return $display ++ ":" ++ $file
-            }
+            file1=$(select_wallpaper "wide1" $widepapers_list $widepapers DP-1)
+            file2=$(select_wallpaper "wide2" $widepapers_list $widepapers DP-2)
+            file3=$(select_wallpaper "tall" $tallpapers_list $tallpapers HDMI-A-1)
 
-
-
-            file1 = select_widepaper "wide1" "DP-1"
-            file2 = select_widepaper "wide2" "DP-2"
-            file3 = select_tallpaper "tall" "HDMI-A-1"
-            swaylock "-ef" "-i" $file1 "-i" $file2 "-i" $file3
+            swaylock -ef -i "$file1" -i "$file2" -i "$file3"
             '';
         };
         ".local/bin/setup-keyboard.sh" = {
