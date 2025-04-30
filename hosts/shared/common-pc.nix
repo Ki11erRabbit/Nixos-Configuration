@@ -3,7 +3,7 @@ let dwl-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-6TbKbRh46dVRV3JSJmpaDUekZ3cYleug95pm0FcUg7g=";
+    hash = "sha256-8eToMI4MOzXmnhCvy1XjOfwYZzABTp3IYi7J959s2nI=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
     patchelfFixes = pkgs.patchelfUnstable.overrideAttrs (_finalAttrs: _previousAttrs: {
@@ -28,8 +28,8 @@ in {
 
     hardware.graphics.enable = true;
     
-    time.timeZone = "America/Denver";
-    #time.timeZone = "America/Los_Angeles";
+    #time.timeZone = "America/Denver";
+    time.timeZone = "America/Los_Angeles";
     #services.automatic-timezoned.enable = true;
     #networking.timeServers = [ "time.cloudflare.com" "time.google.com" ];
 

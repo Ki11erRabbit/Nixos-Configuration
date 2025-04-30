@@ -144,6 +144,7 @@
         jetbrains.rust-rover
         imv
         cargo-generate
+        pcmanfm
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
@@ -1301,7 +1302,7 @@
             "image/jpg" = [ "imv.desktop" ];
             "image/webp" = [ "imv.desktop" ];
             "image/vnd.microsoft.icon" = [ "imv.desktop" ];
-            "inode/directory" = [ "nemo.desktop" ];
+            "inode/directory" = [ "pcmanfm.desktop" ];
             "x-scheme-handler/about" = [ "firefox.desktop" ];
             "x-scheme-handler/attachment" = [ "firefox.desktop" ];
             "x-scheme-handler/chrome" = [ "firefox.desktop" ];
@@ -1402,7 +1403,7 @@
             "image/jpg" = [ "imv.desktop" ];
             "image/webp" = [ "imv.desktop" ];
             "image/vnd.microsoft.icon" = [ "imv.desktop" ];
-            "inode/directory" = [ "nemo.desktop" ];
+            "inode/directory" = [ "pcmanfm.desktop" ];
             "x-scheme-handler/about" = [ "firefox.desktop" ];
             "x-scheme-handler/attachment" = [ "firefox.desktop" ];
             "x-scheme-handler/chrome" = [ "firefox.desktop" ];
