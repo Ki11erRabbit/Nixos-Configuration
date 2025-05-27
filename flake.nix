@@ -1,11 +1,11 @@
 {
     description = "My NixOS shared Config";
     inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
         unstable-pkgs.url = "nixpkgs/nixos-unstable";
-        old-pkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+        old-pkgs.url = "github:nixos/nixpkgs/nixos-24.11";
         home-manager = {
-            url = "github:nix-community/home-manager/release-24.11";
+            url = "github:nix-community/home-manager/release-25.05";
             # The `follows` keyword in inputs is used for inheritance.
             # Here, `inputs.nixpkgs` of home-manager is kept consistent with
             # the `inputs.nixpkgs` of the current flake,

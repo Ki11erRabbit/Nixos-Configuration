@@ -2,7 +2,7 @@
 
 {
     
-    home.stateVersion = "23.11"; # Please read the comment before changing.
+    home.stateVersion = "25.05"; # Please read the comment before changing.
     home.file = {
         ".config/kmonad/ibm-thinkpad-travel.kbd" = {
             text = ''

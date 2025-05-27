@@ -256,7 +256,7 @@ in {
         noto-fonts
         noto-fonts-cjk-sans
         jetbrains-mono
-        (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+        nerd-fonts.jetbrains-mono
     ];
 
 
@@ -312,6 +312,6 @@ in {
     };
     virtualisation.docker.enable = true;
 
-    system.stateVersion = "24.11"; # Did you read the comment?
+    system.stateVersion = "25.05"; # Did you read the comment?
 
 }
