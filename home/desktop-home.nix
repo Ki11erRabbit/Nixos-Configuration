@@ -123,7 +123,7 @@
             # $4 display
             function select_wallpaper () {
                 if [[ $(stat --printf="%s" "$2") == "0" ]]; then
-                    find "$3" -name "*.png" -or -name "*.jpeg" -or -name "*.jpg" -or -name "*.webm" -or -name "*.mp4" | shuf -o "$2"
+                    find "$3" -name "*.png" -or -name "*.jpeg" -or -name "*.jpg" | shuf -o "$2"
                     file=$(cat $2 | head -n 1)
                 else 
                     file=$(cat $2 | head -n 1)
