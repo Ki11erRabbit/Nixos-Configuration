@@ -3,7 +3,7 @@ let dwl-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-8eToMI4MOzXmnhCvy1XjOfwYZzABTp3IYi7J959s2nI=";
+    hash = "sha256-mhic1wYDpWl5MFgzQR47FzO8ZkyIV5ipbMx8FsZyxO0=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
     patchelfFixes = pkgs.patchelfUnstable.overrideAttrs (_finalAttrs: _previousAttrs: {

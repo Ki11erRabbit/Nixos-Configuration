@@ -1022,6 +1022,128 @@
             #echo 0 > ~/.dwm/blocks-scripts/helper-scripts/weather_option
         '';
         };
+        ".config/waybar/style.css".text = ''
+            * {
+                all: unset;
+                font-family: "LiterationMono Nerd Font", "monospace";
+            }
+
+            window#waybar {
+              background-color: #eff1f5;
+              color: #4c4f69;
+              padding-left:10px;
+              padding-right:10px;
+            }
+
+            #tray menu {
+                background-color: #e6e9ef;
+                color: #4c4f69;
+                padding-left:10px;
+                padding-right:10px;
+            }
+
+            #tray menu button:hover {
+                color: #4c4f69;
+                background-color: #dce0e8;
+            }
+
+            #clock {
+              margin-left: 3px;
+              padding-left: 4px;
+            }
+
+            #custom-sysmenu {
+              margin-left: 3px;
+              margin-right: 3px;
+                padding-left: 4px;
+                padding-right: 4px;
+            }
+            #custom-kernel {
+                padding-left: 4px;
+                padding-right: 4px;
+              margin-left: 3px;
+              margin-right: 3px;
+            }
+
+            #custom-dwl_layout {
+              color: #5c5f77;
+             }
+
+             #custom-dwl_title {
+                 color: #5c5f69;
+                 background-color: #dce0e8;
+                 padding-left: 2px;
+                 padding-right: 2px;
+             }
+
+             #custom-dwl_tag {
+                 color: #4c4f77;
+             }
+
+             #custom-dwl_tag:hover {
+                 color: #4c4f69;
+                 background-color: #7287fd;
+             }
+             #custom-dwl_tag.selected {
+                 color: #4c4f69;
+                 background-color: #ea76cb;
+             }
+
+             #custom-dwl_tag.urgent {
+                 background-color: #d20f39;
+             }
+
+             #custom-dwl_tag.active {
+                 border-top: 1px solid #ea76cb;
+             }
+             #custom-dwl_tag.active:hover {
+                 border-top: 1px solid #ea76cb;
+             }
+             
+            #tags button {
+               color: #4c4f77;
+                padding-left: 4px;
+                padding-right: 4px;
+            }
+
+            #tags button:hover {
+                color: #4c4f69;
+                background-color: #7287fd;
+            }
+
+            #tags button.occupied {
+                  color: #4c4f69;
+                  background-color: #dce0e8;
+            }
+
+
+            #tags button.focused {
+                  color: #4c4f69;
+                  background-color: #ea76cb;
+            }
+
+            #mode {
+              margin-left: 3px;
+              padding-left: 4px;
+            margin-right: 3px;
+            padding-right: 4px;
+
+            }
+
+            #window {
+                background-color: #dce0e8;
+                color: #4c4f69;
+                padding-left:10px;
+                padding-right:10px;
+            }
+
+            #window.focused {
+                color: #4c4f69;
+                background-color: #ea76cb;
+                padding-left:10px;
+                padding-right:10px;
+            }
+        '';
     };
 
 
@@ -1058,7 +1180,8 @@
         };
 
         sessionVariables = {
-            BEMENU_OPTS = "--tb #282c34 --tf #51afef --nb #282c34 --nf #bbc2cf --sb #51afef --sf #444b59 --fb #282c34 --ff #bbc2cf --hb #51afef --hf #444b59 --ab #282c34 --af #bbc2cf";
+            BEMENU_OPTS = "-fb #eff1f5 --ff #4c4f69 --nb #eff1f5 --nf #4c4f69 --tb #eff1f5 --hb #eff1f5 --tf #d20f39 --hf #df8e1d --af #4c4f69 --ab #eff1f5";
+
             PATH = "$PATH:/home/ki11errabbit/.cabal/bin:/home/ki11errabbit/.local/bin:$PATH:/home/ki11errabbit/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/home/ki11errabbit/.cargo/bin";
         };
 
@@ -1107,28 +1230,28 @@
             colors = {
                 draw_bold_text_with_bright_colors = false;
                 normal = {
-                    black = "0x282c34";
-                    blue = "0x51afef";
-                    cyan = "0x46d9ff";
-                    green = "0x98be65";
-                    magenta = "0xc678dd";
-                    red = "0xff6c6b";
-                    white = "0xbbc2cf";
-                    yellow = "0xecbe7b";
+                    black = "0xbcc0cc";
+                    blue = "0x1e66f5";
+                    cyan = "0x179299";
+                    green = "0x40a02b";
+                    magenta = "0xea76cb";
+                    red = "0xd20f39";
+                    white = "0x5c5f77";
+                    yellow = "0xdf8e1d";
                 };
                 bright = {
-                    black = "0x47505e";
-                    blue = "0x5db3ef";
-                    cyan = "0x51dbff";
-                    green = "0x9bbe6e";
-                    magenta = "0xc882dd";
-                    red = "0xff7877";
-                    white = "0xc4c8cf";
-                    yellow = "0xecc286";
+                    black = "0xacb0be";
+                    blue = "0x1e66f5";
+                    cyan = "0x179299";
+                    green = "0x40a02b";
+                    magenta = "0xea76cb";
+                    red = "0xd20f39";
+                    white = "0x6c6f85";
+                    yellow = "0xdf8e1d";
                 };
                 primary = {
-                    background = "0x282c34";
-                    foreground = "0xbbc2cf";
+                    background = "0xeff1f5";
+                    foreground = "0x4c4f69";
                 };
 
             };
@@ -1222,16 +1345,6 @@
             comment = "Start an Emacs daemon";
             terminal = false;
         };
-        imv = {
-            name = "imv";
-            genericName = "Image Viewer";
-            exec = "imv %F";
-            icon = "imv";
-            mimeType = [ "image/*" ];
-            categories = [ "Graphics" "Viewer" ];
-            comment = "View images with imv";
-            terminal = false;
-        };
     };
 
     xdg.mimeApps = {
@@ -1297,12 +1410,6 @@
             "video/avi" = [ "mpv.desktop" ];
             "video/x-flv" = [ "mpv.desktop" ];
             "video/quicktime" = [ "mpv.desktop" ];
-            "image/gif" = [ "imv.desktop" ];
-            "image/png" = [ "imv.desktop" ];
-            "image/jpeg" = [ "imv.desktop" ];
-            "image/jpg" = [ "imv.desktop" ];
-            "image/webp" = [ "imv.desktop" ];
-            "image/vnd.microsoft.icon" = [ "imv.desktop" ];
             "inode/directory" = [ "pcmanfm.desktop" ];
             "x-scheme-handler/about" = [ "firefox.desktop" ];
             "x-scheme-handler/attachment" = [ "firefox.desktop" ];
@@ -1398,12 +1505,6 @@
             "video/avi" = [ "mpv.desktop" ];
             "video/x-flv" = [ "mpv.desktop" ];
             "video/quicktime" = [ "mpv.desktop" ];
-            "image/gif" = [ "imv.desktop" ];
-            "image/png" = [ "imv.desktop" ];
-            "image/jpeg" = [ "imv.desktop" ];
-            "image/jpg" = [ "imv.desktop" ];
-            "image/webp" = [ "imv.desktop" ];
-            "image/vnd.microsoft.icon" = [ "imv.desktop" ];
             "inode/directory" = [ "pcmanfm.desktop" ];
             "x-scheme-handler/about" = [ "firefox.desktop" ];
             "x-scheme-handler/attachment" = [ "firefox.desktop" ];
