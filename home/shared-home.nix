@@ -1071,35 +1071,11 @@
 
              #custom-dwl_title {
                  color: #5c5f69;
-                 background-color: #dce0e8;
+                 background-color: #eff1f5;
                  padding-left: 2px;
                  padding-right: 2px;
              }
 
-             #custom-dwl_tag {
-                 color: #4c4f77;
-             }
-
-             #custom-dwl_tag:hover {
-                 color: #4c4f69;
-                 background-color: #7287fd;
-             }
-             #custom-dwl_tag.selected {
-                 color: #4c4f69;
-                 background-color: #ea76cb;
-             }
-
-             #custom-dwl_tag.urgent {
-                 background-color: #d20f39;
-             }
-
-             #custom-dwl_tag.active {
-                 border-top: 1px solid #ea76cb;
-             }
-             #custom-dwl_tag.active:hover {
-                 border-top: 1px solid #ea76cb;
-             }
-             
             #tags button {
                color: #4c4f77;
                 padding-left: 4px;
@@ -1121,14 +1097,14 @@
                   color: #4c4f69;
                   background-color: #ea76cb;
             }
-
+            /*
             #mode {
               margin-left: 3px;
               padding-left: 4px;
             margin-right: 3px;
             padding-right: 4px;
 
-            }
+            }*/
 
             #window {
                 background-color: #dce0e8;
