@@ -1097,6 +1097,17 @@
                   color: #4c4f69;
                   background-color: #ea76cb;
             }
+
+            #tags button.occupied:hover {
+                  color: #4c4f69;
+                  background-color: #7287fd;
+            }
+
+
+            #tags button.focused:hover {
+                  color: #4c4f69;
+                  background-color: #7287fd;
+            }
             /*
             #mode {
               margin-left: 3px;
