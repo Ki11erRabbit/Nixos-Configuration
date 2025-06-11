@@ -1185,7 +1185,7 @@
             PATH = "$PATH:/home/ki11errabbit/.cabal/bin:/home/ki11errabbit/.local/bin:$PATH:/home/ki11errabbit/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/home/ki11errabbit/.cargo/bin";
         };
 
-        initExtra = ''
+        initContent = ''
         setopt globdots
         function ya() {
             local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
