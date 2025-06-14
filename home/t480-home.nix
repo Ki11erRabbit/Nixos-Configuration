@@ -63,24 +63,22 @@
             # play-sound=aplay '$'{filename'}
             # layer=top
 
+
             # Default values, may be overridden in 'urgency' specific sections
-             background=282c34ff
+            border-size=2
 
-             border-color=51afefff
-             border-size=2
+            padding-vertical=20
+            padding-horizontal=20
 
-             padding-vertical=20
-             padding-horizontal=20
-
-             title-font=sans serif
+            title-font=sans serif
             # title-color=ffffffff
             # title-format=<i>%a%A</i>
 
-             summary-font=sans serif:size=8
+            summary-font=sans serif:size=8
             # summary-color=ffffffff
             # summary-format=<b>%s</b>\n
 
-             body-font=sans serif:size=10
+            body-font=sans serif:size=10
             # body-color=ffffffff
             # body-format=%b
 
@@ -91,20 +89,17 @@
 
             # Timeout values are in seconds. 0 to disable
             # max-timeout=0
-             default-timeout=5
+            default-timeout=5
 
-            # [low]
-            # background=2b2b2bff
-            # title-color=888888ff
-            # summary-color=888888ff
-            # body-color=888888ff
+            title-color=6c6f85ff
+            summary-color=4c4f69ff
+            body-color=4c4f69ff
+            background=eff1f5ff
+            border-color=ea76cbff
+            progress-bar-color=9ca0b0ff
 
-            # [normal]
-
-            # [critical]
-            # background=6c3333ff
-
-
+            [critical]
+            border-color=fe640bff
         '';
         ".config/waybar/config".text = ''
              [ {
