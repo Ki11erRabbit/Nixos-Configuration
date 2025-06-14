@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, quickshellPkgs, ... }:
 
 {
 
@@ -415,6 +415,7 @@
         burpsuite
         blender
         arduino-ide
+        #quickshellPkgs.default
     ];
     
 }

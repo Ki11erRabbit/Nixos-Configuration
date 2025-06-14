@@ -22,13 +22,41 @@
             # to have it up to date or simply don't specify the nixpkgs input  
             #inputs.nixpkgs.follows = "nixpkgs";
         };
+        quickshell = {
+            # remove ?ref=v0.1.0 to track the master branch
+            url = "github:quickshell-mirror/quickshell?ref=v0.1.0";
+
+            # THIS IS IMPORTANT
+            # Mismatched system dependencies will lead to crashes and other issues.
+            inputs.nixpkgs.follows = "unstable-pkgs";
+        };
     };
-    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, zen-browser,... }: 
+    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, zen-browser, quickshell,... }: 
     let 
         system = "x86_64-linux";
         pkgs = import nixpkgs { system = "${system}"; config = { allowUnfree = true; nvidia.acceptLicense = true; }; };
         unstable = import unstable-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
         oldpkgs = import old-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
+        quickshellPkgs = import quickshell { 
+            pkgs = unstable-pkgs; 
+            lib = unstable-pkgs.lib; 
+            xorg = unstable-pkgs.xorg; 
+            keepDebugInfo = true;
+            breakpad = unstable-pkgs.breakpad;
+            cmake = unstable-pkgs.cmake;
+            ninja = unstable-pkgs.ninja;
+            spirv-tools = unstable-pkgs.spirv-tools;
+            qt6 = unstable-pkgs.qt6;
+            jemalloc = unstable-pkgs.jemalloc;
+            cli11 = unstable-pkgs.cli11;
+            wayland = unstable-pkgs.wayland;
+            wayland-protocols = unstable-pkgs.wayland-protocols;
+            libdrm = unstable-pkgs.libdrm;
+            libgbm = unstable-pkgs.libgbm;
+            pipewire = unstable-pkgs.pipewire;
+            pam = unstable-pkgs.pam;
+            nix-gitignore = unstable-pkgs.nix-gitignore;
+        };
     in {
 
         home-mangager.users.root = import ./root/home.nix;
@@ -162,7 +190,7 @@
         homeConfigurations = {
             "desktop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs quickshellPkgs inputs; };
                 modules = [
                     ./home/shared-home.nix
                     ./home/desktop-home.nix
