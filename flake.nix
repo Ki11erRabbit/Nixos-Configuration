@@ -58,7 +58,7 @@
             nix-gitignore = unstable-pkgs.nix-gitignore;
         };
     in {
-
+        packages = import ./pkgs nixpkgs.legacyPackages.${system};
         home-mangager.users.root = import ./root/home.nix;
         nixosConfigurations = {
             primary-desktop = nixpkgs.lib.nixosSystem {

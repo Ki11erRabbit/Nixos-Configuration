@@ -3,7 +3,7 @@ let dwl-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "dwl";
     rev = "main";
-    hash = "sha256-ge7tKEVCG2hlxLTgdBvr/3zTJVCo/sJlxKXmwpdERmI=";
+    hash = "sha256-MPg7Sy2TiiV6AbLJMrgshHgd/Rff28d5S97nZHVB23o=";
     };
     dwl-custom = (pkgs.callPackage "${dwl-source}/dwl.nix" {});
     patchelfFixes = pkgs.patchelfUnstable.overrideAttrs (_finalAttrs: _previousAttrs: {
@@ -55,7 +55,10 @@ in {
     services.xserver.enable = true;
 
     # Enable the KDE Plasma Desktop Environment.
-    services.displayManager.sddm.enable = true;
+    services.displayManager.sddm = {
+        enable = true;
+        theme = "catppuccin-latte";
+    };
     services.displayManager.sddm.wayland.enable = true;
     security.pam.services.sddm.enableGnomeKeyring = true;
     services.displayManager.sessionPackages = [
@@ -179,6 +182,13 @@ in {
         wio
         libunwind
         polkit_gnome
+        catppuccin-gtk
+        catppuccin-kde
+        catppuccin-qt5ct
+        catppuccin-sddm
+        catppuccin-papirus-folders
+        kdePackages.qt6ct
+        libsForQt5.qt5ct
     ];
     
 
