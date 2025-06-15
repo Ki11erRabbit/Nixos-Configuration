@@ -58,6 +58,9 @@ in {
     services.displayManager.sddm = {
         enable = true;
         theme = "catppuccin-latte";
+        extraPackages = with pkgs; [
+            catppuccin-sddm
+        ];
     };
     services.displayManager.sddm.wayland.enable = true;
     security.pam.services.sddm.enableGnomeKeyring = true;
@@ -185,7 +188,6 @@ in {
         catppuccin-gtk
         catppuccin-kde
         catppuccin-qt5ct
-        catppuccin-sddm
         catppuccin-papirus-folders
         kdePackages.qt6ct
         libsForQt5.qt5ct

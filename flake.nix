@@ -34,7 +34,32 @@
     outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, zen-browser, quickshell,... }: 
     let 
         system = "x86_64-linux";
-        pkgs = import nixpkgs { system = "${system}"; config = { allowUnfree = true; nvidia.acceptLicense = true; }; };
+        pkgs = import nixpkgs { 
+            system = "${system}"; 
+            config = { allowUnfree = true; nvidia.acceptLicense = true; }; 
+            overlays = [
+                (final: prev: {
+                    # example = prev.example.overrideAttrs (oldAttrs: rec {
+                    # ...
+                    # });
+                    catppuccin-qt5ct = prev.catppuccin-qt5ct.overrideAttrs (oldAttrs: rec {
+                        version = "2025-06-14";
+                        src = prev.fetchFromGitHub {
+                            owner = "catppuccin";
+                            repo = "qt5ct";
+                            rev = "cb585307edebccf74b8ae8f66ea14f21e6666535";
+                            hash = "sha256-wDj6kQ2LQyMuEvTQP6NifYFdsDLT+fMCe3Fxr8S783w=";
+                        };
+                        installPhase = ''
+                            runHook preInstall
+                            mkdir -p $out/share/qt6ct
+                            cp -r themes $out/share/qt6ct/colors
+                            runHook postInstall
+                        '';
+                    });
+                })
+            ];
+        };
         unstable = import unstable-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
         oldpkgs = import old-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
         quickshellPkgs = import quickshell { 
@@ -59,6 +84,7 @@
         };
     in {
         packages = import ./pkgs nixpkgs.legacyPackages.${system};
+        overlays = import ./overlays {inherit inputs;};
         home-mangager.users.root = import ./root/home.nix;
         nixosConfigurations = {
             primary-desktop = nixpkgs.lib.nixosSystem {
