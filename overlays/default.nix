@@ -11,7 +11,7 @@
         # ...
         # });
         catppuccin-qt5ct = prev.catppuccin-qt5ct.overrideAttrs (oldAttrs: rec {
-            version = "2025-06-14";
+            version = "2025-06-15";
             src = prev.fetchFromGitHub {
                 owner = "catppuccin";
                 repo = "qt5ct";
@@ -22,6 +22,8 @@
                 runHook preInstall
                 mkdir -p $out/share/qt6ct
                 cp -r themes $out/share/qt6ct/colors
+                mkdir -p $out/share/qt5ct
+                cp -r themes $out/share/qt5ct/colors
                 runHook postInstall
             '';
         });

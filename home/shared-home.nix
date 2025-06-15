@@ -78,7 +78,7 @@
         bat
         dash
         swayimg
-        libsForQt5.okular
+        kdePackages.okular
         squeak
         mpv
         transmission-remote-gtk

@@ -182,10 +182,20 @@ in {
         wio
         libunwind
         polkit_gnome
-        catppuccin-gtk
-        catppuccin-kde
+        (pkgs.catppuccin-gtk.override {
+            accents = ["pink"];
+            variant = "latte";
+        })
+        magnetic-catppuccin-gtk
+        (pkgs.catppuccin-kde.override {
+            flavour = ["latte"];
+            accents = ["pink"];
+        })
         catppuccin-qt5ct
-        catppuccin-papirus-folders
+        (pkgs.catppuccin-papirus-folders.override {
+            flavor = "latte";
+            accent = "pink";
+        })
         kdePackages.qt6ct
         libsForQt5.qt5ct
         (pkgs.catppuccin-sddm.override {
