@@ -58,9 +58,6 @@ in {
     services.displayManager.sddm = {
         enable = true;
         theme = "catppuccin-latte";
-        extraPackages = with pkgs; [
-            catppuccin-sddm
-        ];
     };
     services.displayManager.sddm.wayland.enable = true;
     security.pam.services.sddm.enableGnomeKeyring = true;
@@ -191,6 +188,13 @@ in {
         catppuccin-papirus-folders
         kdePackages.qt6ct
         libsForQt5.qt5ct
+        (pkgs.catppuccin-sddm.override {
+            flavor = "latte";
+            font  = "Noto Sans";
+            fontSize = "12";
+            #background = "${./wallpaper.png}";
+            loginBackground = true;
+        })
     ];
     
 
