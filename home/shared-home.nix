@@ -146,6 +146,9 @@
         ldtk
         jetbrains.clion
         jetbrains.rider
+        fselect
+        mask
+        rusty-man
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
