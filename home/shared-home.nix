@@ -3496,6 +3496,7 @@ set -g status-position top
 set -g status-left "#[fg=magenta,bold,bg=#eff1f5] #S "
 set -g status-right "#[fg=magenta,bold,bg=#eff1f5] %l:%M %p"
 set -g status-style "bg=#eff1f5"
+set -g default-terminal "screen-256color"
         '';
     };
 
