@@ -149,6 +149,7 @@
         fselect
         mask
         rusty-man
+        evince
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
@@ -3616,7 +3617,7 @@ set -g default-terminal "screen-256color"
             "video/avi" = [ "mpv.desktop" ];
             "video/x-flv" = [ "mpv.desktop" ];
             "video/quicktime" = [ "mpv.desktop" ];
-            "inode/directory" = [ "pcmanfm.desktop" ];
+            "inode/directory" = [ "nemo.desktop" ];
             "x-scheme-handler/about" = [ "firefox.desktop" ];
             "x-scheme-handler/attachment" = [ "firefox.desktop" ];
             "x-scheme-handler/chrome" = [ "firefox.desktop" ];
@@ -3711,7 +3712,7 @@ set -g default-terminal "screen-256color"
             "video/avi" = [ "mpv.desktop" ];
             "video/x-flv" = [ "mpv.desktop" ];
             "video/quicktime" = [ "mpv.desktop" ];
-            "inode/directory" = [ "pcmanfm.desktop" ];
+            "inode/directory" = [ "nemo.desktop" ];
             "x-scheme-handler/about" = [ "firefox.desktop" ];
             "x-scheme-handler/attachment" = [ "firefox.desktop" ];
             "x-scheme-handler/chrome" = [ "firefox.desktop" ];
