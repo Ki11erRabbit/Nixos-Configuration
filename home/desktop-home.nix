@@ -282,6 +282,7 @@
                     "7": "DP-1",
                     "8": "DP-1",
                     "9": "DP-1",
+                    "10": "DP-1",
                 }
             },
             "sway/mode": {
@@ -340,7 +341,6 @@
             },
             "sway/workspaces": {
                 "persistent-workspaces": {
-                    "10": "DP-1",
                     "11": "DP-2",
                     "12": "DP-2",
                     "13": "DP-2",

@@ -260,7 +260,7 @@
                 "${modifier}+7" = "exec 'swaysome focus 7'";
                 "${modifier}+8" = "exec 'swaysome focus 8'";
                 "${modifier}+9" = "exec 'swaysome focus 9'";
-                "${modifier}+0" = "exec 'swaysome focus 10'";
+                "${modifier}+0" = "exec 'swaysome focus 0'";
 
                 "${modifier}+Shift+1" = "exec 'swaysome move 1'";
                 "${modifier}+Shift+2" = "exec 'swaysome move 2'";
@@ -271,7 +271,7 @@
                 "${modifier}+Shift+7" = "exec 'swaysome move 7'";
                 "${modifier}+Shift+8" = "exec 'swaysome move 8'";
                 "${modifier}+Shift+9" = "exec 'swaysome move 9'";
-                "${modifier}+Shift+0" = "exec 'swaysome move 10'";
+                "${modifier}+Shift+0" = "exec 'swaysome move 0'";
 
                 "${modifier}+Shift+comma" = "exec 'swaysome prev-output'";
                 "${modifier}+Shift+period" = "exec 'swaysome next-output'";
