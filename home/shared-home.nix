@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, channels,  ... }:
+{ lib, inputs, config, pkgs, channels,  ... }:
 
 {
     # Home Manager needs a bit of information about you and the paths it should
@@ -150,6 +150,8 @@
         mask
         rusty-man
         evince
+        i3a
+        swaysome
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
@@ -167,6 +169,174 @@
         #   echo "Hello, ${config.home.username}!"
         # '')
     ];
+    
+    wayland.windowManager.sway = {
+        enable = true;
+        package = pkgs.swayfx;
+        checkConfig = false;
+        config = rec {
+            modifier = "Mod4";
+            terminal = "alacritty";
+            startup = [
+                { command = "waybar"; }
+                { command = "fnott"; }
+                { command = "configure-monitors.sh"; }
+                { command = "setup-wallpaper.sh"; }
+                { command = "setup-swayidle.sh"; }
+                { command = "setup-keyboard.sh"; }
+                { command = "nm-applet"; }
+                { command = "blueman-applet"; }
+                { command = "kdeconnect-indicator"; }
+                { command = "swaysome init 1"; }
+            ];
+            menu = "bemenu-run";
+            colors.background = "#eff1f5";
+            colors.focused = {
+                background = "#eff1f5";
+                border = "#ea76cb";
+                childBorder = "#ea76cb";
+                indicator = "#ea76cb";
+                text = "#4c4f69";
+            };
+            colors.focusedInactive = {
+                background = "#eff1f5";
+                border = "#9ca0b0";
+                childBorder = "#9ca0b0";
+                indicator = "#9ca0b0";
+                text = "#4c4f69";
+            };
+            colors.placeholder = {
+                background = "#eff1f5";
+                border = "#9ca0b0";
+                childBorder = "#9ca0b0";
+                indicator = "#9ca0b0";
+                text = "#4c4f69";
+            };
+            colors.unfocused = {
+                background = "#eff1f5";
+                border = "#9ca0b0";
+                childBorder = "#9ca0b0";
+                indicator = "#9ca0b0";
+                text = "#4c4f69";
+            };
+            colors.urgent = {
+                background = "#eff1f5";
+                border = "#d20f39";
+                childBorder = "#d20f39";
+                indicator = "#d20f39";
+                text = "#4c4f69";
+            };
+            bars = [];
+            left = "m";
+            down = "n";
+            up = "e";
+            right = "i";
+            focus.followMouse = "yes";
+            gaps = {
+                inner = 10;
+                outer = 10;
+            };
+            window = {
+                border = 2;
+            };
+            keybindings = {
+                "${modifier}+Return" = "exec ${terminal}";
+                "${modifier}+d" = "exec ${menu}";
+                "${modifier}+r" = "exec nemo";
+                "${modifier}+s" = "exec grimshot save area";
+                "${modifier}+Shift+s" = "exec grimshot copy area";
+                "${modifier}+Shift+Return" = "exec emacsclient -c -a 'emacs'";
+
+                "${modifier}+q" = "kill";
+                "${modifier}+Shift+q" = "exec swaymsg exit";
+                "${modifier}+Shift+r" = "reload";
+
+                "${modifier}+1" = "exec 'swaysome focus 1'";
+                "${modifier}+2" = "exec 'swaysome focus 2'";
+                "${modifier}+3" = "exec 'swaysome focus 3'";
+                "${modifier}+4" = "exec 'swaysome focus 4'";
+                "${modifier}+5" = "exec 'swaysome focus 5'";
+                "${modifier}+6" = "exec 'swaysome focus 6'";
+                "${modifier}+7" = "exec 'swaysome focus 7'";
+                "${modifier}+8" = "exec 'swaysome focus 8'";
+                "${modifier}+9" = "exec 'swaysome focus 9'";
+                "${modifier}+0" = "exec 'swaysome focus 10'";
+
+                "${modifier}+Shift+1" = "exec 'swaysome move 1'";
+                "${modifier}+Shift+2" = "exec 'swaysome move 2'";
+                "${modifier}+Shift+3" = "exec 'swaysome move 3'";
+                "${modifier}+Shift+4" = "exec 'swaysome move 4'";
+                "${modifier}+Shift+5" = "exec 'swaysome move 5'";
+                "${modifier}+Shift+6" = "exec 'swaysome move 6'";
+                "${modifier}+Shift+7" = "exec 'swaysome move 7'";
+                "${modifier}+Shift+8" = "exec 'swaysome move 8'";
+                "${modifier}+Shift+9" = "exec 'swaysome move 9'";
+                "${modifier}+Shift+0" = "exec 'swaysome move 10'";
+
+                "${modifier}+Shift+comma" = "exec 'swaysome prev-output'";
+                "${modifier}+Shift+period" = "exec 'swaysome next-output'";
+
+                "${modifier}+${left}" = "focus left";
+                "${modifier}+${down}" = "focus down";
+                "${modifier}+${up}" = "focus up";
+                "${modifier}+${right}" = "focus right";
+                
+                "${modifier}+Shift+${left}" = "move left";
+                "${modifier}+Shift+${down}" = "move down";
+                "${modifier}+Shift+${up}" = "move up";
+                "${modifier}+Shift+${right}" = "move right";
+
+                "${modifier}+Ctrl+${left}" = "resize set width -10pt";
+                "${modifier}+Ctrl+${down}" = "resize set width 10pt";
+                "${modifier}+Ctrl+${up}" = "resize set height 10pt";
+                "${modifier}+Ctrl+${right}" = "resize set height -10pt";
+
+                "${modifier}+v" = "splitv";
+                "${modifier}+h" = "splith";
+
+                "${modifier}+f" = "fullscreen toggle";
+                
+                "${modifier}+a" = "layout stacking";
+                "${modifier}+t" = "layout tabbed";
+                "${modifier}+p" = "layout toggle split";
+
+                "${modifier}+Shift+space" = "floating toggle";
+                "${modifier}+space" = "focus mode_toggle";
+
+                "${modifier}+Shift+minus" = "move scratchpad";
+                "${modifier}+minus" = "scratchpad show";
+
+                "XF86AudioRaiseVolume" = "exec 'pamixer -i 3'";
+                "XF86AudioLowerVolume" = "exec 'pamixer -d 3'";
+                "XF86AudioMute" = "exec 'pamixer --toggle-mute'";
+            };
+        };
+        extraConfig = ''
+        corner_radius 10
+        shadows enable
+        shadow_blur_radius 50
+        '';
+
+    };
+    /*
+    systemd.user.services.i3a-master-stack = {
+        Unit = {
+            Description = "i3a-master-stack";
+        };
+        Service = {
+            Executable = "${pkgs.i3a}/bin/i3a-master-stack";
+            Restart = "on-failure";
+        };
+    };*/
+    systemd.user.services.i3a-swallow = {
+        Unit = {
+            Description = "i3a-swallow";
+        };
+        Service = {
+            ExecStart = "${pkgs.i3a}/bin/i3a-swallow";
+            Restart = "on-failure";
+        };
+    };
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
@@ -1080,35 +1250,35 @@
                  padding-right: 2px;
              }
 
-            #tags button {
+            #tags button, #workspaces button {
                color: #4c4f77;
                 padding-left: 4px;
                 padding-right: 4px;
             }
 
-            #tags button:hover {
+            #tags button:hover, #workspaces button:hover {
                 color: #4c4f69;
                 background-color: #7287fd;
             }
 
-            #tags button.occupied {
+            #tags button.occupied, #workspaces button.visible {
                   color: #4c4f69;
                   background-color: #dce0e8;
             }
 
 
-            #tags button.focused {
+            #tags button.focused, #workspaces button.focused {
                   color: #4c4f69;
                   background-color: #ea76cb;
             }
 
-            #tags button.occupied:hover {
+            #tags button.occupied:hover, #workspaces button.visible:hover {
                   color: #4c4f69;
                   background-color: #7287fd;
             }
 
 
-            #tags button.focused:hover {
+            #tags button.focused:hover, #workspaces button.focused:hover {
                   color: #4c4f69;
                   background-color: #7287fd;
             }
@@ -3309,6 +3479,76 @@
         ".config/btop/config".text = ''
         --theme="Catppuccin Latte"
         '';
+
+        /*".config/sway/catppuccin_latte".text = ''
+set $rosewater #dc8a78
+set $flamingo #dd7878
+set $pink #ea76cb
+set $mauve #8839ef
+set $red #d20f39
+set $maroon #e64553
+set $peach #fe640b
+set $yellow #df8e1d
+set $green #40a02b
+set $teal #179299
+set $sky #04a5e5
+set $sapphire #209fb5
+set $blue #1e66f5
+set $lavender #7287fd
+set $text #4c4f69
+set $subtext1 #5c5f77
+set $subtext0 #6c6f85
+set $overlay2 #7c7f93
+set $overlay1 #8c8fa1
+set $overlay0 #9ca0b0
+set $surface2 #acb0be
+set $surface1 #bcc0cc
+set $surface0 #ccd0da
+set $base #eff1f5
+set $mantle #e6e9ef
+set $crust #dce0e8
+        '';
+        ".config/sway/config".text = ''
+            include catppuccin_latte
+            
+            # target                 title     bg    text   indicator  border
+            client.focused           $pink     $base $text  $pink      $lavender
+            client.focused_inactive  $overlay0 $base $text  $pink      $overlay0
+            client.unfocused         $overlay0 $base $text  $pink      $overlay0
+            client.urgent            $red      $base $red   $overlay0  $red
+            client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+            client.background        $base
+
+            exec waybar
+            exec fnott
+            exec configure-monitors.sh
+            exec setup-wallpaper.sh
+            exec setup-swayidle.sh
+            exec setup-keyboard.sh
+            exec nm-applet
+            exec blueman-applet
+            exec kdeconnect-indicator
+            
+            set $mod Mod4
+            set $term alacritty
+            set $menu bemenu-run
+
+            set $left m
+            set $down n
+            set $up e
+            set $right i
+
+            bindsym $mod+Return exec $term
+            bindsym $mod+d exec $menu
+            bindsym $mod+r exec nano
+            bindsym $mod+s exec grimshot save area
+            bindsym $mod+Shift+s exec grimshot copy area
+            bindsym $mod+Shift+Return exec 'emacsclient -c -a "emacs"'
+
+            bindsym $mod+q kill
+            bindsym $mod+Shift+q exec swaymsg exit
+
+        '';*/
     };
 
 
@@ -3467,7 +3707,7 @@ unbind r
 bind r source-file ~/.tmux.conf
 
 # For use in kakoune
-set -g prefix C-w
+set -g prefix M-m
 
 bind v split-window -h
 bind s split-window -v

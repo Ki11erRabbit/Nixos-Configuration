@@ -81,6 +81,18 @@ in {
     ];
     services.desktopManager.plasma6.enable = true;
     services.xserver.desktopManager.cinnamon.enable = true;
+    programs.sway = {
+        enable = true;
+        package = pkgs.swayfx;
+        wrapperFeatures = {
+            gtk = true;
+            base = true;
+        };
+        xwayland.enable = true;
+        extraPackages = with pkgs; [
+        ];
+
+    };
 
     # Enable networking
     networking.networkmanager.enable = true;
