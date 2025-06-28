@@ -152,6 +152,7 @@
         evince
         swaysome
         i3-swallow
+        editorconfig-core-c
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
@@ -3459,6 +3460,25 @@
 
         ".config/btop/config".text = ''
         --theme="Catppuccin Latte"
+        '';
+        
+        ".editorconfig".text = ''
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+
+[*.yml]
+indent_size = 2
+
+[Makefile]
+indent_style = tab
+
+[makefile]
+indent_style = tab
         '';
     };
 
