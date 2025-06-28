@@ -2,7 +2,7 @@
 
 {
 
-    wayland.windowManager.sway = {
+    /*wayland.windowManager.sway = {
         config.workspaceOutputAssign = [
             { workspace = "1"; output = "eDP-1"; }
             { workspace = "2"; output = "eDP-1"; }
@@ -15,7 +15,7 @@
             { workspace = "9"; output = "eDP-1"; }
             { workspace = "10"; output = "eDP-1"; }
         ];
-    };
+    };*/
 
     home.file = {
         ".local/bin/configure-monitors.sh" = {
@@ -143,16 +143,16 @@
                 },
                 "sway/workspaces": {
                     "persistent-workspaces": {
-                        "1": "eDP-1",
-                        "2": "eDP-1",
-                        "3": "eDP-1",
-                        "4": "eDP-1",
-                        "5": "eDP-1",
-                        "6": "eDP-1",
-                        "7": "eDP-1",
-                        "8": "eDP-1",
-                        "9": "eDP-1",
-                        "10": "eDP-1",
+                        "11": "eDP-1",
+                        "12": "eDP-1",
+                        "13": "eDP-1",
+                        "14": "eDP-1",
+                        "15": "eDP-1",
+                        "16": "eDP-1",
+                        "17": "eDP-1",
+                        "18": "eDP-1",
+                        "19": "eDP-1",
+                        "20": "eDP-1",
                     }
                 },
                 "sway/mode": {
