@@ -1237,6 +1237,13 @@
                 padding-left: 4px;
                 padding-right: 4px;
             }
+            
+            #workspaces button.empty, #workspaces button.visible {
+                 color: #4c4f77;
+                 padding-left: 4px;
+                 padding-right: 4px;
+                 background-color: #eff1f5;
+            }
 
             #tags button:hover, #workspaces button:hover {
                 color: #4c4f69;
