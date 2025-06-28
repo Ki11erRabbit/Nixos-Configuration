@@ -3490,9 +3490,9 @@
             mv = "mv -iv";
             rm = "trash -v";
             grep = "grep --color=auto";
-            emacs = "swallow emacsclient -c -a \"emacs\"";
-            nvim = "swallow neovide";
-            mpv = "swallow mpv";
+            emacs = "swallow emacsclient -c -a \"emacs\" || emacsclient -c -a \"emacs\"";
+            nvim = "swallow neovide || nvim";
+            mpv = "swallow mpv || mpv";
         };
         localVariables = {
             PROMPT = "❬%F{13}%n%f❭ %f%F{13}図書館に%f %F{12}%d\n%f ";

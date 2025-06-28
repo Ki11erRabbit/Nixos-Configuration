@@ -1,6 +1,22 @@
 { config, pkgs, ... }:
 
 {
+
+    wayland.windowManager.sway = {
+        config.workspaceOutputAssign = [
+            { workspace = "1"; output = "eDP-1"; }
+            { workspace = "2"; output = "eDP-1"; }
+            { workspace = "3"; output = "eDP-1"; }
+            { workspace = "4"; output = "eDP-1"; }
+            { workspace = "5"; output = "eDP-1"; }
+            { workspace = "6"; output = "eDP-1"; }
+            { workspace = "7"; output = "eDP-1"; }
+            { workspace = "8"; output = "eDP-1"; }
+            { workspace = "9"; output = "eDP-1"; }
+            { workspace = "10"; output = "eDP-1"; }
+        ];
+    };
+
     home.file = {
         ".local/bin/configure-monitors.sh" = {
             executable = true;
@@ -28,7 +44,7 @@
             swayidle -w \
                 timeout 900 'wlopm --off eDP-1' \
                     resume 'wlopm --on eDP-1' \
-                timeout 1000 '/home/ki11errabbit/.local/bin/lockscreen.sh' \
+                timeout 1800 '/home/ki11errabbit/.local/bin/lockscreen.sh' \
                     resume 'wlopm --on eDP-1' \
                 before-sleep '/home/ki11errabbit/.local/bin/lockscreen.sh' &
             '';
@@ -103,7 +119,8 @@
         '';
         ".config/waybar/config".text = ''
              [ {
-                   "modules-left": ["dwl/tags", "dwl/window", "river/tags", "river/mode", "river/window"],
+                   // "modules-left": ["dwl/tags", "dwl/window", "river/tags", "river/mode", "river/window"],
+                    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
                    "output": "eDP-1",
                    // The empty 'DP-1' argument used in the following "exec": fields works for single-monitor setups
                    // For multi-monitor setups, see https://github.com/Alexays/Waybar/wiki/Configuration
@@ -123,6 +140,23 @@
                 },
                 "river/window": {
                     "format": "{}",
+                },
+                "sway/workspaces": {
+                    "persistent-workspaces": {
+                        "1": "eDP-1",
+                        "2": "eDP-1",
+                        "3": "eDP-1",
+                        "4": "eDP-1",
+                        "5": "eDP-1",
+                        "6": "eDP-1",
+                        "7": "eDP-1",
+                        "8": "eDP-1",
+                        "9": "eDP-1",
+                        "10": "eDP-1",
+                    }
+                },
+                "sway/mode": {
+                    "format": "{mode}"
                 },
                 "tray": {
                         "icon-size": 21,
