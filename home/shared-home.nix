@@ -150,8 +150,8 @@
         mask
         rusty-man
         evince
-        i3a
         swaysome
+        i3-swallow
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
@@ -317,25 +317,6 @@
         shadow_blur_radius 50
         '';
 
-    };
-    /*
-    systemd.user.services.i3a-master-stack = {
-        Unit = {
-            Description = "i3a-master-stack";
-        };
-        Service = {
-            Executable = "${pkgs.i3a}/bin/i3a-master-stack";
-            Restart = "on-failure";
-        };
-    };*/
-    systemd.user.services.i3a-swallow = {
-        Unit = {
-            Description = "i3a-swallow";
-        };
-        Service = {
-            ExecStart = "${pkgs.i3a}/bin/i3a-swallow";
-            Restart = "on-failure";
-        };
     };
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -3479,76 +3460,6 @@
         ".config/btop/config".text = ''
         --theme="Catppuccin Latte"
         '';
-
-        /*".config/sway/catppuccin_latte".text = ''
-set $rosewater #dc8a78
-set $flamingo #dd7878
-set $pink #ea76cb
-set $mauve #8839ef
-set $red #d20f39
-set $maroon #e64553
-set $peach #fe640b
-set $yellow #df8e1d
-set $green #40a02b
-set $teal #179299
-set $sky #04a5e5
-set $sapphire #209fb5
-set $blue #1e66f5
-set $lavender #7287fd
-set $text #4c4f69
-set $subtext1 #5c5f77
-set $subtext0 #6c6f85
-set $overlay2 #7c7f93
-set $overlay1 #8c8fa1
-set $overlay0 #9ca0b0
-set $surface2 #acb0be
-set $surface1 #bcc0cc
-set $surface0 #ccd0da
-set $base #eff1f5
-set $mantle #e6e9ef
-set $crust #dce0e8
-        '';
-        ".config/sway/config".text = ''
-            include catppuccin_latte
-            
-            # target                 title     bg    text   indicator  border
-            client.focused           $pink     $base $text  $pink      $lavender
-            client.focused_inactive  $overlay0 $base $text  $pink      $overlay0
-            client.unfocused         $overlay0 $base $text  $pink      $overlay0
-            client.urgent            $red      $base $red   $overlay0  $red
-            client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-            client.background        $base
-
-            exec waybar
-            exec fnott
-            exec configure-monitors.sh
-            exec setup-wallpaper.sh
-            exec setup-swayidle.sh
-            exec setup-keyboard.sh
-            exec nm-applet
-            exec blueman-applet
-            exec kdeconnect-indicator
-            
-            set $mod Mod4
-            set $term alacritty
-            set $menu bemenu-run
-
-            set $left m
-            set $down n
-            set $up e
-            set $right i
-
-            bindsym $mod+Return exec $term
-            bindsym $mod+d exec $menu
-            bindsym $mod+r exec nano
-            bindsym $mod+s exec grimshot save area
-            bindsym $mod+Shift+s exec grimshot copy area
-            bindsym $mod+Shift+Return exec 'emacsclient -c -a "emacs"'
-
-            bindsym $mod+q kill
-            bindsym $mod+Shift+q exec swaymsg exit
-
-        '';*/
     };
 
 
@@ -3579,6 +3490,9 @@ set $crust #dce0e8
             mv = "mv -iv";
             rm = "trash -v";
             grep = "grep --color=auto";
+            emacs = "swallow emacsclient -c -a \"emacs\"";
+            nvim = "swallow neovide";
+            mpv = "swallow mpv";
         };
         localVariables = {
             PROMPT = "❬%F{13}%n%f❭ %f%F{13}図書館に%f %F{12}%d\n%f ";
