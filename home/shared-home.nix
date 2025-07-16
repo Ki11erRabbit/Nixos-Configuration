@@ -153,6 +153,8 @@
         swaysome
         i3-swallow
         editorconfig-core-c
+        imagemagick
+        bc
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
