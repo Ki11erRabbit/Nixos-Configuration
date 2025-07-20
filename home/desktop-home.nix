@@ -256,7 +256,8 @@
 [ 
       {
                //"modules-left": ["dwl/tags", "dwl/window", "river/tags", "river/mode", "river/window"],
-            "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+            //"modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+            "modules-left": ["dwl/tags", "dwl/window"],
             "output": ["DP-1"],
                // The empty 'DP-2' argument used in the following "exec": fields works for single-monitor setups
                // For multi-monitor setups, see https://github.com/Alexays/Waybar/wiki/Configuration
@@ -324,7 +325,8 @@
 
       {
                //"modules-left": ["dwl/tags", "dwl/window", "river/tags", "river/mode", "river/window"],
-            "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+            //"modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+            "modules-left": ["dwl/tags", "dwl/window"],
             "output": ["DP-2"],
                // The empty 'DP-2' argument used in the following "exec": fields works for single-monitor setups
                // For multi-monitor setups, see https://github.com/Alexays/Waybar/wiki/Configuration
@@ -391,7 +393,8 @@
       },
       {
                //"modules-left": ["dwl/tags", "dwl/window", "river/tags", "river/mode", "river/window"],
-            "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+            //"modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+            "modules-left": ["dwl/tags", "dwl/window"],
             "output": ["HDMI-A-1"],
                // The empty 'DP-2' argument used in the following "exec": fields works for single-monitor setups
                // For multi-monitor setups, see https://github.com/Alexays/Waybar/wiki/Configuration

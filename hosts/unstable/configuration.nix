@@ -1,11 +1,11 @@
-{ config, pkgs, unstable, ... }:
+{ config, unstable, ... }:
 
 {
     programs.maomaowm = {
         enable = true;
     }; 
     
-    environment.systemPackages = with pkgs; [
+    environment.systemPackages = with unstable; [
     ];
 
 }

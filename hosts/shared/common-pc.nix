@@ -94,10 +94,6 @@ in {
 
     };
 
-    programs.maomaowm = {
-        enable = true;
-    };
-
     # Enable networking
     networking.networkmanager.enable = true;
 

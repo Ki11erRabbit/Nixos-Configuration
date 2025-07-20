@@ -22,16 +22,12 @@
             # to have it up to date or simply don't specify the nixpkgs input  
             #inputs.nixpkgs.follows = "nixpkgs";
         };
-        quickshell = {
-            # remove ?ref=v0.1.0 to track the master branch
-            url = "github:quickshell-mirror/quickshell?ref=v0.1.0";
-
-            # THIS IS IMPORTANT
-            # Mismatched system dependencies will lead to crashes and other issues.
+        maomaowm = {
+            url = "github:DreamMaoMao/maomaowm";
             inputs.nixpkgs.follows = "unstable-pkgs";
         };
     };
-    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, zen-browser, quickshell,... }: 
+    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, zen-browser, maomaowm, ... }: 
     let 
         system = "x86_64-linux";
         pkgs = import nixpkgs { 
@@ -62,26 +58,6 @@
         };
         unstable = import unstable-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
         oldpkgs = import old-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
-        quickshellPkgs = import quickshell { 
-            pkgs = unstable-pkgs; 
-            lib = unstable-pkgs.lib; 
-            xorg = unstable-pkgs.xorg; 
-            keepDebugInfo = true;
-            breakpad = unstable-pkgs.breakpad;
-            cmake = unstable-pkgs.cmake;
-            ninja = unstable-pkgs.ninja;
-            spirv-tools = unstable-pkgs.spirv-tools;
-            qt6 = unstable-pkgs.qt6;
-            jemalloc = unstable-pkgs.jemalloc;
-            cli11 = unstable-pkgs.cli11;
-            wayland = unstable-pkgs.wayland;
-            wayland-protocols = unstable-pkgs.wayland-protocols;
-            libdrm = unstable-pkgs.libdrm;
-            libgbm = unstable-pkgs.libgbm;
-            pipewire = unstable-pkgs.pipewire;
-            pam = unstable-pkgs.pam;
-            nix-gitignore = unstable-pkgs.nix-gitignore;
-        };
     in {
         packages = import ./pkgs nixpkgs.legacyPackages.${system};
         overlays = import ./overlays {inherit inputs;};
@@ -89,12 +65,14 @@
         nixosConfigurations = {
             primary-desktop = nixpkgs.lib.nixosSystem {
                 specialArgs = {
-                    inherit pkgs;
+                    inherit pkgs unstable;
                 };
                 system = "x86_64-linux";
                 modules = [
+                    maomaowm.nixosModules.maomaowm
                     ./hosts/shared/common-pc.nix
                     ./hosts/desktop/configuration.nix
+                    ./hosts/unstable/configuration.nix
                     ./hardware/primary-desktop.nix
                     home-manager.nixosModules.home-manager {
                         home-manager.useGlobalPkgs = true;
@@ -216,8 +194,9 @@
         homeConfigurations = {
             "desktop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs quickshellPkgs inputs; };
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
                 modules = [
+                    maomaowm.hmModules.maomaowm
                     ./home/shared-home.nix
                     ./home/desktop-home.nix
                     ./home/unstable-home.nix
