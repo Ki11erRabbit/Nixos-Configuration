@@ -39,7 +39,6 @@
         swayidle
         keepassxc
         eza
-        slack
         slurp
         obs-studio
         libreoffice
@@ -69,7 +68,6 @@
         racket
         luajit
         wl-color-picker
-        google-chrome
         yarn
         nodejs
         fzf
@@ -78,7 +76,6 @@
         dash
         swayimg
         kdePackages.okular
-        squeak
         mpv
         transmission-remote-gtk
         pharo
@@ -135,14 +132,12 @@
         python312Packages.debugpy
         gdb
         tmux
-        tutanota-desktop
         typescript
         bitwarden
         jetbrains.rust-rover
         imv
         cargo-generate
         pcmanfm
-        ldtk
         jetbrains.clion
         jetbrains.rider
         fselect
