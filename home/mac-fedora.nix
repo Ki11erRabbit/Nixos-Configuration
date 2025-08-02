@@ -55,7 +55,14 @@
             #!/bin/sh
 
 
-            #swaylock -ef -i "eDP-1:/home/ki11errabbit/Pictures/Wallpapers/2588341_tistan01_thinkpad-wallpaper-2.png"
+            swaylock -ef -i "eDP-1:/home/ki11errabbit/Pictures/Wallpapers/asahi_logomark_white.png
+            '';
+        };
+        ".local/bin/setup-wallpaper.sh" = {
+            executable = true;
+            text = ''
+            #!/bin/sh
+            swaybg -i /home/ki11errabbit/Pictures/Wallpapers/asahi_logomark_white.png &
             '';
         };
         ".config/fnott/fnott.ini".text = ''
@@ -163,12 +170,7 @@
                         "spacing": 5
                     },
                 "battery": {
-                    "bat": "BAT1",
-                        "format": "external: {icon}  {capacity}",
-                        "format-icons": ["", "", "", "", ""]
-                    },
-                "battery": {
-                    "bat": "BAT0",
+                    "bat": "macsmc-battery",
                         "format": "internal: {icon}  {capacity}",
                         "format-icons": ["", "", "", "", ""]
                     },
@@ -201,94 +203,6 @@
                     "exec": "uname -r",
                 },
                  },
-
-              {
-                   "modules-left": ["river/tags", "river/mode", "river/window"],
-                   "output": "DP-2",
-                   // The empty 'DP-2' argument used in the following "exec": fields works for single-monitor setups
-                   // For multi-monitor setups, see https://github.com/Alexays/Waybar/wiki/Configuration
-                   //     and enter the monitor id (like "eDP-1") as the first argument to waybar-dwl.sh
-                   "modules-right": ["tray", "custom/kernel", "custom/pipewire","clock"],
-                "river/tags": {
-                    "num-tags": 9,
-                },
-                "tray": {
-                        "icon-size": 21,
-                        "spacing": 5
-                    },
-                "clock": {
-                    "interval": 1,
-                    "format": "{:%I:%M%p %b %d, %Y}",
-                  },
-                "custom/pipewire": {
-                    "tooltip": false,
-                    "max-length": 12,
-                    "signal": 8,
-                    "restart-interval": 0,
-                    "exec": "$HOME/.config/waybar/scripts/pipewire.sh",
-                    "on-click": "pavucontrol &"
-                },
-                "custom/weather": {
-                    "format": "{}",
-                    "tooltip": false,
-                    "max-length": 6,
-                    "signal": 9,
-                    "interval":3600,
-                    "exec": "$HOME/.config/waybar/scripts/weather.sh 0",
-                    "on-click": "$HOME/.config/waybar/scripts/weather.sh 1"
-                },
-                "custom/kernel": {
-                    "format": "{icon} {}",
-                    "format-icons": "🐧",
-                    "tooltip": false,
-                    "interval":"once",
-                    "exec": "uname -r",
-                },
-                 },
-              {
-                   "modules-left": ["river/tags", "river/mode", "river/window"],
-                   "output": "HDMI-A-1",
-                   // The empty 'HDMI-A-1' argument used in the following "exec": fields works for single-monitor setups
-                   // For multi-monitor setups, see https://github.com/Alexays/Waybar/wiki/Configuration
-                   //     and enter the monitor id (like "eHDMI-A-1") as the first argument to waybar-dwl.sh
-                   "modules-right": ["custom/kernel", "custom/pipewire","clock"],
-                "river/tags": {
-                    "num-tags": 9,
-                },
-                "tray": {
-                        "icon-size": 21,
-                        "spacing": 5
-                    },
-                "clock": {
-                    "interval": 1,
-                    "format": "{:%I:%M%p %b %d, %Y}",
-                  },
-                "custom/pipewire": {
-                    "tooltip": false,
-                    "max-length": 12,
-                    "signal": 8,
-                    "restart-interval": 0,
-                    "exec": "$HOME/.config/waybar/scripts/pipewire.sh",
-                    "on-click": "pavucontrol &"
-                },
-                "custom/weather": {
-                    "format": "{}",
-                    "tooltip": false,
-                    "max-length": 6,
-                    "signal": 9,
-                    "interval":3600,
-                    "exec": "$HOME/.config/waybar/scripts/weather.sh 0",
-                    "on-click": "$HOME/.config/waybar/scripts/weather.sh 1"
-                },
-                "custom/kernel": {
-                    "format": "{icon} {}",
-                    "format-icons": "🐧",
-                    "tooltip": false,
-                    "interval":"once",
-                    "exec": "uname -r",
-                },
-                 }
-
                  ]
         '';
     };

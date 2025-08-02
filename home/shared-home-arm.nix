@@ -21,6 +21,7 @@
     home.packages = with pkgs; [
         inputs.zen-browser.packages."${system}".default
         firefox
+        vesktop
         thunderbird
         font-manager
         kdePackages.dolphin
@@ -149,6 +150,8 @@
         editorconfig-core-c
         imagemagick
         bc
+        foot
+        nemo
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
@@ -173,7 +176,7 @@
         checkConfig = false;
         config = rec {
             modifier = "Mod4";
-            terminal = "alacritty";
+            terminal = "foot";
             startup = [
                 { command = "waybar"; }
                 { command = "fnott"; }
@@ -309,9 +312,6 @@
             };
         };
         extraConfig = ''
-        corner_radius 10
-        shadows enable
-        shadow_blur_radius 50
         '';
 
     };
@@ -325,6 +325,11 @@ gappoh=5
 appov=10
 borderpx=2
 
+xkb_rules_layout=us
+xkb_rules_variant=colemak_dh
+
+tap_to_click=0
+
 rootcolor=0xeff1f5ff
 bordercolor=0x9ca0b0ff
 focuscolor=0xea76cbff
@@ -334,10 +339,11 @@ globalcolor=0x9ca0b0ff
 coverlayercolor=0x9ca0b0ff
 
 windowrule=isterm:1,appid:Alacritty
+windowrule=isterm:1,appid:Foot
+windowrule=isterm:1,appid:foot
+windowrule=isterm:1,appid:FootClient
 
-monitorrule=DP-1,0.55,1,tile,0,1,0,0
-monitorrule=DP-2,0.5,1,tile,0,1,0,0
-monitorrule=HDMI-A-1,0.5,1,vertical_tile,0,1,0,0
+monitorrule=eDP-1,0.55,1,tile,0,1.5,1,0,3456,2160,0
 
 exec-once=waybar
 exec-once=fnott
@@ -348,10 +354,9 @@ exec-once=setup-keyboard.sh
 exec-once=nm-applet
 exec-once=blueman-applet
 exec-once=kdeconnect-indicator
-exec-once=swaysome init 1
 
 bind=SUPER,q,killclient
-bind=SUPER,Return,spawn,alacritty
+bind=SUPER,Return,spawn,foot
 bind=SUPER,d,spawn,bemenu-run
 bind=SUPER,r,spawn,nemo
 bind=SUPER,s,spawn,grimshot save area
@@ -411,6 +416,7 @@ bind=SUPER+ALT,c,setlayout,vertical_scroller
 
 bind=NONE,code:123,spawn,pamixer -i 3
 bind=NONE,code:122,spawn,pamixer -d 3
+bind=NONE,code:121,spawn,pamixer --toggle-mute
 
 mousebind=SUPER,btn_left,moveresize,curmove
 mousebind=SUPER,btn_right,moveresize,curresize
@@ -425,6 +431,48 @@ env=XDG_CURRENT_DESKTOP,sway
         '';
         autostart_sh = ''
         '';
+    };
+
+    programs.foot = {
+        enable = true;
+        #enableZshIntegration = true;
+        settings = {
+            colors = {
+                cursor="eff1f5 dc8a78";
+                foreground="4c4f69";
+                background="eff1f5";
+
+                regular0="5c5f77";
+                regular1="d20f39";
+                regular2="40a02b";
+                regular3="df8e1d";
+                regular4="1e66f5";
+                regular5="ea76cb";
+                regular6="179299";
+                regular7="acb0be";
+
+                bright0="6c6f85";
+                bright1="d20f39";
+                bright2="40a02b";
+                bright3="df8e1d";
+                bright4="1e66f5";
+                bright5="ea76cb";
+                bright6="179299";
+                bright7="bcc0cc";
+
+                "16"="fe640b";
+                "17"="dc8a78";
+
+                selection-foreground="4c4f69";
+                selection-background="ccced7";
+
+                search-box-no-match="dce0e8 d20f39";
+                search-box-match="4c4f69 ccd0da";
+
+                jump-labels="dce0e8 fe640b";
+                urls="1e66f5";
+            };
+        };
     };
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -3672,6 +3720,9 @@ indent_style = tab
         unset __conda_setup
         # <<< conda initialize <<<
         eval "$(zoxide init zsh)"
+        if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then
+          . ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+        fi
         '';
 
     };
