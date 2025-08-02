@@ -94,7 +94,7 @@
         "type": "github"
       }
     },
-    "maomaowm": {
+    "mango": {
       "inputs": {
         "flake-parts": "flake-parts",
         "mmsg": "mmsg",
@@ -104,16 +104,16 @@
         "scenefx": "scenefx"
       },
       "locked": {
-        "lastModified": 1752815525,
-        "narHash": "sha256-75LIesfaAp1zQrCHzuuHRliFASFd1i/qgxCIWc6I9oI=",
+        "lastModified": 1754146941,
+        "narHash": "sha256-RYBsHSaty3J4zUSeDQIsE4x0OxTodI1/sNO6h3o+rQs=",
         "owner": "DreamMaoMao",
-        "repo": "maomaowm",
-        "rev": "f8403ea7ff6a61ee5589206e94f70ea60a1e2548",
+        "repo": "mango",
+        "rev": "3bf524929b22bbe77d224439ece7bdabe82f8067",
         "type": "github"
       },
       "original": {
         "owner": "DreamMaoMao",
-        "repo": "maomaowm",
+        "repo": "mango",
         "type": "github"
       }
     },
@@ -121,7 +121,7 @@
       "inputs": {
         "flake-parts": "flake-parts_2",
         "nixpkgs": [
-          "maomaowm",
+          "mango",
           "nixpkgs"
         ]
       },
@@ -259,7 +259,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "maomaowm": "maomaowm",
+        "mango": "mango",
         "nixos-cosmic": "nixos-cosmic",
         "nixpkgs": "nixpkgs",
         "old-pkgs": "old-pkgs",
@@ -291,7 +291,7 @@
     "scenefx": {
       "inputs": {
         "nixpkgs": [
-          "maomaowm",
+          "mango",
           "nixpkgs"
         ]
       },

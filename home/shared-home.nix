@@ -322,7 +322,7 @@
 
     };
 
-    wayland.windowManager.maomaowm = {
+    wayland.windowManager.mango = {
         enable = true;
         settings = ''
 shadows=1
@@ -330,6 +330,9 @@ layer_shadows=1
 gappoh=5
 appov=10
 borderpx=2
+
+xkb_rules_layout=us
+xkb_rules_variant=colemak-dh
 
 rootcolor=0xeff1f5ff
 bordercolor=0x9ca0b0ff

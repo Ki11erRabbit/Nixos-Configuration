@@ -22,12 +22,12 @@
             # to have it up to date or simply don't specify the nixpkgs input  
             #inputs.nixpkgs.follows = "nixpkgs";
         };
-        maomaowm = {
-            url = "github:DreamMaoMao/maomaowm";
+        mango = {
+            url = "github:DreamMaoMao/mango";
             inputs.nixpkgs.follows = "unstable-pkgs";
         };
     };
-    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, zen-browser, maomaowm, ... }: 
+    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, zen-browser, mango, ... }: 
     let 
         system = "x86_64-linux";
         system_arm = "aarch64-linux";
@@ -98,7 +98,7 @@
                 };
                 system = "x86_64-linux";
                 modules = [
-                    maomaowm.nixosModules.maomaowm
+                    mango.nixosModules.mango
                     ./hosts/shared/common-pc.nix
                     ./hosts/desktop/configuration.nix
                     ./hosts/unstable/configuration.nix
@@ -225,7 +225,7 @@
                 inherit pkgs;
                 extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
                 modules = [
-                    maomaowm.hmModules.maomaowm
+                    mango.hmModules.mango
                     ./home/shared-home.nix
                     ./home/desktop-home.nix
                     ./home/unstable-home.nix
@@ -261,10 +261,11 @@
                 };
                 extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
                 modules = [
-                    maomaowm.hmModules.maomaowm
+                    mango.hmModules.mango
                     ./home/shared-home-arm.nix
                     ./home/unstable-home.nix
                     ./home/old-home.nix
+                    ./home/mac-fedora.nix
                 ];
             };
             "servernas" = home-manager.lib.homeManagerConfiguration {

@@ -316,7 +316,7 @@
 
     };
 
-    wayland.windowManager.maomaowm = {
+    wayland.windowManager.mango = {
         enable = true;
         settings = ''
 shadows=1
