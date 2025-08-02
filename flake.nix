@@ -30,6 +30,33 @@
     outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, zen-browser, maomaowm, ... }: 
     let 
         system = "x86_64-linux";
+        system_arm = "aarch64-linux";
+        pkgs_arm = import nixpkgs { 
+            system = "${system_arm}"; 
+            config = { allowUnfree = true; nvidia.acceptLicense = true; }; 
+            overlays = [
+                (final: prev: {
+                    # example = prev.example.overrideAttrs (oldAttrs: rec {
+                    # ...
+                    # });
+                    catppuccin-qt5ct = prev.catppuccin-qt5ct.overrideAttrs (oldAttrs: rec {
+                        version = "2025-06-14";
+                        src = prev.fetchFromGitHub {
+                            owner = "catppuccin";
+                            repo = "qt5ct";
+                            rev = "cb585307edebccf74b8ae8f66ea14f21e6666535";
+                            hash = "sha256-wDj6kQ2LQyMuEvTQP6NifYFdsDLT+fMCe3Fxr8S783w=";
+                        };
+                        installPhase = ''
+                            runHook preInstall
+                            mkdir -p $out/share/qt6ct
+                            cp -r themes $out/share/qt6ct/colors
+                            runHook postInstall
+                        '';
+                    });
+                })
+            ];
+        };
         pkgs = import nixpkgs { 
             system = "${system}"; 
             config = { allowUnfree = true; nvidia.acceptLicense = true; }; 
@@ -58,6 +85,8 @@
         };
         unstable = import unstable-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
         oldpkgs = import old-pkgs { system = "${system}"; config = { allowUnfree = true; }; };
+        unstable_arm = import unstable-pkgs { system = "${system_arm}"; config = { allowUnfree = true; }; };
+        oldpkgs_arm = import old-pkgs { system = "${system_arm}"; config = { allowUnfree = true; }; };
     in {
         packages = import ./pkgs nixpkgs.legacyPackages.${system};
         overlays = import ./overlays {inherit inputs;};
@@ -74,6 +103,22 @@
                     ./hosts/desktop/configuration.nix
                     ./hosts/unstable/configuration.nix
                     ./hardware/primary-desktop.nix
+                    home-manager.nixosModules.home-manager {
+                        home-manager.useGlobalPkgs = true;
+                        home-manager.useUserPackages = true;
+                        home-manager.users.root = import ./root/home.nix;
+                    }
+                ];
+            };
+            mac-fedora = nixpkgs.lib.nixosSystem {
+                specialArgs = {
+                    inherit pkgs_arm unstable_arm;
+                };
+                system = "aarch64-linux";
+                modules = [
+                    maomaowm.nixosModules.maomaowm
+                    ./hosts/shared/common-pc.nix
+                    ./hosts/unstable/configuration.nix
                     home-manager.nixosModules.home-manager {
                         home-manager.useGlobalPkgs = true;
                         home-manager.useUserPackages = true;
