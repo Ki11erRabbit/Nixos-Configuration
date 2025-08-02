@@ -110,22 +110,6 @@
                     }
                 ];
             };
-            mac-fedora = nixpkgs.lib.nixosSystem {
-                specialArgs = {
-                    inherit pkgs_arm unstable_arm;
-                };
-                system = "aarch64-linux";
-                modules = [
-                    maomaowm.nixosModules.maomaowm
-                    ./hosts/shared/common-pc.nix
-                    ./hosts/unstable/configuration.nix
-                    home-manager.nixosModules.home-manager {
-                        home-manager.useGlobalPkgs = true;
-                        home-manager.useUserPackages = true;
-                        home-manager.users.root = import ./root/home.nix;
-                    }
-                ];
-            };
             server-nas = nixpkgs.lib.nixosSystem {
                 specialArgs = {
                     inherit pkgs;
@@ -244,6 +228,41 @@
                     maomaowm.hmModules.maomaowm
                     ./home/shared-home.nix
                     ./home/desktop-home.nix
+                    ./home/unstable-home.nix
+                    ./home/old-home.nix
+                ];
+            };
+            "mac-fedora" = home-manager.lib.homeManagerConfiguration {
+                pkgs = import nixpkgs { 
+                    system = "${system_arm}"; 
+                    config = { allowUnfree = true; nvidia.acceptLicense = true; }; 
+                    overlays = [
+                        (final: prev: {
+                            # example = prev.example.overrideAttrs (oldAttrs: rec {
+                            # ...
+                            # });
+                            catppuccin-qt5ct = prev.catppuccin-qt5ct.overrideAttrs (oldAttrs: rec {
+                                version = "2025-06-14";
+                                src = prev.fetchFromGitHub {
+                                    owner = "catppuccin";
+                                    repo = "qt5ct";
+                                    rev = "cb585307edebccf74b8ae8f66ea14f21e6666535";
+                                    hash = "sha256-wDj6kQ2LQyMuEvTQP6NifYFdsDLT+fMCe3Fxr8S783w=";
+                                };
+                                installPhase = ''
+                                    runHook preInstall
+                                    mkdir -p $out/share/qt6ct
+                                    cp -r themes $out/share/qt6ct/colors
+                                    runHook postInstall
+                                '';
+                            });
+                        })
+                    ];
+                };
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
+                modules = [
+                    maomaowm.hmModules.maomaowm
+                    ./home/shared-home-arm.nix
                     ./home/unstable-home.nix
                     ./home/old-home.nix
                 ];
