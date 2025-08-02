@@ -341,9 +341,9 @@ coverlayercolor=0x9ca0b0ff
 
 windowrule=isterm:1,appid:Alacritty
 
-monitorrule=DP-1,0.55,1,tile,0,1,0,0
-monitorrule=DP-2,0.5,1,tile,0,1,0,0
-monitorrule=HDMI-A-1,0.5,1,vertical_tile,0,1,0,0
+monitorrule=DP-1,0.55,1,tile,0,1,0,0,2560,1440,120
+monitorrule=DP-2,0.5,1,tile,0,1,0,0,1920,1080,60
+monitorrule=HDMI-A-1,0.5,1,vertical_tile,0,1,0,0,1920,1080,60
 
 exec-once=waybar
 exec-once=fnott
