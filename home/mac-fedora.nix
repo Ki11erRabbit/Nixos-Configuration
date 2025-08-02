@@ -55,7 +55,7 @@
             #!/bin/sh
 
 
-            swaylock -ef -i "eDP-1:/home/ki11errabbit/Pictures/Wallpapers/asahi_logomark_white.png
+            swaylock -ef -i "eDP-1:/home/ki11errabbit/Pictures/Wallpapers/asahi_logomark_white.png"
             '';
         };
         ".local/bin/setup-wallpaper.sh" = {
