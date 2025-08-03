@@ -48,7 +48,6 @@
         ghc
         go
         python3
-        racket
         luajit
         google-chrome
         yarn
