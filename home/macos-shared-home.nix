@@ -19,7 +19,6 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     home.packages = with pkgs; [
-        inputs.zen-browser.packages."${system}".default
         firefox
         thunderbird
         discord
@@ -31,7 +30,6 @@
         obs-studio
         libreoffice
         yazi
-        #kdePackages.kdeconnect-kde
         neofetch
         lua-language-server
         universal-ctags
