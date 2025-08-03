@@ -57,13 +57,9 @@
         bat
         dash
         mpv
-        transmission-remote-gtk
-        transmission_4-gtk
         stow
-        haskellPackages.kmonad
         xournalpp
         gimp
-        godot-mono
         trash-cli
         zoxide
         delta
@@ -74,7 +70,6 @@
         jellyfin-media-player
         jdk21
         erlang
-        audacious
         helix
         kakoune
         guile
@@ -85,19 +80,14 @@
         inkscape
         librsvg
         sshfs
-        filezilla
         superhtml
         python312Packages.debugpy
         gdb
         tmux
-        tutanota-desktop
         typescript
         bitwarden
         jetbrains.rust-rover
-        imv
         cargo-generate
-        pcmanfm
-        ldtk
         jetbrains.clion
         jetbrains.rider
         fselect
