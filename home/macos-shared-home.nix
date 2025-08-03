@@ -26,7 +26,6 @@
         keepassxc
         eza
         slack
-        libreoffice
         yazi
         neofetch
         lua-language-server
