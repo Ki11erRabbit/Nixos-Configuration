@@ -127,14 +127,9 @@
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
-    home.file."Applications/Home Manager Apps".enable = true;
-    home.file."Applications/HomeManager".source = let
-    apps = pkgs.buildEnv {
-        name = "home-manager-applications";
-        paths = config.home.packages;
-        pathsToLink = "/Applications";
-    };
-    in "${apps}/Applications";
+    home.activation.makeTrampolineApps = lib.hm.dag.entryAfter [ "writeBoundary" ] (
+        builtins.readFile ./make-app-trampolines.sh
+    );
     home.file = {
         # # Building this configuration will create a copy of 'dotfiles/screenrc' in
         # # the Nix store. Activating the configuration will then make '~/.screenrc' a
