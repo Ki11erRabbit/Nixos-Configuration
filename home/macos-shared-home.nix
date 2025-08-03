@@ -19,6 +19,16 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     home.packages = with pkgs; [
+      neovim
+      wget
+      zsh
+      rustup
+      eza
+      cmake
+      fd
+      jq
+      libunwind
+      git 
         firefox
         thunderbird
         discord
@@ -32,7 +42,6 @@
         universal-ctags
         vscode
         haskellPackages.lsp
-        rust-analyzer
         python312Packages.python-lsp-server
         gopls
         libclang
@@ -118,6 +127,14 @@
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
+    home.file."Applications/Home Manager Apps".enable = true;
+    home.file."Applications/HomeManager".source = let
+    apps = pkgs.buildEnv {
+        name = "home-manager-applications";
+        paths = config.home.packages;
+        pathsToLink = "/Applications";
+    };
+    in "${apps}/Applications";
     home.file = {
         # # Building this configuration will create a copy of 'dotfiles/screenrc' in
         # # the Nix store. Activating the configuration will then make '~/.screenrc' a
