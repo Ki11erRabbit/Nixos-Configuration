@@ -26,7 +26,6 @@
         keepassxc
         eza
         slack
-        obs-studio
         libreoffice
         yazi
         neofetch
