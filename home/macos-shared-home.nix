@@ -2533,8 +2533,6 @@ set -g default-terminal "screen-256color"
         '';
     };
 
-    services.kdeconnect.indicator = true;
-
     services.emacs = {
         enable = true;
         package = pkgs.emacs;
