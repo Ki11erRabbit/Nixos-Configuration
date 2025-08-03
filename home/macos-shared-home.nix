@@ -28,7 +28,7 @@
       fd
       jq
       libunwind
-      git 
+      git
         firefox
         thunderbird
         discord
