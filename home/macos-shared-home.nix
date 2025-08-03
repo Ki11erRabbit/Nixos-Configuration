@@ -22,7 +22,6 @@
         firefox
         thunderbird
         discord
-        signal-desktop
         neovide
         keepassxc
         eza
