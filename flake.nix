@@ -31,32 +31,7 @@
     let 
         system = "x86_64-linux";
         system_arm = "aarch64-linux";
-        pkgs_arm = import nixpkgs { 
-            system = "${system_arm}"; 
-            config = { allowUnfree = true; nvidia.acceptLicense = true; }; 
-            overlays = [
-                (final: prev: {
-                    # example = prev.example.overrideAttrs (oldAttrs: rec {
-                    # ...
-                    # });
-                    catppuccin-qt5ct = prev.catppuccin-qt5ct.overrideAttrs (oldAttrs: rec {
-                        version = "2025-06-14";
-                        src = prev.fetchFromGitHub {
-                            owner = "catppuccin";
-                            repo = "qt5ct";
-                            rev = "cb585307edebccf74b8ae8f66ea14f21e6666535";
-                            hash = "sha256-wDj6kQ2LQyMuEvTQP6NifYFdsDLT+fMCe3Fxr8S783w=";
-                        };
-                        installPhase = ''
-                            runHook preInstall
-                            mkdir -p $out/share/qt6ct
-                            cp -r themes $out/share/qt6ct/colors
-                            runHook postInstall
-                        '';
-                    });
-                })
-            ];
-        };
+        system_mac = "aarch64-darwin";
         pkgs = import nixpkgs { 
             system = "${system}"; 
             config = { allowUnfree = true; nvidia.acceptLicense = true; }; 
@@ -266,6 +241,20 @@
                     ./home/unstable-home.nix
                     ./home/old-home.nix
                     ./home/mac-fedora.nix
+                ];
+            };
+            "macos" = home-manager.lib.homeManagerConfiguration {
+                pkgs = import nixpkgs { 
+                    system = "${system_mac}"; 
+                    config = { allowUnfree = true; nvidia.acceptLicense = true; }; 
+                };
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
+                modules = [
+                    mango.hmModules.mango
+                    ./home/macos-shared-home.nix
+                    ./home/unstable-home.nix
+                    ./home/old-home.nix
+                    ./home/macos-home.nix
                 ];
             };
             "servernas" = home-manager.lib.homeManagerConfiguration {

@@ -1,7 +1,7 @@
 { config, unstable, ... }:
 
 {
-    programs.maomaowm = {
+    programs.mango = {
         enable = true;
     }; 
     

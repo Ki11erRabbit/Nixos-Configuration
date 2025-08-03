@@ -48,7 +48,7 @@ in {
         LC_TIME = "en_US.UTF-8";
     };
 
-    environment.pathsToLink = [ "/share/zsh" ];
+    environment.pathsToLink = [ "/share/zsh" "/lib" "/include" ];
     environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
 
     # Enable the X11 windowing system.
@@ -217,6 +217,7 @@ in {
             #background = "${./wallpaper.png}";
             loginBackground = true;
         })
+        libunwind
     ];
     
 
@@ -253,7 +254,7 @@ in {
         wayland
         libunwind
 
-    ];
+    ]; 
 
     services.udev.extraRules = ''
         ACTION=="add", ATTRS{idVendor}=="2dc8", ATTRS{idProduct}=="3106", RUN+="/sbin/modprobe xpad", RUN+="${pkgs.stdenv.shell} -c 'echo 2dc8 3106 > /sys/bus/usb/drivers/xpad/new_id'"
