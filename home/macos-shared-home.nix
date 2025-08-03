@@ -19,16 +19,16 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     home.packages = with pkgs; [
-      neovim
-      wget
-      zsh
-      rustup
-      eza
-      cmake
-      fd
-      jq
-      libunwind
-      git
+        neovim
+        wget
+        zsh
+        rustup
+        eza
+        cmake
+        fd
+        jq
+        libunwind
+        git
         firefox
         thunderbird
         discord
