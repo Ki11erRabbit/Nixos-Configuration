@@ -155,6 +155,7 @@
         editorconfig-core-c
         imagemagick
         bc
+        mise
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
