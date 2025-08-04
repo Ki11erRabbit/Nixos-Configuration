@@ -2386,7 +2386,7 @@ indent_style = tab
             mpv = "mpv";
         };
         localVariables = {
-            #PROMPT = "❬%F{13}%n%f❭ %f%F{13}図書館に%f %F{12}%d\n%f ";
+            PROMPT = "❬%F{13}%n%f❭ %f%F{13}図書館に%f %F{12}%d\n%f ";
         };
 
         sessionVariables = {
