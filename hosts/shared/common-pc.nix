@@ -217,7 +217,7 @@ in {
             #background = "${./wallpaper.png}";
             loginBackground = true;
         })
-        libunwind
+        linuxKernel.packages.linux_6_12.perf
     ];
     
 
