@@ -106,7 +106,6 @@
         editorconfig-core-c
         imagemagick
         bc
-        iterm2
         # # Adds the 'hello' command to your environment. It prints a friendly
         # # "Hello, world!" when run.
         # pkgs.hello
@@ -2414,6 +2413,12 @@ indent_style = tab
         }
 
         eval "$(zoxide init zsh)"
+        function refresh-nix() {
+            dir=$PWD
+            cd ~/
+            home-manager switch --flake ./git/Nixos-Configuration/#macos
+            cd $dir
+        }
         '';
 
     };
