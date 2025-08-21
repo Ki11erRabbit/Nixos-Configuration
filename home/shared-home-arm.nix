@@ -329,6 +329,7 @@ xkb_rules_layout=us
 xkb_rules_variant=colemak_dh
 
 tap_to_click=0
+trackpad_natural_scrolling=1
 
 rootcolor=0xeff1f5ff
 bordercolor=0x9ca0b0ff
@@ -437,6 +438,9 @@ env=XDG_CURRENT_DESKTOP,sway
         enable = true;
         #enableZshIntegration = true;
         settings = {
+            main = {
+                font = "JetbrainsMonoNerdFont:size=11";
+            };
             colors = {
                 cursor="eff1f5 dc8a78";
                 foreground="4c4f69";
@@ -3765,7 +3769,7 @@ indent_style = tab
                 };
             };
             font = {
-                size = 11;
+                size = 13;
                 normal = {
                     family = "monospace";
                     style = "Text";
