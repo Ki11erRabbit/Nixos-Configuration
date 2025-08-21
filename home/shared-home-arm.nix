@@ -438,6 +438,9 @@ env=XDG_CURRENT_DESKTOP,sway
         enable = true;
         #enableZshIntegration = true;
         settings = {
+            main = {
+                font = "JetbrainsMonoNerdFont:size=11";
+            };
             colors = {
                 cursor="eff1f5 dc8a78";
                 foreground="4c4f69";
