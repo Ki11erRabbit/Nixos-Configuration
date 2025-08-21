@@ -2382,7 +2382,6 @@ indent_style = tab
             mv = "mv -iv";
             rm = "trash -v";
             grep = "grep --color=auto";
-            emacs = "emacsclient -c -a \"emacs\"";
             mpv = "mpv";
         };
         localVariables = {
@@ -2533,11 +2532,6 @@ set -g status-right "#[fg=magenta,bold,bg=#eff1f5] %l:%M %p"
 set -g status-style "bg=#eff1f5"
 set -g default-terminal "screen-256color"
         '';
-    };
-
-    services.emacs = {
-        enable = true;
-        package = pkgs.emacs;
     };
 
     # Home Manager can also manage your environment variables through
