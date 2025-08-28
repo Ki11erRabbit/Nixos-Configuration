@@ -28,8 +28,8 @@ in {
 
     hardware.graphics.enable = true;
     
-    #time.timeZone = "America/Denver";
-    time.timeZone = "America/Los_Angeles";
+    time.timeZone = "America/Denver";
+    #time.timeZone = "America/Los_Angeles";
     #services.automatic-timezoned.enable = true;
     #networking.timeServers = [ "time.cloudflare.com" "time.google.com" ];
 
