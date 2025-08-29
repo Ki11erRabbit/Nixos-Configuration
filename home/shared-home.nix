@@ -1,6 +1,13 @@
 { lib, inputs, config, pkgs, channels,  ... }:
 
-{
+let rowan-source = pkgs.fetchFromGitHub {
+    owner = "Ki11erRabbit";
+    repo = "rowan";
+    rev = "main";
+    hash = "sha256-DSAAJumL9bLw/UYAcCjscnAwkGB4NUnM+jtyTjXbFvY=";
+    };
+    rowan = (pkgs.callPackage "${rowan-source}/rowan.nix" {});
+in {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
     home.username = "ki11errabbit";
@@ -19,6 +26,8 @@
     # The home.packages option allows you to install Nix packages into your
     # environment.
     home.packages = with pkgs; [
+        rowan.rowanc
+        rowan.rowan
         inputs.zen-browser.packages."${system}".default
         firefox
         thunderbird
