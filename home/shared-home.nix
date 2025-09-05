@@ -4,7 +4,8 @@ let rowan-source = pkgs.fetchFromGitHub {
     owner = "Ki11erRabbit";
     repo = "rowan";
     rev = "main";
-    hash = "sha256-DSAAJumL9bLw/UYAcCjscnAwkGB4NUnM+jtyTjXbFvY=";
+    #rev = "36fd1380f0e36523aa2dd3513d5d8d910afdc187";
+    hash = "sha256-JWknlaTiNrr0uvKGd72AeLEFlhchhFdXs4wL7QvRuv8=";
     };
     rowan = (pkgs.callPackage "${rowan-source}/rowan.nix" {});
 in {
