@@ -83,7 +83,6 @@
         kakoune
         guile
         awscli2
-        coq
         ocaml
         hugo
         inkscape
