@@ -207,6 +207,17 @@
                     ./home/old-home.nix
                 ];
             };
+            "framework" = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
+                modules = [
+                    mango.hmModules.mango
+                    ./home/shared-home.nix
+                    ./home/laptop-home.nix
+                    ./home/unstable-home.nix
+                    ./home/old-home.nix
+                ];
+            };
             "mac-fedora" = home-manager.lib.homeManagerConfiguration {
                 pkgs = import nixpkgs { 
                     system = "${system_arm}"; 
