@@ -1,20 +1,337 @@
 { lib, inputs, config, pkgs, channels,  ... }:
+let rowan-source = pkgs.fetchFromGitHub {
+    owner = "Ki11erRabbit";
+    repo = "rowan";
+    rev = "main";
+    hash = "sha256-JYCAnosEuXHYQpZfhUBGJwtgXqUIig4uPlqhCfSf/IA=";
+    };
+    rowan = (pkgs.callPackage "${rowan-source}/rowan.nix" {});
+in {
 
-{
+    home.homeDirectory = "/home/ki11errabbit";
 
-    # Home Manager is pretty good at managing dotfiles. The primary way to manage
-    # plain files is through 'home.file'.
+    home.packages = with pkgs; [
+    ];
+
+
+    programs.zsh = {
+        sessionVariables = {
+            BEMENU_OPTS = "--fb '#eff1f5' --ff '#4c4f69' --nb '#eff1f5' --nf '#4c4f69' --tb '#eff1f5' --hb '#eff1f5' --tf '#d20f39' --hf '#df8e1d' --af '#4c4f69' --ab '#eff1f5'";
+
+            PATH = "$PATH:/home/ki11errabbit/.cabal/bin:/home/ki11errabbit/.local/bin:$PATH:/home/ki11errabbit/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/home/ki11errabbit/.cargo/bin";
+        };
+    };
+    
+    wayland.windowManager.sway = {
+        enable = true;
+        package = pkgs.swayfx;
+        checkConfig = false;
+        config = rec {
+            modifier = "Mod4";
+            terminal = "alacritty";
+            startup = [
+                { command = "waybar"; }
+                { command = "fnott"; }
+                { command = "configure-monitors.sh"; }
+                { command = "setup-wallpaper.sh"; }
+                { command = "setup-swayidle.sh"; }
+                { command = "setup-keyboard.sh"; }
+                { command = "nm-applet"; }
+                { command = "blueman-applet"; }
+                { command = "kdeconnect-indicator"; }
+                { command = "swaysome init 1"; }
+            ];
+            menu = "bemenu-run";
+            colors.background = "#eff1f5";
+            colors.focused = {
+                background = "#eff1f5";
+                border = "#ea76cb";
+                childBorder = "#ea76cb";
+                indicator = "#ea76cb";
+                text = "#4c4f69";
+            };
+            colors.focusedInactive = {
+                background = "#eff1f5";
+                border = "#9ca0b0";
+                childBorder = "#9ca0b0";
+                indicator = "#9ca0b0";
+                text = "#4c4f69";
+            };
+            colors.placeholder = {
+                background = "#eff1f5";
+                border = "#9ca0b0";
+                childBorder = "#9ca0b0";
+                indicator = "#9ca0b0";
+                text = "#4c4f69";
+            };
+            colors.unfocused = {
+                background = "#eff1f5";
+                border = "#9ca0b0";
+                childBorder = "#9ca0b0";
+                indicator = "#9ca0b0";
+                text = "#4c4f69";
+            };
+            colors.urgent = {
+                background = "#eff1f5";
+                border = "#d20f39";
+                childBorder = "#d20f39";
+                indicator = "#d20f39";
+                text = "#4c4f69";
+            };
+            bars = [];
+            left = "m";
+            down = "n";
+            up = "e";
+            right = "i";
+            focus.followMouse = "yes";
+            gaps = {
+                inner = 10;
+                outer = 10;
+            };
+            window = {
+                border = 2;
+            };
+            keybindings = {
+                "${modifier}+Return" = "exec ${terminal}";
+                "${modifier}+d" = "exec ${menu}";
+                "${modifier}+r" = "exec nemo";
+                "${modifier}+s" = "exec grimshot save area";
+                "${modifier}+Shift+s" = "exec grimshot copy area";
+                "${modifier}+Shift+Return" = "exec emacsclient -c -a 'emacs'";
+
+                "${modifier}+q" = "kill";
+                "${modifier}+Shift+q" = "exec swaymsg exit";
+                "${modifier}+Shift+r" = "reload";
+
+                "${modifier}+1" = "exec 'swaysome focus 1'";
+                "${modifier}+2" = "exec 'swaysome focus 2'";
+                "${modifier}+3" = "exec 'swaysome focus 3'";
+                "${modifier}+4" = "exec 'swaysome focus 4'";
+                "${modifier}+5" = "exec 'swaysome focus 5'";
+                "${modifier}+6" = "exec 'swaysome focus 6'";
+                "${modifier}+7" = "exec 'swaysome focus 7'";
+                "${modifier}+8" = "exec 'swaysome focus 8'";
+                "${modifier}+9" = "exec 'swaysome focus 9'";
+                "${modifier}+0" = "exec 'swaysome focus 0'";
+
+                "${modifier}+Shift+1" = "exec 'swaysome move 1'";
+                "${modifier}+Shift+2" = "exec 'swaysome move 2'";
+                "${modifier}+Shift+3" = "exec 'swaysome move 3'";
+                "${modifier}+Shift+4" = "exec 'swaysome move 4'";
+                "${modifier}+Shift+5" = "exec 'swaysome move 5'";
+                "${modifier}+Shift+6" = "exec 'swaysome move 6'";
+                "${modifier}+Shift+7" = "exec 'swaysome move 7'";
+                "${modifier}+Shift+8" = "exec 'swaysome move 8'";
+                "${modifier}+Shift+9" = "exec 'swaysome move 9'";
+                "${modifier}+Shift+0" = "exec 'swaysome move 0'";
+
+                "${modifier}+Shift+comma" = "exec 'swaysome prev-output'";
+                "${modifier}+Shift+period" = "exec 'swaysome next-output'";
+
+                "${modifier}+${left}" = "focus left";
+                "${modifier}+${down}" = "focus down";
+                "${modifier}+${up}" = "focus up";
+                "${modifier}+${right}" = "focus right";
+                
+                "${modifier}+Shift+${left}" = "move left";
+                "${modifier}+Shift+${down}" = "move down";
+                "${modifier}+Shift+${up}" = "move up";
+                "${modifier}+Shift+${right}" = "move right";
+
+                "${modifier}+Ctrl+${left}" = "resize set width -10pt";
+                "${modifier}+Ctrl+${down}" = "resize set width 10pt";
+                "${modifier}+Ctrl+${up}" = "resize set height 10pt";
+                "${modifier}+Ctrl+${right}" = "resize set height -10pt";
+
+                "${modifier}+v" = "splitv";
+                "${modifier}+h" = "splith";
+
+                "${modifier}+f" = "fullscreen toggle";
+                
+                "${modifier}+a" = "layout stacking";
+                "${modifier}+t" = "layout tabbed";
+                "${modifier}+p" = "layout toggle split";
+
+                "${modifier}+Shift+space" = "floating toggle";
+                "${modifier}+space" = "focus mode_toggle";
+
+                "${modifier}+Shift+minus" = "move scratchpad";
+                "${modifier}+minus" = "scratchpad show";
+
+                "XF86AudioRaiseVolume" = "exec 'pamixer -i 3'";
+                "XF86AudioLowerVolume" = "exec 'pamixer -d 3'";
+                "XF86AudioMute" = "exec 'pamixer --toggle-mute'";
+            };
+        };
+        extraConfig = ''
+        '';
+
+    };
+
+    wayland.windowManager.mango = {
+        enable = true;
+        settings = ''
+shadows=1
+layer_shadows=1
+gappoh=5
+appov=10
+borderpx=2
+
+xkb_rules_layout=us
+xkb_rules_variant=colemak_dh
+
+tap_to_click=0
+trackpad_natural_scrolling=1
+
+rootcolor=0xeff1f5ff
+bordercolor=0x9ca0b0ff
+focuscolor=0xea76cbff
+urgentcolor=0xd20f39ff
+scratchpadcolor=0x9ca0b0ff
+globalcolor=0x9ca0b0ff
+coverlayercolor=0x9ca0b0ff
+
+windowrule=isterm:1,appid:Alacritty
+windowrule=isterm:1,appid:Foot
+windowrule=isterm:1,appid:foot
+windowrule=isterm:1,appid:FootClient
+
+monitorrule=eDP-1,0.55,1,tile,0,1.5,1,0,3456,2160,0
+
+exec-once=waybar
+exec-once=fnott
+exec-once=configure-monitors.sh
+exec-once=setup-wallpaper.sh
+exec-once=setup-swayidle.sh
+exec-once=setup-keyboard.sh
+exec-once=nm-applet
+exec-once=blueman-applet
+exec-once=kdeconnect-indicator
+
+bind=SUPER,q,killclient
+bind=SUPER,Return,spawn,foot
+bind=SUPER,d,spawn,bemenu-run
+bind=SUPER,r,spawn,nemo
+bind=SUPER,s,spawn,grimshot save area
+bind=SUPER+SHIFT,s,spawn,grimshot copy area
+bind=SUPER+SHIFT,Return,spawn,emacsclient -c -a 'emacs'
+
+bind=SUPER,n,focusstack,next
+bind=SUPER,e,focusstack,prev
+bind=SUPER+SHIFT,n,exchange_client,down
+bind=SUPER+SHIFT,e,exchange_client,up
+bind=SUPER+SHIFT,m,exchange_client,left
+bind=SUPER+SHIFT,i,exchange_client,right
+bind=SUPER+CTRL,n,focusdir,down
+bind=SUPER+CTRL,e,focusdir,up
+bind=SUPER+CTRL,m,focusdir,left
+bind=SUPER+CTRL,i,focusdir,right
+bind=SUPER+CTRL,Return,zoom
+
+bind=SUPER,1,view,1
+bind=SUPER,2,view,2
+bind=SUPER,3,view,3
+bind=SUPER,4,view,4
+bind=SUPER,5,view,5
+bind=SUPER,6,view,6
+bind=SUPER,7,view,7
+bind=SUPER,8,view,8
+bind=SUPER,9,view,9
+
+bind=SUPER+SHIFT,1,tag,1
+bind=SUPER+SHIFT,2,tag,2
+bind=SUPER+SHIFT,3,tag,3
+bind=SUPER+SHIFT,4,tag,4
+bind=SUPER+SHIFT,5,tag,5
+bind=SUPER+SHIFT,6,tag,6
+bind=SUPER+SHIFT,7,tag,7
+bind=SUPER+SHIFT,8,tag,8
+bind=SUPER+SHIFT,9,tag,9
+
+bind=SUPER,comma,focusmon,left
+bind=SUPER,period,focusmon,right
+bind=SUPER+SHIFT,code:59,tagmon,left
+bind=SUPER+SHIFT,code:60,tagmon,right
+
+bind=SUPER,f,togglefullscreen
+bind=SUPER+ALT,m,incnmaster,+1
+bind=SUPER+ALT,i,incnmaster,-1
+
+bind=SUPER+SHIFT,q,quit
+bind=SUPER+CTRL,r,reload
+
+bind=SUPER,t,setlayout,tile
+bind=SUPER,a,setlayout,spiral
+bind=SUPER,c,setlayout,scroller
+bind=SUPER+ALT,t,setlayout,vertical_tile
+bind=SUPER+ALT,a,setlayout,vertical_spiral
+bind=SUPER+ALT,c,setlayout,vertical_scroller
+
+bind=NONE,code:123,spawn,pamixer -i 3
+bind=NONE,code:122,spawn,pamixer -d 3
+bind=NONE,code:121,spawn,pamixer --toggle-mute
+
+mousebind=SUPER,btn_left,moveresize,curmove
+mousebind=SUPER,btn_right,moveresize,curresize
+
+gesturebind=none,left,3,focusmon,left
+gesturebind=none,right,3,focusmon,right
+gesturebind=none,up,3,focusstack,next
+gesturebind=none,down,3,focusstack,prev
+
+env=QT_QA_PLATFORM,qt6ct
+env=XDG_CURRENT_DESKTOP,sway
+        '';
+        autostart_sh = ''
+        '';
+    };
+
+    programs.foot = {
+        enable = true;
+        #enableZshIntegration = true;
+        settings = {
+            main = {
+                font = "JetbrainsMonoNerdFont:size=11";
+            };
+            colors = {
+                cursor="eff1f5 dc8a78";
+                foreground="4c4f69";
+                background="eff1f5";
+
+                regular0="5c5f77";
+                regular1="d20f39";
+                regular2="40a02b";
+                regular3="df8e1d";
+                regular4="1e66f5";
+                regular5="ea76cb";
+                regular6="179299";
+                regular7="acb0be";
+
+                bright0="6c6f85";
+                bright1="d20f39";
+                bright2="40a02b";
+                bright3="df8e1d";
+                bright4="1e66f5";
+                bright5="ea76cb";
+                bright6="179299";
+                bright7="bcc0cc";
+
+                "16"="fe640b";
+                "17"="dc8a78";
+
+                selection-foreground="4c4f69";
+                selection-background="ccced7";
+
+                search-box-no-match="dce0e8 d20f39";
+                search-box-match="4c4f69 ccd0da";
+
+                jump-labels="dce0e8 fe640b";
+                urls="1e66f5";
+            };
+        };
+    };
+
     home.file = {
-        # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-        # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-        # # symlink to the Nix store copy.
-        # ".screenrc".source = dotfiles/screenrc;
-
-        # # You can also set the file content immediately.
-        # ".gradle/gradle.properties".text = ''
-        #   org.gradle.console=verbose
-        #   org.gradle.daemon.idletimeout=3600000
-        # '';
         ".local/bin/nix-config.sh" = {
             executable = true;
             text = ''
@@ -3171,223 +3488,6 @@ indent_style = tab
         '';
     };
 
-
-    programs.git = {
-        enable = true;
-        userName = "Alec Davis";
-        userEmail = "unlikelytitan@gmail.com";
-    };
-
-    programs.zsh = {
-        enable = true;
-        enableCompletion = true;
-        syntaxHighlighting.enable = true;
-        history.size = 1500;
-        history.save = 1000;
-        history.path = "${config.xdg.dataHome}/.histfile";
-        autocd = true;
-    
-        shellAliases = {
-            cd = "z";
-            home = "cd";
-            root = "cd /";
-            bat = "bat --style plain";
-            batf = "bat --style full";
-            ls = "exa --icons";
-            tree = "exa --tree --icons";
-            cp = "cp -iv";
-            mv = "mv -iv";
-            rm = "trash -v";
-            grep = "grep --color=auto";
-            emacs = "emacsclient -c -a \"emacs\"";
-            mpv = "mpv";
-        };
-        localVariables = {
-            PROMPT = "❬%F{13}%n%f❭ %f%F{13}図書館に%f %F{12}%d\n%f ";
-        };
-
-        sessionVariables = {
-            BEMENU_OPTS = "--fb '#eff1f5' --ff '#4c4f69' --nb '#eff1f5' --nf '#4c4f69' --tb '#eff1f5' --hb '#eff1f5' --tf '#d20f39' --hf '#df8e1d' --af '#4c4f69' --ab '#eff1f5'";
-
-            PATH = "$PATH:/home/ki11errabbit/.cabal/bin:/home/ki11errabbit/.local/bin:$PATH:/home/ki11errabbit/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/home/ki11errabbit/.cargo/bin";
-        };
-
-        initContent = ''
-        setopt globdots
-        function ya() {
-            local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-            yazi "$@" --cwd-file="$tmp"
-            if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-                cd -- "$cwd"
-            fi
-            rm -f -- "$tmp"
-        }
-
-
-        function neovim() {
-            local tmp="/tmp/nvim_cwd"
-            nvim "$@" 
-            cwd="$(cat -- "$tmp")"
-            cd -- "$cwd"
-            rm -f -- "$tmp"
-        }
-
-        # >>> conda initialize >>>
-        # !! Contents within this block are managed by 'conda init' !!
-        __conda_setup="$('/home/ki11errabbit/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-        if [ $? -eq 0 ]; then
-            eval "$__conda_setup"
-        else
-            if [ -f "/home/ki11errabbit/miniconda3/etc/profile.d/conda.sh" ]; then
-                . "/home/ki11errabbit/miniconda3/etc/profile.d/conda.sh"
-            else
-                export PATH="/home/ki11errabbit/miniconda3/bin:$PATH"
-            fi
-        fi
-        unset __conda_setup
-        # <<< conda initialize <<<
-        eval "$(zoxide init zsh)"
-        if [ -e ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then
-          . ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-        fi
-        '';
-
-    };
-
-    programs.alacritty = {
-        enable = true;
-        settings = {
-            colors = {
-                draw_bold_text_with_bright_colors = false;
-                normal = {
-                    black = "0xbcc0cc";
-                    blue = "0x1e66f5";
-                    cyan = "0x179299";
-                    green = "0x40a02b";
-                    magenta = "0xea76cb";
-                    red = "0xd20f39";
-                    white = "0x5c5f77";
-                    yellow = "0xdf8e1d";
-                };
-                bright = {
-                    black = "0xacb0be";
-                    blue = "0x1e66f5";
-                    cyan = "0x179299";
-                    green = "0x40a02b";
-                    magenta = "0xea76cb";
-                    red = "0xd20f39";
-                    white = "0x6c6f85";
-                    yellow = "0xdf8e1d";
-                };
-                primary = {
-                    background = "0xeff1f5";
-                    foreground = "0x4c4f69";
-                };
-
-            };
-            cursor = {
-                style = {
-                    blinking = "On";
-                    shape = "Beam";
-                };
-            };
-            font = {
-                size = 13;
-                normal = {
-                    family = "monospace";
-                    style = "Text";
-                };
-                bold = {
-                    family = "monospace";
-                    style = "Bold";
-                };
-                bold_italic = {
-                    family = "monospace";
-                    style = "Bold Italic";
-                };
-                italic = {
-                    family = "monospace";
-                    style = "Text Italic";
-                };
-
-            };
-            keyboard.bindings = [{
-                action = "SpawnNewInstance";
-                key = "Return";
-                mods = "Control|Shift";
-            }];
-            scrolling.history = 50000;
-            window.padding = {
-                x = 0;
-                y = 0;
-            };
-        };
-    };
-    
-    programs.tmux = {
-        enable = true;
-        clock24 = false;
-        extraConfig = ''
-unbind r
-bind r source-file ~/.tmux.conf
-
-# For use in kakoune
-set -g prefix M-m
-
-bind v split-window -h
-bind s split-window -v
-
-unbind '"'
-unbind %
-
-set -g mouse on
-
-unbind m
-unbind n
-unbind e
-unbind i
-
-bind m select-pane -L
-bind n select-pane -D
-bind e select-pane -U
-bind i select-pane -R
-
-unbind l
-unbind u
-
-bind l select-window -p
-bind u select-window -n
-
-set -g status-position top
-set -g status-left "#[fg=magenta,bold,bg=#eff1f5] #S "
-set -g status-right "#[fg=magenta,bold,bg=#eff1f5] %l:%M %p"
-set -g status-style "bg=#eff1f5"
-set -g default-terminal "screen-256color"
-        '';
-    };
-
-    services.kdeconnect.indicator = true;
-
-    services.emacs = {
-        enable = true;
-        package = pkgs.emacs-pgtk;
-    };
-
-    # Home Manager can also manage your environment variables through
-    # 'home.sessionVariables'. If you don't want to manage your shell through Home
-    # Manager then you have to manually source 'hm-session-vars.sh' located at
-    # either
-    #
-    #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-    #
-    # or
-    #
-    #  /etc/profiles/per-user/ki11errabbit/etc/profile.d/hm-session-vars.sh
-    #
-    home.sessionVariables = {
-        # EDITOR = "emacs";
-    };
-
     xdg.desktopEntries = {
         run-java-jar = {
             name = "Run Java Jar";
@@ -3423,14 +3523,7 @@ set -g default-terminal "screen-256color"
         enable = true;
         associations.added = {
             "application/pdf" = [ "okularApplication_pdf.desktop" ];
-            "application/x-extension-html" = [ "firefox.desktop" ];
-            "application/x-extension-htm" = [ "firefox.desktop" ];
-            "application/x-extension-xhtml" = [ "firefox.desktop" ];
-            "application/x-extension-shtml" = [ "firefox.desktop" ];
-            "application/x-extension-xht" = [ "firefox.desktop" ];
-            "application/xhtml+xml" = [ "firefox.desktop" ];
             "application/xml" = [ "emacsclient.desktop" ];
-            "text/html" = [ "firefox.desktop" ];
             "application/x-shellscript" = [ "emacsclient.desktop" ];
             "text/x-shellscript" = [ "emacsclient.desktop" ];
             "application/x-extension-txt" = [ "emacsclient.desktop" ];
@@ -3483,11 +3576,6 @@ set -g default-terminal "screen-256color"
             "video/x-flv" = [ "mpv.desktop" ];
             "video/quicktime" = [ "mpv.desktop" ];
             "inode/directory" = [ "nemo.desktop" ];
-            "x-scheme-handler/about" = [ "firefox.desktop" ];
-            "x-scheme-handler/attachment" = [ "firefox.desktop" ];
-            "x-scheme-handler/chrome" = [ "firefox.desktop" ];
-            "x-scheme-handler/http" = [ "firefox.desktop" ];
-            "x-scheme-handler/https" = [ "firefox.desktop" ];
             "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
             "x-scheme-handler/msteams" = [ "teams-for-linux.desktop" ];
             "x-scheme-handler/ror2mm" = [ "r2modman.desktop" ];
@@ -3518,14 +3606,7 @@ set -g default-terminal "screen-256color"
         };
         defaultApplications = {
             "application/pdf" = [ "okularApplication_pdf.desktop" ];
-            "application/x-extension-html" = [ "firefox.desktop" ];
-            "application/x-extension-htm" = [ "firefox.desktop" ];
-            "application/x-extension-xhtml" = [ "firefox.desktop" ];
-            "application/x-extension-shtml" = [ "firefox.desktop" ];
-            "application/x-extension-xht" = [ "firefox.desktop" ];
-            "application/xhtml+xml" = [ "firefox.desktop" ];
             "application/xml" = [ "emacsclient.desktop" ];
-            "text/html" = [ "firefox.desktop" ];
             "application/x-shellscript" = [ "emacsclient.desktop" ];
             "text/x-shellscript" = [ "emacsclient.desktop" ];
             "application/x-extension-txt" = [ "emacsclient.desktop" ];
@@ -3578,11 +3659,6 @@ set -g default-terminal "screen-256color"
             "video/x-flv" = [ "mpv.desktop" ];
             "video/quicktime" = [ "mpv.desktop" ];
             "inode/directory" = [ "nemo.desktop" ];
-            "x-scheme-handler/about" = [ "firefox.desktop" ];
-            "x-scheme-handler/attachment" = [ "firefox.desktop" ];
-            "x-scheme-handler/chrome" = [ "firefox.desktop" ];
-            "x-scheme-handler/http" = [ "firefox.desktop" ];
-            "x-scheme-handler/https" = [ "firefox.desktop" ];
             "x-scheme-handler/mailto" = [ "thunderbird.desktop" ];
             "x-scheme-handler/msteams" = [ "teams-for-linux.desktop" ];
             "x-scheme-handler/ror2mm" = [ "r2modman.desktop" ];
@@ -3613,7 +3689,4 @@ set -g default-terminal "screen-256color"
 
         };
     };
-
-    programs.home-manager.enable = true;
 }
-

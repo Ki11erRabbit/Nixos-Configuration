@@ -201,18 +201,23 @@
                 extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
                 modules = [
                     mango.hmModules.mango
-                    ./home/shared-home.nix
+                    ./home/universal-home.nix
+                    ./home/linux-shared-home.nix
+                    ./home/linux-home.nix
                     ./home/desktop-home.nix
                     ./home/unstable-home.nix
                     ./home/old-home.nix
                 ];
             };
-            "framework" = home-manager.lib.homeManagerConfiguration {
+            "cachywork" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
                 modules = [
                     mango.hmModules.mango
-                    ./home/shared-home.nix
+                    ./home/cachy-home.nix
+                    ./home/universal-home.nix
+                    ./home/linux-shared-home.nix
+                    ./home/linux-home.nix
                     ./home/laptop-home.nix
                     ./home/unstable-home.nix
                     ./home/old-home.nix
@@ -248,7 +253,10 @@
                 extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
                 modules = [
                     mango.hmModules.mango
-                    ./home/shared-home-arm.nix
+                    ./home/universal-home.nix
+                    ./home/linux-shared-home.nix
+                    ./home/linux-home.nix
+                    ./home/linux-arm-home.nix
                     ./home/unstable-home.nix
                     ./home/old-home.nix
                     ./home/mac-fedora.nix
@@ -262,10 +270,11 @@
                 extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
                 modules = [
                     mango.hmModules.mango
-                    ./home/macos-shared-home.nix
+                    ./home/universal-home.nix
+                    ./home/macos-home.nix
+                    ./home/unstable-home.nix
                     ./home/unstable-home.nix
                     ./home/old-home.nix
-                    ./home/macos-home.nix
                 ];
             };
             "servernas" = home-manager.lib.homeManagerConfiguration {
