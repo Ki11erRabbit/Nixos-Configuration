@@ -214,13 +214,12 @@
                 extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
                 modules = [
                     mango.hmModules.mango
-                    ./home/cachy-home.nix
                     ./home/universal-home.nix
-                    ./home/linux-shared-home.nix
                     ./home/linux-home.nix
                     ./home/laptop-home.nix
                     ./home/unstable-home.nix
                     ./home/old-home.nix
+                    ./home/cachy-home.nix
                 ];
             };
             "mac-fedora" = home-manager.lib.homeManagerConfiguration {

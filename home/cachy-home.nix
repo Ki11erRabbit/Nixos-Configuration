@@ -2,6 +2,10 @@
 
 
 {
+    home.packages = with pkgs; [
+        inputs.zen-browser.packages."${system}".default
+    ];
+    
     xdg.mimeApps = {
         enable = true;
         associations.added = {
