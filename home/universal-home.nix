@@ -154,6 +154,7 @@
         typescript
         bitwarden
         jetbrains.rust-rover
+        jetbrains.idea-ultimate
         cargo-generate
         jetbrains.clion
         jetbrains.rider
