@@ -11,6 +11,7 @@ in {
     home.homeDirectory = "/home/ki11errabbit";
 
     home.packages = with pkgs; [
+        bemenu
     ];
 
 
