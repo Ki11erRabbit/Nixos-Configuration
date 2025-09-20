@@ -95,11 +95,9 @@
         git
         firefox
         thunderbird
-        discord
         neovide
         keepassxc
         eza
-        slack
         yazi
         lua-language-server
         universal-ctags

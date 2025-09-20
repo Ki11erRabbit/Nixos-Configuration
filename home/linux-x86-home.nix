@@ -1,6 +1,10 @@
 { lib, inputs, config, pkgs, channels,  ... }:
 
 {
+    home.packages = with pkgs; [
+        discord
+        slack
+    ];
 
     wayland.windowManager.sway = {
         enable = true;
