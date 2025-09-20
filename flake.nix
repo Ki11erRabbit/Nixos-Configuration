@@ -204,6 +204,7 @@
                     ./home/universal-home.nix
                     ./home/linux-shared-home.nix
                     ./home/linux-home.nix
+                    ./home/linux-x86-home.nix
                     ./home/desktop-home.nix
                     ./home/unstable-home.nix
                     ./home/old-home.nix
@@ -216,6 +217,7 @@
                     mango.hmModules.mango
                     ./home/universal-home.nix
                     ./home/linux-home.nix
+                    ./home/linux-x86-home.nix
                     ./home/laptop-home.nix
                     ./home/unstable-home.nix
                     ./home/old-home.nix

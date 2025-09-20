@@ -92,7 +92,6 @@ in {
                 border = 2;
             };
             keybindings = {
-                "${modifier}+Return" = "exec ${terminal}";
                 "${modifier}+d" = "exec ${menu}";
                 "${modifier}+r" = "exec nemo";
                 "${modifier}+s" = "exec grimshot save area";
