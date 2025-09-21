@@ -112,7 +112,7 @@
         zig
         zls
         idris2
-        emacs
+        emacs-pgtk
         stack
         cabal-install
         ghc
