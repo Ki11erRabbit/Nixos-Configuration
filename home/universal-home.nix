@@ -167,6 +167,7 @@
         bc
         podman-desktop
         podman
+        podman-compose
     ];
 
     programs.alacritty = {
