@@ -4,6 +4,9 @@
     home.packages = with pkgs; [
         discord
         slack
+        obs-studio
+        godot-mono
+        signal-desktop
     ];
 
     wayland.windowManager.sway = {
