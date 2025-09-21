@@ -244,6 +244,43 @@ in {
             esac
         '';
         };
+        ".config/kmonad/framework.kbd".text = ''
+            (defcfg
+                input (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+                output (uinput-sink "Framework Keyboard")
+                cmp-seq ralt
+                cmp-seq-delay 5
+                fallthrough true
+                allow-cmd false
+            )
+
+            (defalias 
+                srch KeySearch
+                vido KeySwitchVideoMode
+                cfg  KeyConfig
+                lnch KeyScale
+            )
+
+            (defsrc
+                esc  mute vold volu prev pp   brdn brup KeySwitchVideoMode wlan  ssrq  KeyPlayer  del
+                grv  1    2    3    4    5    6    7    8    9    0    -    =     bspc
+                tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+                caps a    s    d    f    g    h    j    k    l    ;    '    ret
+                lsft z    x    c    v    b    n    m    ,    .    /    rsft
+                lctl wkup lmet lalt      spc            ralt      rctl left up   rght
+                                                                            down 
+            )
+
+            (deflayer keyremap
+                _  _ _ _ _ _   _ _ _ _  _  _  caps
+                _  _    _    _    _    _    _    _    _    _    _    _    _     del
+                _  _    _    _    _    _    _    _    _    _    _    _    _    _
+                bspc _    _    _    _    _    _    _    _    _    _    _    _
+                _ _    _    _    _    _    _    _    _    _    _    _
+                _ _ lalt lmet      _            _      _ _ _   _
+                                                           _
+            )
+        '';
         ".config/kmonad/t440p.kbd".text = ''
             (defcfg
                 input (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
