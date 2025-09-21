@@ -12,6 +12,14 @@ in {
 
     home.packages = with pkgs; [
         bemenu
+        wlr-randr
+        waybar
+        swaybg
+        mpvpaper
+        transmission_4-gtk
+        fnott
+        imv
+        wdisplays
     ];
 
 
