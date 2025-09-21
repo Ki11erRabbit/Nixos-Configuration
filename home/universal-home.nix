@@ -165,6 +165,8 @@
         editorconfig-core-c
         imagemagick
         bc
+        podman-desktop
+        podman
     ];
 
     programs.alacritty = {
