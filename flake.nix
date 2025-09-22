@@ -210,7 +210,7 @@
                     ./home/old-home.nix
                 ];
             };
-            "cachywork" = home-manager.lib.homeManagerConfiguration {
+            "fedorawork" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
                 modules = [
@@ -221,7 +221,7 @@
                     ./home/laptop-home.nix
                     ./home/unstable-home.nix
                     ./home/old-home.nix
-                    ./home/cachy-home.nix
+                    ./home/fedora-home.nix
                 ];
             };
             "mac-fedora" = home-manager.lib.homeManagerConfiguration {
