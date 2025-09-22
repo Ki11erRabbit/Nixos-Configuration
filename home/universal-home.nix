@@ -16,6 +16,14 @@
         enable = true;
         userName = "Alec Davis";
         userEmail = "unlikelytitan@gmail.com";
+        extraConfig = {
+            init = {
+                defaultBranch = "main";
+            };
+            core = {
+                editor = "nvim";
+            };
+        };
     };
 
     programs.zsh = {
