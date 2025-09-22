@@ -21,6 +21,7 @@ in {
         imv
         wdisplays
         swaylock
+        kmonad
     ];
 
 
