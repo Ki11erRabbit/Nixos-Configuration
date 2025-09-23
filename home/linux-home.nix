@@ -22,6 +22,8 @@ in {
         wdisplays
         swaylock
         libreoffice
+        kmonad
+        swayidle
     ];
 
 
