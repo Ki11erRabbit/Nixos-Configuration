@@ -24,6 +24,7 @@ in {
         libreoffice
         kmonad
         swayidle
+        wl-clipboard
     ];
 
 
