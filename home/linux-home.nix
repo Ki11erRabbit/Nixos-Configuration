@@ -25,6 +25,8 @@ in {
         kmonad
         swayidle
         wl-clipboard
+        hunspell
+        hunspellDicts.en_US
     ];
 
 
