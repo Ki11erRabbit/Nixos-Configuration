@@ -181,7 +181,6 @@ in {
         python311Packages.sexpdata
         python311Packages.tld
         python311Packages.pyqt6 python311Packages.pyqt6-sip
-        python311Packages.markdown
         gnum4
         pkg-config
         binutils

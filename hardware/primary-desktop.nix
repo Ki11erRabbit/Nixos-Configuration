@@ -27,10 +27,10 @@
       fsType = "btrfs";
     };
 
-  fileSystems."/mnt/LinuxGames" =
-    { device = "/dev/disk/by-uuid/ad40ff33-9d18-4f1c-b067-9f729fa2d49a";
-      fsType = "ext4";
-    };
+  #fileSystems."/mnt/LinuxGames" =
+    #{ device = "/dev/disk/by-uuid/ad40ff33-9d18-4f1c-b067-9f729fa2d49a";
+      #fsType = "ext4";
+    #};
 
   fileSystems."/mnt/nvme-games" =
     { device = "/dev/disk/by-uuid/11fab3e4-94a2-47a3-8127-724b2ed38067";
