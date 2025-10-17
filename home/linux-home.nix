@@ -27,6 +27,8 @@ in {
         wl-clipboard
         hunspell
         hunspellDicts.en_US
+        sway-contrib.grimshot
+        heroic
     ];
 
 

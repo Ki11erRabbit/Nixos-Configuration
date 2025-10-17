@@ -9,7 +9,12 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "mem_sleep_default=s2idle" ];
+  boot.kernelParams = [ 
+    "mem_sleep_default=s2idle" 
+    "libata.noacpi=1"
+    "ahci.mobile_lpm_policy=1"
+    "libata.force=noncq"
+  ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/e8cd3501-9eee-4359-9505-05eecc699faa";
