@@ -9,28 +9,26 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ 
-    "mem_sleep_default=s2idle" 
-    "libata.noacpi=1"
-    "ahci.mobile_lpm_policy=1"
-    "libata.force=noncq"
-  ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e8cd3501-9eee-4359-9505-05eecc699faa";
+    fileSystems."/" =
+    { device = "/dev/disk/by-uuid/850642b9-8ce6-4efc-9f0c-2d8dff09155d";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3F81-239E";
+    { device = "/dev/disk/by-uuid/C9EC-1DD5";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/db576252-950d-4402-a663-a01ef2f1f5ef"; }
+    ];
+
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/a1127347-f062-4ad2-83a2-72068f8633f6";
-      fsType = "btrfs";
+    { device = "/dev/disk/by-uuid/26ef9c7b-4741-4c34-a480-5b4646fa2e95";
+      fsType = "ext4";
     };
 
   #fileSystems."/mnt/LinuxGames" =
@@ -38,14 +36,10 @@
       #fsType = "ext4";
     #};
 
-  fileSystems."/mnt/nvme-games" =
-    { device = "/dev/disk/by-uuid/11fab3e4-94a2-47a3-8127-724b2ed38067";
-      fsType = "ext4";
-    };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/8be5c2aa-cca3-4489-83ed-c64081fc3aa1"; }
-    ];
+  #fileSystems."/mnt/nvme-games" =
+  #  { device = "/dev/disk/by-uuid/11fab3e4-94a2-47a3-8127-724b2ed38067";
+  #    fsType = "ext4";
+  #  };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

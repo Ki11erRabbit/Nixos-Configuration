@@ -299,7 +299,11 @@ in {
 
 
     services.openssh.enable = true;
-    services.dbus.enable = true;
+    services.dbus = {
+        enable = true;
+        packages = [ pkgs.gnome-keyring pkgs.gcr ]
+    };
+    programs.seahorse.enable = true;
     services.flatpak.enable = true;
     services.mullvad-vpn.enable = true;
     services.gnome.gnome-keyring.enable = true;
