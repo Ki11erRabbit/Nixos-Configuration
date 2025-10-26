@@ -29,6 +29,7 @@ in {
         hunspellDicts.en_US
         sway-contrib.grimshot
         heroic
+        pavucontrol
     ];
 
 

@@ -36,10 +36,10 @@
       #fsType = "ext4";
     #};
 
-  #fileSystems."/mnt/nvme-games" =
-  #  { device = "/dev/disk/by-uuid/11fab3e4-94a2-47a3-8127-724b2ed38067";
-  #    fsType = "ext4";
-  #  };
+  fileSystems."/mnt/nvme-games" =
+    { device = "/dev/disk/by-uuid/11fab3e4-94a2-47a3-8127-724b2ed38067";
+      fsType = "ext4";
+    };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
