@@ -1,4 +1,4 @@
-{ lib, inputs, config, pkgs, channels,  ... }:
+{ lib, inputs, config, pkgs, channels, ... }:
 {
     home.username = "ki11errabbit";
     
@@ -176,6 +176,8 @@
         podman-desktop
         podman
         podman-compose
+        inputs.lem.packages."${system}".lem-sdl2
+        
     ];
 
     programs.alacritty = {

@@ -26,8 +26,12 @@
             url = "github:DreamMaoMao/mango";
             inputs.nixpkgs.follows = "unstable-pkgs";
         };
+        lem = {
+            url = "github:lem-project/lem/282b5e1480696e8926f6e75d0340332d89d21abf";
+            inputs.nixpkgs.follows = "unstable-pkgs";
+        };
     };
-    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, zen-browser, mango, ... }: 
+    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, zen-browser, mango, lem, ... }: 
     let 
         system = "x86_64-linux";
         system_arm = "aarch64-linux";
@@ -198,7 +202,7 @@
         homeConfigurations = {
             "desktop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs lem; };
                 modules = [
                     mango.hmModules.mango
                     ./home/universal-home.nix
