@@ -27,7 +27,7 @@
             inputs.nixpkgs.follows = "unstable-pkgs";
         };
         lem = {
-            url = "github:lem-project/lem/282b5e1480696e8926f6e75d0340332d89d21abf";
+            url = "github:Ki11erRabbit/lem/2ef9ad7";
             inputs.nixpkgs.follows = "unstable-pkgs";
         };
     };

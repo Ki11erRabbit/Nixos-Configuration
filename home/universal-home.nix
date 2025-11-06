@@ -176,6 +176,7 @@
         podman-desktop
         podman
         podman-compose
+        inputs.lem.packages."${system}".lem-sdl2
         
     ];
 

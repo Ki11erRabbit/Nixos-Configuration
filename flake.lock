@@ -119,17 +119,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1754753817,
-        "narHash": "sha256-n15ddklmPxi78v4f1sNoQk6SvVq6SoF8ldf0xSZYSo4=",
-        "owner": "lem-project",
+        "lastModified": 1762446059,
+        "narHash": "sha256-ius6W8McAXY0z2gc5EhF1zZ4eW4NazDDTk2ACaWptGo=",
+        "owner": "Ki11erRabbit",
         "repo": "lem",
-        "rev": "282b5e1480696e8926f6e75d0340332d89d21abf",
+        "rev": "2ef9ad772b548c7638b1d18b7dde28504d567337",
         "type": "github"
       },
       "original": {
-        "owner": "lem-project",
+        "owner": "Ki11erRabbit",
+        "ref": "2ef9ad7",
         "repo": "lem",
-        "rev": "282b5e1480696e8926f6e75d0340332d89d21abf",
         "type": "github"
       }
     },

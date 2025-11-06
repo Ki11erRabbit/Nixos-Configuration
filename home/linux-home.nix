@@ -30,7 +30,6 @@ in {
         sway-contrib.grimshot
         heroic
         pavucontrol
-        inputs.lem.packages."${system}".lem-sdl2
     ];
 
 
