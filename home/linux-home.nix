@@ -30,6 +30,7 @@ in {
         sway-contrib.grimshot
         heroic
         pavucontrol
+        audacious
     ];
 
 
