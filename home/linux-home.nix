@@ -31,6 +31,7 @@ in {
         heroic
         pavucontrol
         audacious
+        kdePackages.ark
     ];
 
 
