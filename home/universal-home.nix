@@ -140,11 +140,11 @@
         trash-cli
         zoxide
         delta
-        du-dust
+        dust
         fd
         hexyl
         procs
-        jellyfin-media-player
+        #jellyfin-media-player
         jdk21
         erlang
         helix
@@ -160,7 +160,7 @@
         gdb
         tmux
         typescript
-        bitwarden
+        bitwarden-desktop
         jetbrains.rust-rover
         jetbrains.idea-ultimate
         cargo-generate

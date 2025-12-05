@@ -154,7 +154,7 @@ in {
         universal-ctags
         mullvad-vpn
         gcc
-        transmission_3
+        transmission_4
         usbutils
         gparted
         libnotify
@@ -173,7 +173,7 @@ in {
         xdotool
         nodejs
         wmctrl
-        aria
+        aria2
         fd
         jq
         python311Packages.pandas
