@@ -32,6 +32,7 @@ in {
         pavucontrol
         audacious
         kdePackages.ark
+        gimp
     ];
 
 

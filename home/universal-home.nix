@@ -136,7 +136,6 @@
         mpv
         stow
         xournalpp
-        gimp
         trash-cli
         zoxide
         delta
