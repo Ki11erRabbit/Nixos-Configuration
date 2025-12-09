@@ -606,6 +606,7 @@ env=QT_QA_PLATFORM,qt6ct
 env=XDG_CURRENT_DESKTOP,sway
         '';
         autostart_sh = ''
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots
         '';
     };
 }
