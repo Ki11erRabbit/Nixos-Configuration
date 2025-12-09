@@ -531,6 +531,7 @@ exec-once=nm-applet
 exec-once=blueman-applet
 exec-once=kdeconnect-indicator
 exec-once=swaysome init 1
+exec-once=mango-fix.sh
 
 bind=SUPER,q,killclient
 bind=SUPER,Return,spawn,alacritty
@@ -606,7 +607,6 @@ env=QT_QA_PLATFORM,qt6ct
 env=XDG_CURRENT_DESKTOP,sway
         '';
         autostart_sh = ''
-dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots
         '';
     };
 }
