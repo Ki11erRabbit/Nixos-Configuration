@@ -531,6 +531,7 @@ exec-once=nm-applet
 exec-once=blueman-applet
 exec-once=kdeconnect-indicator
 exec-once=swaysome init 1
+exec-once=mango-fix.sh
 
 bind=SUPER,q,killclient
 bind=SUPER,Return,spawn,alacritty

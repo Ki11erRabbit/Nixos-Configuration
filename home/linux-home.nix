@@ -236,6 +236,14 @@ in {
     };
 
     home.file = {
+        ".local/bin/mango-fix.sh" = {
+            executable = true;
+            text = ''
+            #!/bin/sh
+            dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+            systemctl --user restart pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr xdg-desktop-portal-gtk
+            '';
+        };
         ".local/bin/nix-config.sh" = {
             executable = true;
             text = ''
