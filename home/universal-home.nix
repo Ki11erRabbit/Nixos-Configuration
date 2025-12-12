@@ -121,9 +121,6 @@
         zls
         idris2
         emacs-pgtk
-        stack
-        cabal-install
-        ghc
         go
         python3
         luajit
