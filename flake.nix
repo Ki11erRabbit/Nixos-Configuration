@@ -277,8 +277,6 @@
                     mango.hmModules.mango
                     ./home/universal-home.nix
                     ./home/macos-home.nix
-                    ./home/unstable-home.nix
-                    ./home/unstable-home.nix
                     ./home/old-home.nix
                 ];
             };
