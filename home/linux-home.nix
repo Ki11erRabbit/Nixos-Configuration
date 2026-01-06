@@ -3562,7 +3562,6 @@ indent_style = tab
             "application/x-shellscript" = [ "emacsclient.desktop" ];
             "text/x-shellscript" = [ "emacsclient.desktop" ];
             "application/x-extension-txt" = [ "emacsclient.desktop" ];
-            "text/english" = [ "emacsclient.desktop" ];
             "text/plain" = [ "emacsclient.desktop" ];
             "application/x-extension-md" = [ "emacsclient.desktop" ];
             "application/x-extension-markdown" = [ "emacsclient.desktop" ];

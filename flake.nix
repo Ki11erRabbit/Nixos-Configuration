@@ -12,10 +12,6 @@
             # to avoid problems caused by different versions of nixpkgs.
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        nixos-cosmic = {
-            url = "github:lilyinstarlight/nixos-cosmic";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
         zen-browser = {
             url = "github:0xc000022070/zen-browser-flake";
             # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
@@ -31,7 +27,7 @@
             inputs.nixpkgs.follows = "unstable-pkgs";
         };
     };
-    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, nixos-cosmic, zen-browser, mango, lem, ... }: 
+    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, zen-browser, mango, lem, ... }: 
     let 
         system = "x86_64-linux";
         system_arm = "aarch64-linux";
@@ -75,7 +71,7 @@
                 specialArgs = {
                     inherit pkgs unstable;
                 };
-                system = "x86_64-linux";
+                stdenv.hostPlatform.system = "x86_64-linux";
                 modules = [
                     mango.nixosModules.mango
                     ./hosts/shared/common-pc.nix
@@ -93,7 +89,7 @@
                 specialArgs = {
                     inherit pkgs;
                 };
-                system = "x86_64-linux";
+                stdenv.hostPlatform.system = "x86_64-linux";
                 modules = [
                     ./hosts/shared/common-server.nix
                     ./hosts/server-nas/configuration.nix
@@ -109,7 +105,7 @@
                 specialArgs = {
                     inherit pkgs;
                 };
-                system = "x86_64-linux";
+                stdenv.hostPlatform.system = "x86_64-linux";
                 modules = [
                     ./hosts/shared/common-pc.nix
                     ./hosts/think-nix-t440p/configuration.nix
@@ -126,7 +122,7 @@
                 specialArgs = {
                     inherit pkgs;
                 };
-                system = "x86_64-linux";
+                stdenv.hostPlatform.system = "x86_64-linux";
                 modules = [
                     ./hosts/shared/common-pc.nix
                     ./hosts/think-nix-x230t/configuration.nix
@@ -143,7 +139,7 @@
                 specialArgs = {
                     inherit pkgs;
                 };
-                system = "x86_64-linux";
+                stdenv.hostPlatform.system = "x86_64-linux";
                 modules = [
                     ./hosts/shared/common-pc.nix
                     ./hosts/think-nix-t430s/configuration.nix
@@ -157,7 +153,7 @@
                 ];
             };
             think-nix-t480s = nixpkgs.lib.nixosSystem  {
-                system = "x86_64-linux";
+                stdenv.hostPlatform.system = "x86_64-linux";
                 modules = [
                     ./hosts/shared/common-pc.nix
                     ./hosts/think-nix-t480s/configuration.nix
@@ -168,17 +164,10 @@
                         home-manager.useUserPackages = true;
                         home-manager.users.root = import ./root/home.nix;
                     }
-                    {
-                        nix.settings = {
-                            substituters = [ "https://cosmic.cachix.org/" ];
-                            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-                        };
-                    }
-                    nixos-cosmic.nixosModules.default
                 ];
             };
             think-nix-t480 = nixpkgs.lib.nixosSystem  {
-                system = "x86_64-linux";
+                stdenv.hostPlatform.system = "x86_64-linux";
                 modules = [
                     ./hosts/shared/common-pc.nix
                     ./hosts/think-nix-t480/configuration.nix
@@ -189,13 +178,6 @@
                         home-manager.useUserPackages = true;
                         home-manager.users.root = import ./root/home.nix;
                     }
-                    {
-                        nix.settings = {
-                            substituters = [ "https://cosmic.cachix.org/" ];
-                            trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-                        };
-                    }
-                    nixos-cosmic.nixosModules.default
                 ];
             };
         };
@@ -230,7 +212,7 @@
             };
             "mac-fedora" = home-manager.lib.homeManagerConfiguration {
                 pkgs = import nixpkgs { 
-                    system = "${system_arm}"; 
+                    stdenv.hostPlatform.system = "${system_arm}"; 
                     config = { allowUnfree = true; nvidia.acceptLicense = true; }; 
                     overlays = [
                         (final: prev: {
@@ -269,7 +251,7 @@
             };
             "macos" = home-manager.lib.homeManagerConfiguration {
                 pkgs = import nixpkgs { 
-                    system = "${system_mac}"; 
+                    stdenv.hostPlatform.system = "${system_mac}"; 
                     config = { allowUnfree = true; nvidia.acceptLicense = true; }; 
                 };
                 extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };

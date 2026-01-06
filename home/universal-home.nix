@@ -12,10 +12,10 @@
         package = pkgs.emacs-pgtk;
     };
 
-    programs.git = {
-        enable = true;
-        userName = "Alec Davis";
-        userEmail = "unlikelytitan@gmail.com";
+    programs.git.enable = true;
+    programs.git.settings = {
+        user.name = "Alec Davis";
+        user.email = "unlikelytitan@gmail.com";
         extraConfig = {
             init = {
                 defaultBranch = "main";
