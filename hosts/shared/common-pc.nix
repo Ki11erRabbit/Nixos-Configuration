@@ -80,6 +80,7 @@ in {
         .overrideAttrs (_: {passthru.providedSessions = ["wio"];}))
     ];
     services.desktopManager.plasma6.enable = true;
+    services.desktopManager.cosmic.enable = true;
     services.xserver.desktopManager.cinnamon.enable = true;
     programs.sway = {
         enable = true;
