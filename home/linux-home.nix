@@ -3466,6 +3466,16 @@ indent_style = tab
             comment = "Start an Emacs daemon";
             terminal = false;
         };
+        run-wayland-wallpapers = {
+            name = "Run Wayland Wallpapers";
+            genericName = "Wayland Wallpapers";
+            exec = "wallpaper-wayland.sh";
+            icon = "wayland";
+            mimeType = [];
+            categories = [];
+            comment = "Runs the wallpaper-wayland.sh script";
+            terminal = false;
+        };
     };
 
     xdg.mimeApps = {
