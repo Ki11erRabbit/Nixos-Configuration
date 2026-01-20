@@ -57,25 +57,25 @@
     programs.starship = {
         enable = true;
         settings = {
-            format = "$username $directory\n$character";
+            format = "❬$username❭ $directory\n$character";
             
             username = {
-                format = "❬[$user]($style)❭";
-                style_user = "magenta";
+                format = "[$user]($style)";
+                style_user = "purple";
                 style_root = "bold red";
                 show_always = true;
             };
 
             directory = {
                 format = "[$path]($style)";
-                style = "cyan";
+                style = "fg:cyan";
                 truncation_length = 0;
                 truncate_to_repo = false;
             };
-            add_newline = true;
+            add_newline = false;
             character = {
-                success_symbol = "[➜](bold green)";
-                error_symbol = "[➜](bold red)";
+                success_symbol = " ";
+                error_symbol = " ";
             };
         };
     };
