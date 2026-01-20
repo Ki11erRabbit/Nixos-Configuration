@@ -27,7 +27,7 @@
             inputs.nixpkgs.follows = "unstable-pkgs";
         };
     };
-    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, zen-browser, mango, lem, ... }: 
+    outputs = inputs@{ self, nixpkgs, home-manager, unstable-pkgs, old-pkgs, zen-browser, mango, ... }: 
     let 
         system = "x86_64-linux";
         system_arm = "aarch64-linux";
@@ -184,7 +184,7 @@
         homeConfigurations = {
             "desktop" = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs lem; };
+                extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
                 modules = [
                     mango.hmModules.mango
                     ./home/universal-home.nix
