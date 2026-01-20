@@ -251,7 +251,7 @@
             };
             "macos" = home-manager.lib.homeManagerConfiguration {
                 pkgs = import nixpkgs { 
-                    stdenv.hostPlatform.system = "${system_mac}"; 
+                    system = "${system_mac}"; 
                     config = { allowUnfree = true; nvidia.acceptLicense = true; }; 
                 };
                 extraSpecialArgs = {inherit nixpkgs unstable oldpkgs inputs; };
