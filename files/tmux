@@ -1,0 +1,36 @@
+unbind r
+bind r source-file ~/.tmux.conf
+
+# For use in kakoune
+set -g prefix C-w
+
+bind v split-window -h
+bind s split-window -v
+
+unbind '"'
+unbind %
+
+set -g mouse on
+
+unbind m
+unbind n
+unbind e
+unbind i
+
+bind m select-pane -L
+bind n select-pane -D
+bind e select-pane -U
+bind i select-pane -R
+
+unbind l
+unbind u
+
+bind l select-window -p
+bind u select-window -n
+
+set -g status-position top
+set -g status-left "#[fg=magenta,bold,bg=#eff1f5] #S "
+set -g status-right "#[fg=magenta,bold,bg=#eff1f5] %l:%M %p"
+set -g status-style "bg=#eff1f5"
+set -g default-terminal "screen-256color"
+

@@ -1,0 +1,26 @@
+setopt globdots
+function ya() {
+    local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        cd -- "$cwd"
+    fi
+    rm -f -- "$tmp"
+}
+
+function neovim() {
+    local tmp="/tmp/nvim_cwd"
+    nvim "$@" 
+    cwd="$(cat -- "$tmp")"
+    cd -- "$cwd"
+    rm -f -- "$tmp"
+}
+
+eval "$(zoxide init zsh)"
+function refresh-nix() {
+    dir=$PWD
+    cd ~/
+    home-manager switch --flake ./git/Nixos-Configuration/#macos
+    cd $dir
+}
+
