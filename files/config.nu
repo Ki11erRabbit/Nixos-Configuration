@@ -78,3 +78,5 @@ $env.PATH = ($env.PATH {{!}}
   prepend /home/myuser/.apps {{!}}
   append /usr/bin/env
 )
+
+

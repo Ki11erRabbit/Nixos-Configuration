@@ -25,6 +25,60 @@
             };
         };
     };
+    
+    programs.nushell = {
+        enable = true;
+        configFile.source = ../files/config.nu;
+        shellAliases = {
+            cd = "z";
+            bat = "bat --style plain";
+            batf = "bat --style full";
+            #ls = "exa --icons";
+            #tree = "exa --tree --icons";
+            cp = "cp -iv";
+            mv = "mv -iv";
+            rm = "trash -v";
+            grep = "grep --color=auto";
+            emacs = "emacsclient -c -a \"emacs\"";
+            
+        };
+    };
+
+    programs.carapace = {
+        enable = true;
+        enableNushellIntegration = true;
+    };
+    
+    programs.zoxide = {
+        enable = true;
+        enableNushellIntegration = true;
+    };
+
+    programs.starship = {
+        enable = true;
+        settings = {
+            format = "$username $directory\n$character";
+            
+            username = {
+                format = "❬[$user]($style)❭";
+                style_user = "magenta";
+                style_root = "bold red";
+                show_always = true;
+            };
+
+            directory = {
+                format = "[$path]($style)";
+                style = "cyan";
+                truncation_length = 0;
+                truncate_to_repo = false;
+            };
+            add_newline = true;
+            character = {
+                success_symbol = "[➜](bold green)";
+                error_symbol = "[➜](bold red)";
+            };
+        };
+    };
 
     programs.zsh = {
         enable = true;
@@ -58,36 +112,12 @@
 
             PATH = "$PATH:/home/ki11errabbit/.cabal/bin:/home/ki11errabbit/.local/bin:$PATH:/home/ki11errabbit/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:/home/ki11errabbit/.cargo/bin";
         };
-
+        #initContent = builtins.readFile(../files/zsh);
         initContent = ''
-        setopt globdots
-        function ya() {
-            local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-            yazi "$@" --cwd-file="$tmp"
-            if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-                cd -- "$cwd"
-            fi
-            rm -f -- "$tmp"
-        }
-
-
-        function neovim() {
-            local tmp="/tmp/nvim_cwd"
-            nvim "$@" 
-            cwd="$(cat -- "$tmp")"
-            cd -- "$cwd"
-            rm -f -- "$tmp"
-        }
-
-        eval "$(zoxide init zsh)"
-        function refresh-nix() {
-            dir=$PWD
-            cd ~/
-            home-manager switch --flake ./git/Nixos-Configuration/#macos
-            cd $dir
-        }
+if [[ -o interactive ]]; then
+    exec nu
+fi
         '';
-
     };
 
     home.packages = with pkgs; [
@@ -134,7 +164,6 @@
         stow
         xournalpp
         trash-cli
-        zoxide
         delta
         dust
         fd
@@ -249,43 +278,7 @@
     programs.tmux = {
         enable = true;
         clock24 = false;
-        extraConfig = ''
-unbind r
-bind r source-file ~/.tmux.conf
-
-# For use in kakoune
-set -g prefix C-w
-
-bind v split-window -h
-bind s split-window -v
-
-unbind '"'
-unbind %
-
-set -g mouse on
-
-unbind m
-unbind n
-unbind e
-unbind i
-
-bind m select-pane -L
-bind n select-pane -D
-bind e select-pane -U
-bind i select-pane -R
-
-unbind l
-unbind u
-
-bind l select-window -p
-bind u select-window -n
-
-set -g status-position top
-set -g status-left "#[fg=magenta,bold,bg=#eff1f5] #S "
-set -g status-right "#[fg=magenta,bold,bg=#eff1f5] %l:%M %p"
-set -g status-style "bg=#eff1f5"
-set -g default-terminal "screen-256color"
-        '';
+        extraConfig = builtins.readFile(../files/tmux);
     };
 
     home.sessionVariables = {
