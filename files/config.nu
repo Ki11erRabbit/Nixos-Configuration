@@ -49,10 +49,10 @@ let zoxide_completer = {|spans|
 # the default will be carapace, but you can also switch to fish
 # https://www.nushell.sh/cookbook/external_completers.html#alias-completions
 let multiple_completers = {|spans|
-  ## alias fixer start https://www.nushell.sh/cookbook/external_completers.html#alias-completions
+  ## alias fixer start
   let expanded_alias = scope aliases
   | where name == $spans.0
-  | get 0.expansion
+  | get -o 0.expansion
   
   let spans = if $expanded_alias != null {
     $spans
@@ -64,7 +64,8 @@ let multiple_completers = {|spans|
   ## alias fixer end
   
   match $spans.0 {
-    __zoxide_z | __zoxide_zi => $zoxide_completer
+    __zoxide_z | __zoxide_zi => $zoxide_completer,
+    nvim | vim | vi | nano | emacs | code => { null },
     _ => $carapace_completer
   } | do $in $spans
 }
