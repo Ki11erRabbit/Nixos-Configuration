@@ -128,7 +128,7 @@ in {
         isNormalUser = true;
         description = "Alec Davis";
         shell = pkgs.zsh;
-        extraGroups = [ "networkmanager" "wheel" "libvirtd" "uinput" "input" "cdrom" "video" "docker" "dialout"];
+        extraGroups = [ "networkmanager" "wheel" "libvirtd" "uinput" "input" "cdrom" "video" "docker" "dialout" "podman" ];
         packages = with pkgs; [];
     };
 
@@ -177,20 +177,14 @@ in {
         aria2
         fd
         jq
-        python311Packages.pandas
-        python311Packages.requests
-        python311Packages.sexpdata
-        python311Packages.tld
-        python311Packages.pyqt6 python311Packages.pyqt6-sip
         gnum4
         pkg-config
         binutils
         dwl-custom
         libsecret
         slurp
-        docker
-        distrobox
         pcloudFixes
+        distrobox
         wio
         libunwind
         polkit_gnome
@@ -220,6 +214,10 @@ in {
         linuxKernel.packages.linux_6_12.perf
     ];
     
+    virtualisation.podman = {
+        enable = true;
+        dockerCompat = true;
+    };
 
     programs.zsh.enable = true;
 
@@ -356,8 +354,7 @@ in {
         enable = true;
         package = pkgs.mariadb;
     };
-    virtualisation.docker.enable = true;
 
-    system.stateVersion = "25.05"; # Did you read the comment?
+    system.stateVersion = "25.11"; # Did you read the comment?
 
 }

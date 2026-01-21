@@ -71,7 +71,7 @@
                 specialArgs = {
                     inherit pkgs unstable;
                 };
-                stdenv.hostPlatform.system = "x86_64-linux";
+                system = "x86_64-linux";
                 modules = [
                     mango.nixosModules.mango
                     ./hosts/shared/common-pc.nix

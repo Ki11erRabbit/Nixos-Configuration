@@ -16,7 +16,6 @@ def l [...args: string] {
   let path = if ($args | is-empty) { ["."] } else { $args }
   ls ...$path | sort-by type name -i 
 }
-
 # Completions
 # mainly pieced together from https://www.nushell.sh/cookbook/external_completers.html
 # carapce completions https://www.nushell.sh/cookbook/external_completers.html#carapace-completer
@@ -27,24 +26,20 @@ let carapace_completer = {|spans|
   | from json
   | if ($in | default [] | where value == $"($spans | last)ERR" | is-empty) { $in } else { null }
 }
-
 # some completions are only available through a bridge
 # eg. tailscale
 # https://carapace-sh.github.io/carapace-bin/setup.html#nushell
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
-
 # fish completions https://www.nushell.sh/cookbook/external_completers.html#fish-completer
 let fish_completer = {|spans|
   fish --command $'complete "--do-complete=($spans | str join " ")"'
   | $"value(char tab)description(char newline)" + $in
   | from tsv --flexible --no-infer
 }
-
 # zoxide completions https://www.nushell.sh/cookbook/external_completers.html#zoxide-completer
 let zoxide_completer = {|spans|
     $spans | skip 1 | zoxide query -l ...$in | lines | where {|x| $x != $env.PWD}
 }
-
 # multiple completions
 # the default will be carapace, but you can also switch to fish
 # https://www.nushell.sh/cookbook/external_completers.html#alias-completions
@@ -52,7 +47,7 @@ let multiple_completers = {|spans|
   ## alias fixer start
   let expanded_alias = scope aliases
   | where name == $spans.0
-  | get -o 0.expansion
+  | get 0?.expansion
   
   let spans = if $expanded_alias != null {
     $spans
@@ -63,13 +58,18 @@ let multiple_completers = {|spans|
   }
   ## alias fixer end
   
-  match $spans.0 {
+  let completer = match $spans.0 {
     __zoxide_z | __zoxide_zi => $zoxide_completer,
-    nvim | vim | vi | nano | emacs | code => { null },
+    nvim | vim | vi | nano | emacs | code => null,
     _ => $carapace_completer
-  } | do $in $spans
+  }
+  
+  if $completer == null {
+    null
+  } else {
+    do $completer $spans
+  }
 }
-
 $env.config = {
   show_banner: false,
   completions: {
@@ -86,7 +86,6 @@ $env.config = {
     }
   }
 } 
-
 $env.PATH = ($env.PATH | 
   split row (char esep) |
   prepend /home/myuser/.apps |
